@@ -16,9 +16,13 @@ import { CertificatesComponent } from './certificates/certificates.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {FormGroup, FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf, JsonPipe} from '@angular/common';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
+
 
 
 @NgModule({
@@ -44,6 +48,12 @@ import {MatNativeDateModule} from '@angular/material/core';
     FormsModule, ReactiveFormsModule,
     NgIf, JsonPipe,
     MatNativeDateModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    FormsModule,
+  
+    
   ]
 })
 export class UserModule { }

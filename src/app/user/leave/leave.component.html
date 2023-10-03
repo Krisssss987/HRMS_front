@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container-fluid mt-3">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <h1 class="text-center">Leave Management </h1>
@@ -32,7 +32,7 @@
             
           </div>
           <div >
-            <h4>Leave Start and end date</h4>
+            <h4>Total Number Of Leaves</h4>
               <mat-form-field class="input-full-width">
                 <mat-label>Total Number Of Leave  </mat-label>
                 <input matInput >
@@ -40,9 +40,9 @@
             
           </div>
           <div >
-            <h4 class="input-full-width"> Medical,Please provide a breaf discription of the illness or medical condition</h4>
+            <h4 class="input-full-width"> If medical, please provide a breaf discription of the illness or medical condition</h4>
               <mat-form-field class="input-full-width">
-                <mat-label>Total Number Of Leave  </mat-label>
+                <mat-label>Discription of illness or medical condition </mat-label>
                 <input matInput >
               </mat-form-field>
             
@@ -53,17 +53,22 @@
     <div class="col-md-6 col-sm-6 col-6">
         <div>
             <h4>Have you discussed your leave with your supervisor or manager?</h4>
+            <!-- <label class="example-margin">Align:</label> -->
             <mat-form-field class="input-full-width">
-                <mat-label>Reason For Leave</mat-label>
-                <input matInput>
-              </mat-form-field>
+            <mat-label>Choose an option</mat-label>
+            <mat-select>
+              <mat-option value="Yes, I have Discussed">Yes, I have Discussed</mat-option>
+              <mat-option value="No, didn't have Discussed">No, didn't have Discussed</mat-option>
+            </mat-select>
+          </mat-form-field>
             
           </div>
           <div>
             <h4>Emergency Contact (Name, Relationship, Phone Number)</h4>
             <mat-form-field class="input-full-width">
                 <mat-label>Contact Number</mat-label>
-                <input matInput>
+                <input matInput placeholder="Contact Number" [formControl]="mobileNumber" required>
+                <mat-error *ngIf="mobileNumber.invalid">{{ getMobileNumberErrorMessage() }}</mat-error>
               </mat-form-field>
             
           </div>

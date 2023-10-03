@@ -8,6 +8,7 @@ h4,h1{
 ::-webkit-scrollbar {
     display: none;
 }
-.input-full-width {
+.input-full-width
+{
     width: 100%;
-  }
+}
