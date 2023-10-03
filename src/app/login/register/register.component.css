@@ -1,0 +1,59 @@
+.register-box{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-size: cover;
+}
+/* color */
+.color-temp{
+  color:rgb(42,160,160);
+}
+.color-temp-bg{
+  background-color:rgb(42,160,160);
+}
+
+mat-card{
+  backdrop-filter: blur(10px); /* Apply a blur effect */
+  box-shadow: 0 0 10px rgba(109, 109, 109, 0.5); /* Add a subtle shadow */
+  border-radius: 10px; /* Optionally, round the corners for a frosted glass effect */
+}
+
+.register-card{
+  width: 800px;
+}
+/* for password only */
+.form-feild{
+  width: 100%;
+  
+}
+h1{
+  font-weight: 700;
+  font-size: 2rem;
+  color:  #3f51b5;
+}
+h3{
+  font-weight: 700;
+  color:  #6d6d6d;
+}
+.column-container {
+  display: block;
+}
+/* On small screens, change the display to inline-block to make columns sit side by side */
+@media (max-width: 600px) {
+  .column-container {
+    display: inline-block;
+    width: 100%;
+  }
+  .register-card{
+    min-width: 300px;
+  }
+  
+  /* Optionally, you can adjust the width to control column spacing */
+
+  
+}
+
+

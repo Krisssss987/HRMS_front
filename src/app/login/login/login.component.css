@@ -1,0 +1,37 @@
+.form-container{
+    position: relative;
+    background-color: white;
+    top: 20vh;
+    padding: 15px;
+    border-radius: 5px; 
+    display: flex;
+    flex-direction: column; 
+    backdrop-filter: blur(10px); /* Apply a blur effect */
+    box-shadow: 0 0 10px rgba(109, 109, 109, 0.5); /* Add a subtle shadow */
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+.color-temp-bg{
+    background-color: rgba(42, 160, 160, 1);
+    color: white;
+  }
+
+#admin{
+    text-align: center;
+}
+
+.user,.pw{
+    width:100%;
+    display:block;
+}
+
+
+.link{
+    color: grey; /* Use the appropriate color from the Pink palette */
+    text-decoration: none;
+    margin-top: 10px;
+    size:5px;
+    padding: 2px;
+  }
+

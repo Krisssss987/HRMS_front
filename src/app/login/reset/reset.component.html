@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-6 col-lg-3">
+            <form class="form-container">
+
+                <div class="form-group">
+                    <h2 style="color:rgb(42,160,160);" class="text-center"><b>Reset Your Passsword</b></h2>
+                    <mat-form-field class="pw">
+                        <mat-label>Enter your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+
+
+                <div class="form-group">
+                    <mat-form-field class="cpw">
+                        <mat-label>Confirm your password</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+                <button mat-raised-button style="background-color:rgb(42,160,160); color: whitesmoke;" class="full-width-button">Reset Password</button>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex justify-content-between">
+                            <a class="link" routerLink="/login/login"><b>Remember Password?Sign In</b></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

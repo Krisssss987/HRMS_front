@@ -1,0 +1,82 @@
+<div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1 class="text-center">Leave Management </h1>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6 col-sm-6 col-6">
+        <div class="row">
+          <div>
+            <h4>Reason For Leave*</h4>
+            <mat-form-field class="input-full-width">
+                <mat-label>Reason For Leave</mat-label>
+                <input matInput >
+              </mat-form-field>
+            
+          </div>
+          <div >
+            <h4>Leave Start and end date</h4>
+            <mat-form-field class="input-full-width">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              
+                <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+              </mat-form-field>
+            
+          </div>
+          <div >
+            <h4>Leave Start and end date</h4>
+              <mat-form-field class="input-full-width">
+                <mat-label>Total Number Of Leave  </mat-label>
+                <input matInput >
+              </mat-form-field>
+            
+          </div>
+          <div >
+            <h4 class="input-full-width"> Medical,Please provide a breaf discription of the illness or medical condition</h4>
+              <mat-form-field class="input-full-width">
+                <mat-label>Total Number Of Leave  </mat-label>
+                <input matInput >
+              </mat-form-field>
+            
+          </div>
+      </div>
+      
+    </div>
+    <div class="col-md-6 col-sm-6 col-6">
+        <div>
+            <h4>Have you discussed your leave with your supervisor or manager?</h4>
+            <mat-form-field class="input-full-width">
+                <mat-label>Reason For Leave</mat-label>
+                <input matInput>
+              </mat-form-field>
+            
+          </div>
+          <div>
+            <h4>Emergency Contact (Name, Relationship, Phone Number)</h4>
+            <mat-form-field class="input-full-width">
+                <mat-label>Contact Number</mat-label>
+                <input matInput>
+              </mat-form-field>
+            
+          </div>
+          <div>
+            <h4>How do you plan to handle your pending tasks or workload during your absence?</h4>
+            <mat-form-field class="input-full-width ">
+                <mat-label>Plan to handle your pending tasks</mat-label>
+                <textarea matInput ></textarea>
+              </mat-form-field>
+              
+            
+          </div>
+        
+      </div>
+  </div>
+  

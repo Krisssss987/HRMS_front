@@ -1,0 +1,29 @@
+.form-container{
+    position: relative;
+    background-color:white;
+    top: 20vh;
+    padding: 15px;
+    border-radius: 5px; 
+    display: flex;
+    flex-direction: column; 
+    backdrop-filter: blur(10px); /* Apply a blur effect */
+    box-shadow: 0 0 10px rgba(109, 109, 109, 0.5); /* Add a subtle shadow */
+    border-radius: 10px; 
+}
+
+.pw,.cpw{
+    width:100%;
+    display:block;
+}
+
+.link{
+    color: grey; /* Use the appropriate color from the Pink palette */
+    text-decoration: none;
+    size:5px;
+    display: block;
+    margin: auto;
+    padding: 10px;
+ }
+
+
+

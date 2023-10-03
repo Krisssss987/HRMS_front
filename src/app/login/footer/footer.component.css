@@ -1,0 +1,24 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    height: 5vh;
+    width: 100%; 
+    background-color: rgb(42,160,160,255);
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-title{
+    text-align: center;
+    color: whitesmoke;
+    font-size: 1.2rem;
+}
+
+.footer-link{
+    color: whitesmoke;
+}
+
+.footer-link:hover{
+    color: black;
+}

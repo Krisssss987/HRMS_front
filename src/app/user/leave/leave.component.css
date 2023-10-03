@@ -1,0 +1,13 @@
+h4,h1{
+    font-weight: 600;
+    color: rgb(66, 66, 66);
+    flex-grow: inherit;
+}
+
+/* Hide scrollbars on all screens */
+::-webkit-scrollbar {
+    display: none;
+}
+.input-full-width {
+    width: 100%;
+  }

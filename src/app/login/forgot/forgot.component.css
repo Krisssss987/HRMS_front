@@ -1,0 +1,30 @@
+.forgot-box{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+.forgot-card{ 
+  backdrop-filter: blur(10px); /* Apply a blur effect */
+  box-shadow: 0 0 10px rgba(109, 109, 109, 0.5); /* Add a subtle shadow */
+  border-radius: 10px; 
+  width: 400px;
+}
+
+.form-feild{
+  width: 100%;
+}
+.link{
+  color: grey; /* Use the appropriate color from the Pink palette */
+  text-decoration: none;
+  size:5px;
+  display: block;
+  margin: auto;
+  padding: 10px;
+}
+.color-temp-bg{
+  background-color: rgba(42, 160, 160, 1);
+  color: white;
+}

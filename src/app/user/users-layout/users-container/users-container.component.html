@@ -1,0 +1,51 @@
+<mat-toolbar class="mat-elevation-z8 h-10">
+    <button
+      mat-icon-button
+      *ngIf="sidenav.mode === 'over'"
+      (click)="sidenav.toggle()"
+    >
+      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+    </button>
+
+    <span> SenseLive - HRMS</span>
+    <span class="example-spacer"></span>
+
+    <div class="d-flex flex-row-reverse">
+    <button class="p-1" mat-mini-fab color="basic" aria-label="logout">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+    </div>
+</mat-toolbar>
+  
+  
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+      <img
+        class="avatar"
+        src="..\..\..\assets\img\logo.ico"
+      />
+  
+      <h4 class="name">SenseLive - HRMS</h4>
+  
+      <mat-divider></mat-divider>
+  
+      <button mat-button class="menu-button" routerLink="/dashboard/dashboard">
+        <mat-icon>home</mat-icon>
+        <span>Dashboard</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/dashboard/certificates">
+        <mat-icon>class</mat-icon>
+        <span>Certificates</span>
+      </button>
+      <button mat-button class="menu-button" routerLink="/dashboard/leave">
+        <mat-icon>class</mat-icon>
+        <span>Leave</span>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+<app-users-footer></app-users-footer>
+```  
