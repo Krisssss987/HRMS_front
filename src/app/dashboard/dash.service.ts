@@ -18,4 +18,7 @@ export class DashService {
   userDetails(userDetails: any): Observable<any> {
     return this.http.get(`${this.API_URL}/getUserDetails`,userDetails);
   }
+  userDevices(CompanyEmail: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/getUserDetails`);
+  }
 }
