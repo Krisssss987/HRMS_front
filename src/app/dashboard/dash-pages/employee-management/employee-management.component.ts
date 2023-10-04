@@ -4,7 +4,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatDialogConfig,MatDialog } from '@angular/material/dialog';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DashService } from '../../dash.service';
 
 @Component({
   selector: 'app-employee-management',
@@ -12,6 +13,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
   styleUrls: ['./employee-management.component.css'],
 })
 export class EmployeeManagementComponent implements OnInit {
+
+  CompanyEmail!: string | null;
 
   ngOnInit() {
   }
@@ -23,16 +26,30 @@ export class EmployeeManagementComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    public dialog: MatDialog,) {
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar,
+    public dashService:DashService,) {
     const users: UserData[] = [];
     for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
     this.dataSource = new MatTableDataSource(users);
   }
 
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
+  userDetails() {
+    this.CompanyEmail = sessionStorage.getItem('CompanyEmail');
+    if (this.CompanyEmail) {
+      this.dashService.userDetails(this.CompanyEmail).subscribe(
+        (users) => {
+          this.dataSource = users.map((user: UserData) => {
+            return user; 
+          });console.log(this.dataSource)
+        },
+        (error) => {
+          // Handle error
+        }
+      );
+    }
+  }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private userType!: string;
+  private Designation!: string;
   private CompanyEmail!: string;
   private token!: string;
 
@@ -21,6 +21,59 @@ export class AuthService {
   }
   login(loginData: any): Observable<any> {
     return this.http.post(`${this.API_URL}/login`, loginData);
+  }
+
+  setToken(token: string): void {
+    this.token = token;
+    sessionStorage.setItem('token', token);
+    this.getUserDetails();
+  }
+
+  getToken(): string | null {
+    return this.token || sessionStorage.getItem('token');
+  }
+
+  setDesignation(Designation: string) {
+    sessionStorage.setItem('Designation', Designation);
+  }
+
+  getDesignation(): string | null {
+    return sessionStorage.getItem('Designation');
+  }
+
+  setCompanyEmail(CompanyEmail: string){
+    sessionStorage.setItem('CompanyEmail', CompanyEmail);
+  }
+
+  getCompanyEmail(): string | null {
+    return sessionStorage.getItem('CompanyEmail');
+  }
+
+  isLoggedIn(): boolean {
+    return this.getToken() !== null;
+  }
+
+  getUserDetails(): void {
+    const token = this.getToken();
+    if (token && !this.Designation) {
+      // Make a request to fetch user details using the token
+      this.http.get(`${this.API_URL}/user`, { headers: { Authorization: `Bearer ${token}` } })
+        .subscribe(
+          (user: any) => {
+            const Designation = user.Designation;
+            this.setDesignation(Designation);
+
+            const CompanyEmail = user.CompanyEmail;
+            this.setCompanyEmail(CompanyEmail);
+
+            const userId = user.UserId;
+            sessionStorage.setItem('UserId', userId);
+          },
+          (error: any) => {
+            console.error(error);
+          }
+        );
+    }
   }
 
 
