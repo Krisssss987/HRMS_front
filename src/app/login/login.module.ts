@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PasswordMatchDirective } from './password-match.directive';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { PasswordMatchDirective } from './password-match.directive';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MatDatepickerModule,
     
    
     

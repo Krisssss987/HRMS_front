@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl,Validators } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-leave',
@@ -23,6 +23,24 @@ export class LeaveComponent {
     }
   
     return '';
+  }
+  leaveForm: FormGroup;
+
+  constructor(@Inject(FormBuilder) private fb: FormBuilder) {
+    this.leaveForm = this.fb.group({
+      // add your form controls here
+     
+        reasonForLeave: ['', Validators.required],
+        startDate: ['', Validators.required],
+        endDate: ['', Validators.required],
+        totalNumberOfLeaves: ['', Validators.required],
+        illnessDescription: [''],
+        discussedWithSupervisor: ['', Validators.required],
+        typeOfLeave: ['', Validators.required],
+        emergencyContact: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+        pendingTasksHandling: ['']
+     
+    });
   }
   
 }

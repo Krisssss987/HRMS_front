@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormControl,FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -14,12 +15,14 @@ export class RegisterComponent {
   hide2 = true; 
   email = new FormControl('', [Validators.required, Validators.email,]);
   mobileNumber = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]);
-  location = new FormControl('', [Validators.required]);
+  DOB = new FormControl('', [Validators.required]);
   firstName = new FormControl('', [Validators.required]);
   confirmPassword = new FormControl('', [Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).*$/)]);
   password = new FormControl('', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).*$/)]);
   designation = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
+  dob = new FormControl('', [Validators.required]);
+
 
   getPasswordErrorMessage() {
     if (this.password.hasError('required')) {
@@ -57,7 +60,6 @@ export class RegisterComponent {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
- 
   getMobileNumberErrorMessage() {
     if (this.mobileNumber.hasError('required')) {
       return 'Mobile number is required';
@@ -69,9 +71,9 @@ export class RegisterComponent {
   
     return '';
   }
-  getLocationErrorMessage() {
-    if (this.location.hasError('required')) {
-      return 'Location is required';
+  getDOBErrorMessage() {
+    if (this.DOB.hasError('required')) {
+      return 'DOB is required';
     }
   
     return '';
@@ -97,6 +99,12 @@ export class RegisterComponent {
   
     return '';
   }
+  getDobErrorMessage() {
+    if (this.DOB.hasError('required')) {
+      return 'Date of Birth is required';
+    }
+    return '';
+  }
 
   constructor(
     private authService:AuthService,   
@@ -105,14 +113,14 @@ export class RegisterComponent {
 
   submit(){
     if (this.email.valid && this.mobileNumber.valid
-       && this.location.valid && this.firstName.valid 
+       && this.dob.valid && this.firstName.valid 
        && this.lastName.valid && this.designation.valid
       && this.password.valid && this.confirmPassword.valid)
       {
       const registerData={
         companyEmail: this.email.value,
         contact: this.mobileNumber.value,
-        location: this.location.value,
+        DOB: this.DOB.value,
         firstName: this.firstName.value,
         lastName: this.lastName.value,
         personalEmail: this.email.value,
