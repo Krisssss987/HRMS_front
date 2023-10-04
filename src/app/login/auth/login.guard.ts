@@ -13,17 +13,15 @@ export class LoginGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.authService.isLoggedIn()) {
-      // User is already logged in, redirect to the respective dashboard based on user type
       const Designation = this.authService.getDesignation();
-      if (Designation === 'Admin') {
+      if (Designation === 'Intern' || Designation === 'Employee') {
         this.router.navigate(['/dashboard']);
-      } else if (Designation === 'Super Admin') {
+      } else if (Designation === 'Super Employee') {
         this.router.navigate(['/sa']);
       }
-      return false; // Return false to prevent access to the login page
+      return false;
     }
 
-    // User is not logged in, allow access to the login page
     return true;
   }
   

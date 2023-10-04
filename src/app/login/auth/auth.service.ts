@@ -19,6 +19,7 @@ export class AuthService {
   register(registerData: any): Observable<any> {
     return this.http.post(`${this.API_URL}/register`, registerData);
   }
+  
   login(loginData: any): Observable<any> {
     return this.http.post(`${this.API_URL}/login`, loginData);
   }
@@ -51,6 +52,13 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return this.getToken() !== null;
+  }
+
+  logout(): void {
+    sessionStorage.removeItem('token'); // Clear the token
+    this.isLoggedIn(); // Set the logged-in status to false
+    this.setDesignation(''); // Clear the user type
+    this.router.navigate(['']); // Additional cleanup or redirect logic can be added here
   }
 
   getUserDetails(): void {

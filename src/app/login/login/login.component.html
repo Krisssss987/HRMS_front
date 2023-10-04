@@ -7,7 +7,7 @@
             <h2 style="color:rgb(42,160,160);" class="text-center"><b>Sign In</b></h2>
             <mat-form-field class="user">
               <mat-label>Enter your Username</mat-label>
-              <input matInput placeholder="Shriram" required>
+              <input matInput [formControl]="email" placeholder="" required>
             </mat-form-field>
           </div>
 
@@ -21,7 +21,7 @@
             </mat-form-field>
           </div>
           
-          <button  style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="full-width-button">Sign In</button>
+          <button (click)="submit()" style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="full-width-button">Sign In</button>
 
           <div class="row">
             <div class="col">
