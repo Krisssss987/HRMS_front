@@ -24,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PasswordMatchDirective } from './password-match.directive';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FormsModule,
     HttpClientModule,
     MatDatepickerModule,
-    
+    MatSnackBarModule,  
    
     
 

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl,FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
-
+import { Router,NavigationExtras } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -11,6 +10,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  errorMessage!: string;
+  loading: boolean = false;
+  loadingMessage: string = "Sign Up";
+
   hide1 = true;
   hide2 = true; 
   email = new FormControl('', [Validators.required, Validators.email,]);
@@ -53,6 +56,18 @@ export class RegisterComponent {
     }
     return null;
   }
+  redirectToRegVerify(companyEmail: string | null) {
+    if (companyEmail) {
+      const queryParams = {
+      };
+      const navigationExtras: NavigationExtras = {
+        queryParams: queryParams
+      };
+      this.router.navigate(['/login/login'], navigationExtras);
+    } else {
+      console.error('Personal email is null');
+}
+}
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -109,6 +124,7 @@ export class RegisterComponent {
   constructor(
     private authService:AuthService,   
     private router: Router,
+    private snackBar: MatSnackBar,
   ){}
 
   submit(){
@@ -136,6 +152,25 @@ export class RegisterComponent {
         console.log("registration failed");
       }
       )
+      this.authService.register(registerData).subscribe(
+        () => {
+          const companyEmail = registerData.companyEmail;
+          this.redirectToRegVerify(companyEmail);
+          this.snackBar.open('Registration successful!', 'Dismiss', {
+            duration: 2000
+          });
+        },
+        (error) => {
+          this.snackBar.open(
+            error.error.message || 'Registration failed. Please try again.',
+            'Dismiss',
+            { duration: 2000 }
+          );
+          this.errorMessage = error.error.message || '';
+          this.loading = false;
+          this.loadingMessage = "Sign Up";
+        }
+      );
     }
   }
 
