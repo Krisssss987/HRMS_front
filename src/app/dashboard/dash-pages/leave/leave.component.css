@@ -1,0 +1,7 @@
+mat-card{
+    justify-content: space-between;
+    background-color: rgba(42, 160, 160);
+}
+mat-card-header{
+    text-align: center;
+}

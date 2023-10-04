@@ -38,6 +38,24 @@ export class LoginComponent {
       ? 'Password should be at least 8 characters long'
       : '';
   }
+  submit() {
+    if (this.email.valid && this.password.valid) {
+      this.loading = true;
+      this.loadingMessage = "Signing in...";
 
-
+      const loginData = {
+        Username: this.email.value,
+        Password: this.password.value
+      };
+      this.authService.login(loginData).subscribe(
+        () => {
+          console.log("login Successful");
+        },
+      (error)=>{
+        console.log("login failed");
+      }
+      ) 
+    }
+  
+  }
 }
