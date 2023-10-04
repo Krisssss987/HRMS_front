@@ -12,3 +12,7 @@
   font-size: 1.2rem;
   font-weight: 550;
 }
+
+.example-custom-width {
+  max-width: 21vh;
+}
