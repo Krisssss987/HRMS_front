@@ -47,12 +47,16 @@
                     <input matInput placeholder="Contact" [formControl]="mobileNumber" required>
                     <mat-error *ngIf="mobileNumber.invalid">{{ getMobileNumberErrorMessage() }}</mat-error>
                   </mat-form-field>
-                  <mat-form-field class="form-feild">
-                    <mat-label>Location</mat-label>
-                    <input matInput placeholder="Location" [formControl]="location" required>
-                    <mat-error *ngIf="location.invalid">{{ getLocationErrorMessage() }}</mat-error>
+                  <mat-form-field class="form-field w-100">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" [formControl]="dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="dob.invalid">{{ getDobErrorMessage() }}</mat-error>
                   </mat-form-field>
+
                 </div>
+                
                 
 
               </div>

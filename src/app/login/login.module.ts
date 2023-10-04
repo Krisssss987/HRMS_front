@@ -24,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PasswordMatchDirective } from './password-match.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -54,14 +55,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    MatDatepickerModule,
     MatSnackBarModule,
-    
-   
-    
-
-    LoginRoutingModule,MatIconModule,
-    MatInputModule,MatCardModule,MatFormFieldModule,MatToolbarModule,MatButtonModule,
-    FormsModule, ReactiveFormsModule
+    LoginRoutingModule,
+    MatIconModule,
+    MatInputModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatButtonModule,
+    FormsModule, 
+    ReactiveFormsModule
   ]
 })
 export class LoginModule { }

@@ -64,6 +64,19 @@
             
           </div>
           <div>
+            <h4>Type of Leave</h4>
+            <!-- <label class="example-margin">Align:</label> -->
+            <mat-form-field class="input-full-width">
+            <mat-label>Choose an option</mat-label>
+            <mat-select>
+              <mat-option value="Personal Reason">Personal Reason</mat-option>
+              <mat-option value="Medical">Medical Reason</mat-option>
+            </mat-select>
+          </mat-form-field>
+            
+          </div>
+          
+          <div>
             <h4>Emergency Contact (Name, Relationship, Phone Number)</h4>
             <mat-form-field class="input-full-width">
                 <mat-label>Contact Number</mat-label>
@@ -76,7 +89,7 @@
             <h4>How do you plan to handle your pending tasks or workload during your absence?</h4>
             <mat-form-field class="input-full-width ">
                 <mat-label>Plan to handle your pending tasks</mat-label>
-                <textarea matInput ></textarea>
+                <input matInput >
               </mat-form-field>
               
             
