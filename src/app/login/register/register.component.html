@@ -49,10 +49,10 @@
                   </mat-form-field>
                   <mat-form-field class="form-field w-100">
                     <mat-label>Date of Birth</mat-label>
-                    <input matInput [matDatepicker]="picker" [formControl]="dob">
+                    <input matInput [matDatepicker]="picker" [formControl]="DOB">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="dob.invalid">{{ getDobErrorMessage() }}</mat-error>
+                    <mat-error *ngIf="DOB.invalid">{{ getDobErrorMessage() }}</mat-error>
                   </mat-form-field>
 
                 </div>
@@ -92,7 +92,7 @@
                     </button>
                   </mat-form-field>
                   
-                  <button mat-raised-button style="color: whitesmoke; background-color: rgb(42,160,160);" class="w-100 mt-1" (click)="submit()">Sign In</button>
+                  <button mat-raised-button style="color: whitesmoke; background-color: rgb(42,160,160);" class="w-100 mt-1" (click)="submit()">Sign Up</button>
                   
                 </div>
                 <div class="col-xl-6 col-md-6 col-sm-6 col-6 ">
@@ -107,7 +107,7 @@
                      <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                    </button> 
                   </mat-form-field>
-                  <button class="link" routerLink="/login/login" mat-raised-button class="w-100 mt-1">Sign Up</button>
+                  <button class="link" routerLink="/login/login" mat-raised-button class="w-100 mt-1">Sign In</button>
                   
                 </div>
                 

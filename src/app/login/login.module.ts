@@ -38,10 +38,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     RegisterComponent,
     PasswordMatchDirective,
     PasswordMatchDirective,
-    
-    
-    
-    
   ],
   imports: [
     CommonModule,

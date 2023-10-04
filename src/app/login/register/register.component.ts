@@ -24,8 +24,6 @@ export class RegisterComponent {
   password = new FormControl('', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).*$/)]);
   designation = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
-  dob = new FormControl('', [Validators.required]);
-
 
   getPasswordErrorMessage() {
     if (this.password.hasError('required')) {
@@ -65,8 +63,11 @@ export class RegisterComponent {
       };
       this.router.navigate(['/login/login'], navigationExtras);
     } else {
-      console.error('Personal email is null');
-}
+      this.snackBar.open('Personal email is null',
+        'Dismiss',
+        { duration: 2000 }
+      );
+  }
 }
   getErrorMessage() {
     if (this.email.hasError('required')) {
@@ -111,7 +112,6 @@ export class RegisterComponent {
     if (this.designation.hasError('required')) {
       return 'Designation is required';
     }
-  
     return '';
   }
   getDobErrorMessage() {
@@ -129,29 +129,19 @@ export class RegisterComponent {
 
   submit(){
     if (this.email.valid && this.mobileNumber.valid
-       && this.dob.valid && this.firstName.valid 
+       && this.DOB.valid && this.firstName.valid 
        && this.lastName.valid && this.designation.valid
       && this.password.valid && this.confirmPassword.valid)
       {
       const registerData={
         companyEmail: this.email.value,
         contact: this.mobileNumber.value,
-        DOB: this.DOB.value,
+        dateOfBirth: this.DOB.value,
         firstName: this.firstName.value,
         lastName: this.lastName.value,
-        personalEmail: this.email.value,
         designation: this.designation.value,
         password: this.password.value,
       };
-
-      this.authService.register(registerData).subscribe(
-        () => {
-          console.log("registration Successful");
-        },
-      (error)=>{
-        console.log("registration failed");
-      }
-      )
       this.authService.register(registerData).subscribe(
         () => {
           const companyEmail = registerData.companyEmail;
