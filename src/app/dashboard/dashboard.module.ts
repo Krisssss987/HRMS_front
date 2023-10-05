@@ -29,8 +29,6 @@ import { AddEmployeeComponent } from './dash-pages/employee-management/add-emplo
 import { MatDialogModule } from '@angular/material/dialog';
 import { LeaveComponent } from './dash-pages/leave/leave.component';
 
-
-
 @NgModule({
   declarations: [
     DashLayoutComponent,
@@ -55,18 +53,13 @@ import { LeaveComponent } from './dash-pages/leave/leave.component';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
-    MatTableModule,
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
     MatTableModule,
     MatSidenavModule,
-    MatListModule,
-    MatInputModule,
-    FormsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule,
     MatPaginatorModule,
     MatDialogModule
   ]
