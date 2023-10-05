@@ -1,1 +1,108 @@
-<p>dashboard works!</p>
+<div class="container-fluid mt-2">
+    <div class="row justify-content-center">
+        <h1 class="text-center">Employee Details </h1>
+    </div>
+    <div class="container-fluid mt-1">
+        <div class="row ">
+            <div class="col-md-3 col-sm-3 col-3">
+                <div class="row ">
+                    <div class="mb-3">
+                        <mat-card>
+                            <div class="card-body pb-0 text-center"> <!-- Add the text-center class here -->
+                                <h1 class="Display-4">88</h1>                         
+                              <h4 class="card-title font-weight-bold">Days Left</h4>
+                                
+                            </div>
+                          </mat-card>
+                    </div>
+                    <div class=" my-3">
+                        <mat-card>
+                            <div class="card-body pb-0 text-center"> <!-- Add the text-center class here -->
+                                <h1 class="Display-4">32</h1>
+                              <h4 class="card-title font-weight-bold">Days Compleated</h4>
+                                                         
+                            </div>
+                          </mat-card>
+                    </div>
+                    <div class=" my-3">
+                        <mat-card>
+                            <div class="card-body pb-0 text-center"> <!-- Add the text-center class here -->
+                                <h1 class="Display-4">2</h1>
+                              <h4 class="card-title font-weight-bold">Number Of Leave</h4>
+                                                     
+                            </div>
+                          </mat-card>
+                    </div>
+                    <div class=" my-3">
+                        <mat-card>
+                            <div class="card-body pb-0 text-center"> <!-- Add the text-center class here -->
+                                <h1 class="Display-4">32</h1>
+                              <h4 class="card-title font-weight-bold">No. Of Days Present</h4>
+                                                         
+                            </div>
+                          </mat-card>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-6 mt-5">
+                <div class="px-2 d-flex justify-content-center align-items-center">
+                  <mat-card class="px-5">
+                    <div class="row d-flex">
+                      <div class="col"><h2>Employee Name:</h2></div>
+                      <div class="col mt-1"><h3>{{ employeeName }}</h3></div>
+                    </div> 
+                    <div class="row d-flex">
+                      <div class="col"><h2>Contact Number:</h2></div>
+                      <div class="col mt-1"><h3>{{ contactNumber }}</h3></div>
+                    </div> 
+                    <div class="row d-flex">
+                      <div class="col"><h2>Email Address:</h2></div>
+                      <div class="col mt-1"><h3>{{ emailAddress }}</h3></div>
+                    </div> 
+                    <div class="row d-flex">
+                      <div class="col"><h2>Date of Birth:</h2></div>
+                      <div class="col mt-1"> <h3>{{ dateOfBirth }}</h3></div>
+                    </div> 
+                    <div class="row d-flex">
+                      <div class="col"><h2>Date of Joining:</h2></div>
+                      <div class="col mt-1"><h3>{{ dateOfJoining }}</h3></div>
+                    </div> 
+                    <div class="row d-flex">
+                      <div class="col"><h2>End Date:</h2></div>
+                      <div class="col mt-1"><h3>{{ endDate }}</h3></div>
+                    </div> 
+                    
+                  </mat-card>
+                </div>
+              </div>
+              
+              
+                  
+            <div class="col-md-3 col-sm-3 col-3 ">
+                    <mat-card>
+                    <div class="Task-list px-2">
+                        <h1>Daily Task</h1>
+                        <ul>
+                            <li>Fornt end </li>
+                            <li>Angular</li>
+                            <li>Mat Angular</li>
+                            <li>Back end</li>
+                            <li>Node js</li>
+                            <li>Express js</li>
+                            <li>Database</li>
+                            <li>Mongo DB</li>
+                            <li>SQL</li>
+                            <li>Postgres</li>
+                        </ul>
+                    </div>
+                    </mat-card>
+                
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

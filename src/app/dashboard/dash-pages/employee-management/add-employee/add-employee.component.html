@@ -1,52 +1,74 @@
 <div class="container-fluid">
     <div class="card-header">
-        <div class="col-lg-12 col-md-12 col-sm-12 pt-1">
+        <div class="col-lg-12 col-md-12 col-sm-12 pt-1 mt-2">
             <div class="model-title">Add New Employee</div>
         </div>
     </div>
     <div class="card-body">
-        <div class="row mt-2">
+        <div class="row mt-4">
             <div class="col-sm-6 col-6 ">
             <mat-form-field class="example-full-width">
-                <mat-label>Employee Name</mat-label>
-                <input matInput type="text" placeholder="">
+                <mat-label>Employee First Name</mat-label>
+                <input matInput [formControl]="firstName" matInput type="text" placeholder="">
+		        <mat-error *ngIf="firstName.invalid">Firstname is Required.</mat-error>
             </mat-form-field>
             </div>
             <div class="col-sm-6 col-6  ">
             <mat-form-field class="example-full-width">
-                <mat-label>Employee DOB</mat-label>
-                <input matInput type="text" placeholder="">
+                <mat-label>Employee Last Name</mat-label>
+                <input matInput [formControl]="lastName" matInput type="text" placeholder="">
+		        <mat-error *ngIf="lastName.invalid">Lastname is Required.</mat-error>
+            </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-6 ">
+            <mat-form-field class="example-full-width">
+                <mat-label>Total No. of Working Days</mat-label>
+                <input matInput [formControl]="Total" matInput type="text" placeholder="">
+		        <mat-error *ngIf="Total.invalid">No. of Working days is Required.</mat-error>
+            </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-6  ">
+            <mat-form-field class="example-custom-width">
+                <mat-label>Employee DOB</mat-label>     
+                <input matInput [formControl]="DOB" [matDatepickerFilter]="myFilter" [matDatepicker]="picker2">
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+		        <mat-error *ngIf="DOB.invalid">DOB is Required.</mat-error>
             </mat-form-field>
             </div>
             <div class="col-sm-6 col-6">
                 <mat-form-field class="example-full-width">
                     <mat-label>Employee Email</mat-label>
-                    <input matInput type="text" placeholder="">
+                    <input matInput [formControl]="employeeEmail" matInput type="text" placeholder="">
+                    <mat-error *ngIf="employeeEmail.invalid">Employee Email is Required.</mat-error>
                 </mat-form-field>
             </div>
             <div class="col-sm-6 col-6 ">
             <mat-form-field class="example-full-width">
                 <mat-label>Contact No</mat-label>
-                <input matInput type="text" placeholder="">
+                <input matInput [formControl]="contactNo" type="text" placeholder="">
+		        <mat-error *ngIf="contactNo.invalid">Contact No. is Required.</mat-error>
             </mat-form-field>
             </div>
             <div class="col-sm-6 col-6  ">
             <mat-form-field class="example-full-width">
                 <mat-label>Roles</mat-label>
-                <input matInput type="text" placeholder="">
+                <input matInput [formControl]="roles" type="text" placeholder="">
+		        <mat-error *ngIf="roles.invalid">Roles is Required.</mat-error>
             </mat-form-field>
             </div>
             <div class="col-sm-6 col-6 ">
             <mat-form-field class="example-full-width">
                 <mat-label>Supervisor</mat-label>
-                <input matInput type="text" placeholder="">
+                <input matInput [formControl]="supervisor" type="text" placeholder="">
+		        <mat-error *ngIf="supervisor.invalid">Supervisor Name is Required.</mat-error>
             </mat-form-field>
             </div>
             <div class="col-md-6 justify-content-end d-flex mb-2">
-                <button mat-raised-button class="btn btn-primary" (click)="onNoClick()">Close</button>
+                <button mat-raised-button class="btn" (click)="onNoClick()">Close</button>
             </div>
             <div class="col-md-6 mb-2">
-                <button mat-raised-button class="btn btn-primary">Save</button>
+                <button mat-raised-button style="background-color: rgba(42, 160, 160, 1); color: whitesmoke;" class="btn" (click)="onSaveClick()">Save</button>
             </div>
         </div>        
     </div>

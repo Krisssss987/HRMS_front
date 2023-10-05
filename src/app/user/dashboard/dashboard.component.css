@@ -1,0 +1,15 @@
+h4,h5,h1{
+    font-weight: 600;
+    color: rgb(66, 66, 66);
+    flex-grow: inherit;
+}
+mat-card{
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    background-color: rgb(108, 227, 191);
+    
+}
+.Task-list{
+    min-height: 65vh;
+}

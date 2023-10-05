@@ -1,1 +1,89 @@
-<p>leave works!</p>
+<div class="container-fluid mt-3">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1 class="text-center"><b>Leave Details</b></h1>
+      </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4">
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title style="text-align: center;">23</mat-card-title>
+                  <mat-card-title style="text-align: center;">Approved Leave</mat-card-title>
+                </mat-card-header>
+              </mat-card>
+        </div> 
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4">
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title>03</mat-card-title>
+                  <mat-card-title>Rejected Leave</mat-card-title>
+                </mat-card-header>
+              </mat-card>
+        </div> 
+        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4">
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title>05</mat-card-title>
+                  <mat-card-title>Upcoming Holidays</mat-card-title>
+                </mat-card-header>
+              </mat-card>
+        </div>        
+    </div>
+</div>
+<br>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="card">
+          <h2 class="mt-2">Leave details</h2>
+          <div class="card-body">          
+            <div class="example-container">
+             
+                <mat-table [dataSource]="dataSource" matSort>
+          
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="id">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+                    </ng-container>
+                
+                    <!-- Progress Column -->
+                    <ng-container matColumnDef="progress">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
+                    </ng-container>
+                
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                    </ng-container>
+                
+                    <!-- Color Column -->
+                    <ng-container matColumnDef="color">
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+                      <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+                    </ng-container>
+                
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;">
+                    </mat-row>
+                  </mat-table>
+                
+                  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

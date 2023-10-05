@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { delay, filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { AuthService } from 'src/app/login/auth/auth.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class UsersContainerComponent {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  constructor(private observer: BreakpointObserver, private router: Router) {}
+  constructor(private observer: BreakpointObserver, private authService:AuthService, private router: Router) {}
 
   ngAfterViewInit() {
     this.observer
@@ -41,5 +42,10 @@ export class UsersContainerComponent {
           this.sidenav.close();
         }
       });
+  }
+
+  logout(){
+    this.authService.logout();
+    this.router.navigate(['/login/login']);
   }
 }
