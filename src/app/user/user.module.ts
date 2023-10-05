@@ -22,6 +22,7 @@ import {NgIf, JsonPipe} from '@angular/common';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -54,6 +55,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ReactiveFormsModule,
     FormsModule,
     MatCardModule,
+    MatTableModule,
   
     
   ]
