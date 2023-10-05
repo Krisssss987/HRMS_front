@@ -11,9 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
   hide = true;
-  username = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   errorMessage = '';
   loading: boolean = false;
@@ -25,7 +24,14 @@ export class LoginComponent {
     private snackBar:MatSnackBar
   ) {}
 
- 
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'Email is required';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
   getPasswordErrorMessage() {
     if (this.password.hasError('required')) {
       return 'Password is required';
