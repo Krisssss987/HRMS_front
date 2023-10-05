@@ -18,3 +18,11 @@
   overflow: auto;
   max-height: 500px;
 }
+.example-container {
+  height: 350px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
