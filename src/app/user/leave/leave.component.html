@@ -12,6 +12,7 @@
             <mat-form-field class="input-full-width">
                 <mat-label>Reason For Leave</mat-label>
                 <input matInput [formControl]="reasonForLeave">
+                <mat-error *ngIf="reasonForLeave.invalid">{{ getReasonForLeaveErrorMessage() }}</mat-error>
               </mat-form-field>
             
           </div>
@@ -34,6 +35,7 @@
               <mat-form-field class="input-full-width">
                 <mat-label>Total Number Of Leave  </mat-label>
                 <input matInput  [formControl]="totalNumberOfLeaves">
+                <mat-error *ngIf="totalNumberOfLeaves.invalid">{{ getTotalNumberOfLeavesErrorMessage() }}</mat-error>
               </mat-form-field>
           </div>
           <div >
@@ -41,6 +43,7 @@
               <mat-form-field class="input-full-width">
                 <mat-label>Discription of illness or medical condition </mat-label>
                 <input matInput  [formControl]="illnessDescription">
+                <mat-error *ngIf="illnessDescription.invalid">{{ getIllnessDescriptionErrorMessage() }}</mat-error>
               </mat-form-field>
           </div>
       </div>
@@ -55,6 +58,7 @@
               <mat-option value="Yes, I have Discussed">Yes, I have Discussed</mat-option>
               <mat-option value="No, didn't have Discussed">No, didn't have Discussed</mat-option>
             </mat-select>
+            <mat-error *ngIf="discussedWithSupervisor.invalid">{{ getDiscussedWithSupervisorErrorMessage() }}</mat-error>
           </mat-form-field>
           </div>
           <div>
@@ -66,6 +70,7 @@
               <mat-option value="Personal Reason">Personal Reason</mat-option>
               <mat-option value="Medical">Medical Reason</mat-option>
             </mat-select>
+            <mat-error *ngIf="typeOfLeave.invalid">{{ getTypeOfLeaveErrorMessage() }}</mat-error>
           </mat-form-field>
           </div>
           <div>
@@ -73,6 +78,8 @@
             <mat-form-field class="input-full-width">
                 <mat-label>Contact Number</mat-label>
                 <input matInput placeholder="Contact Number" [formControl]="emergencyContact" required>
+                <mat-error *ngIf="emergencyContact.hasError('required')">This field is required.</mat-error>
+                <mat-error *ngIf="emergencyContact.hasError('pattern')">Enter a valid 10-digit mobile number.</mat-error>
               </mat-form-field>
           </div>
           <div>
@@ -80,9 +87,15 @@
             <mat-form-field class="input-full-width ">
                 <mat-label>Plan to handle your pending tasks</mat-label>
                 <input matInput [formControl]="pendingTasksHandling">
+                <mat-error *ngIf="pendingTasksHandling.invalid">{{ getPendingTasksHandlingErrorMessage() }}</mat-error>
               </mat-form-field>
           </div>
-          <button (click)="submit()" style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="full-width-button">Submit</button>
       </div>
+      <div class="row justify-content-center">
+        <button (click)="submit()" style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="btn justify-content-center">Submit</button>
+
+
+      </div>
+      
   </div>
   

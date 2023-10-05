@@ -7,7 +7,7 @@ mat-card{
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    background-color: rgba(42,160, 160, 255);
+    background-color: rgb(108, 227, 191);
     
 }
 .Task-list{

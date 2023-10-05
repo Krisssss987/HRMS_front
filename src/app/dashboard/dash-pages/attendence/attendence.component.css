@@ -26,3 +26,6 @@
 table {
   width: 100%;
 }
+div::-webkit-scrollbar{
+  display: none;
+}  

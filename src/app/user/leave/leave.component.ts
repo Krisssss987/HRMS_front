@@ -18,22 +18,22 @@ export class LeaveComponent implements OnInit{
   loading: boolean = false;
   loadingMessage: string = "Sign Up";
 
-  reasonForLeave= new FormControl('', Validators.required);
+  reasonForLeave= new FormControl('', [Validators.required,Validators.minLength(8)]);
   startDate= new FormControl('', Validators.required);
   endDate= new FormControl('', Validators.required);
-  totalNumberOfLeaves= new FormControl('', Validators.required);
-  illnessDescription=  new FormControl('', Validators.required);
+  totalNumberOfLeaves= new FormControl('', [Validators.required,Validators.pattern(/^[0-9]*$/)]);
+  illnessDescription=  new FormControl('', [Validators.required,Validators.minLength(8)]);
   discussedWithSupervisor= new FormControl('', Validators.required);
   typeOfLeave= new FormControl('', Validators.required);
   emergencyContact= new FormControl('', [Validators.required, Validators.pattern(/^\d{10}$/)]);
   pendingTasksHandling= new FormControl('', Validators.required);
+  mobileNumber = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]);
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
-  
-  mobileNumber = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]);
+
   getMobileNumberErrorMessage() {
     if (this.mobileNumber.hasError('required')) {
       return 'Number is required';
@@ -43,6 +43,53 @@ export class LeaveComponent implements OnInit{
       return 'Enter a valid 10-digit mobile number';
     }
   
+    return '';
+  }
+  getReasonForLeaveErrorMessage() {
+    if (this.reasonForLeave.hasError('required')) {
+      return 'Reason for leave is required.';
+    }
+
+    return this.reasonForLeave.hasError('minlength')
+      ? 'Reason for leave should be at least 5 characters long.'
+      : '';
+  }
+  
+  getTotalNumberOfLeavesErrorMessage() {
+    if (this.totalNumberOfLeaves.hasError('required')) {
+      return 'Total Number Of Leave is required';
+    }
+    if (this.totalNumberOfLeaves.hasError('pattern')) {
+      return 'Total Number Of Leave must be a number';
+    }
+    // Add more error messages for additional validators if needed
+    return '';
+  }
+  getDiscussedWithSupervisorErrorMessage() {
+    if (this.discussedWithSupervisor.hasError('required')) {
+      return 'It is required.';
+    }
+    return '';
+  }
+  getIllnessDescriptionErrorMessage() {
+    if (this.illnessDescription.hasError('required')) {
+      return 'Illness Description is required.';
+    }
+
+    return this.illnessDescription.hasError('minlength')
+      ? 'Illness Description should be at least 8 characters long.'
+      : '';
+  }
+  getPendingTasksHandlingErrorMessage() {
+    if (this.pendingTasksHandling.hasError('required')) {
+      return 'Pending Tasks Handling solution is required.';
+    }
+    return '';
+  }
+  getTypeOfLeaveErrorMessage() {
+    if (this.typeOfLeave.hasError('required')) {
+      return 'Type of leave is required.';
+    }
     return '';
   }
 
