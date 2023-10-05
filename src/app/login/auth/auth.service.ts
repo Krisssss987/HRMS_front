@@ -42,6 +42,38 @@ export class AuthService {
     return sessionStorage.getItem('Designation');
   }
 
+  setUserId(UserId: string){
+    sessionStorage.setItem('UserId', UserId);
+  }
+
+  getUserId(): string | null {
+    return sessionStorage.getItem('UserId');
+  }
+
+  setFirstName(FirstName: string){
+    sessionStorage.setItem('FirstName', FirstName);
+  }
+
+  getFirstName(): string | null {
+    return sessionStorage.getItem('FirstName');
+  }
+
+  setLastName(LastName: string){
+    sessionStorage.setItem('LastName', LastName);
+  }
+
+  getLastName(): string | null {
+    return sessionStorage.getItem('LastName');
+  }
+
+  setSupervisor(Supervisor: string){
+    sessionStorage.setItem('Supervisor', Supervisor);
+  }
+
+  getSupervisor(): string | null {
+    return sessionStorage.getItem('Supervisor');
+  }
+
   setCompanyEmail(CompanyEmail: string){
     sessionStorage.setItem('CompanyEmail', CompanyEmail);
   }
@@ -74,8 +106,17 @@ export class AuthService {
             const CompanyEmail = user.CompanyEmail;
             this.setCompanyEmail(CompanyEmail);
 
-            const userId = user.UserId;
-            sessionStorage.setItem('UserId', userId);
+            const UserId = user.UserId;
+            this.setUserId(UserId);
+
+            const FirstName = user.FirstName;
+            this.setFirstName(FirstName);
+
+            const LastName = user.LastName;
+            this.setLastName(LastName);
+
+            const Supervisor = user.Supervisor;
+            this.setSupervisor(Supervisor);
           },
           (error: any) => {
             console.error(error);

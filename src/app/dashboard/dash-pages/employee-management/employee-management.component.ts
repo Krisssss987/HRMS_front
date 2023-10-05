@@ -39,9 +39,8 @@ export class EmployeeManagementComponent implements OnInit {
     if (this.CompanyEmail) {
       this.dashService.userDetails(this.CompanyEmail).subscribe(
         (users) => {
-          this.dataSource = users.map((user: UserData) => {
-            return user; 
-          });console.log(this.dataSource)
+          this.dataSource = users;
+          console.log(this.dataSource)
         },
         (error) => {
           // Handle error
