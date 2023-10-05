@@ -9,46 +9,61 @@
       <div class="card">
         <div class="d-flex justify-content-between">
         <h2 class="mt-2">Attendance details</h2>
-        <button (click)="openAddUserDialog()" class="mt-1" mat-mini-fab>
-          <mat-icon aria-label="Example icon-button">person_add</mat-icon>
-        </button></div>
-        <div class="card-body">          
-          <div class="example-container">
+        <!--button was here  -->
+      </div>
+      <div class="card-body">          
+        <div class="example-container">
+        
+          <table mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="weight">
+              <th mat-header-cell *matHeaderCellDef> Weight </th>
+              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+            <ng-container matColumnDef="symbo">
+              <th mat-header-cell *matHeaderCellDef> Symbo </th>
+              <td mat-cell *matCellDef="let element"> {{element.symbo}} </td>
+            </ng-container>
+            <ng-container matColumnDef="extraColumn1">
+              <th mat-header-cell *matHeaderCellDef> Extra Column 1 </th>
+              <td mat-cell *matCellDef="let element"> {{ element.extraColumn1 }} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="extraColumn2">
+              <th mat-header-cell *matHeaderCellDef> Extra Column 2 </th>
+              <td mat-cell *matCellDef="let element"> {{ element.extraColumn2 }} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
           
-            <mat-table [dataSource]="dataSource" matSort>
-          
-              <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-              </ng-container>
-          
-              <!-- Progress Column -->
-              <ng-container matColumnDef="progress">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
-              </ng-container>
-          
-              <!-- Name Column -->
-              <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-              </ng-container>
-          
-              <!-- Color Column -->
-              <ng-container matColumnDef="color">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
-                <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
-              </ng-container>
-          
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;">
-              </mat-row>
-            </mat-table>
-          
-            <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
-          </div>
         </div>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+      </div>
       </div> 
     </div>
   </div>

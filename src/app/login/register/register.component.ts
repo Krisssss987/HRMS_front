@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl,FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router,NavigationExtras } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -10,11 +10,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  errorMessage!: string;
+  loading: boolean = false;
+  loadingMessage: string = "Sign Up";
+
   hide1 = true;
   hide2 = true; 
   email = new FormControl('', [Validators.required, Validators.email,]);
   mobileNumber = new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]);
-  location = new FormControl('', [Validators.required]);
+  DOB = new FormControl('', [Validators.required]);
   firstName = new FormControl('', [Validators.required]);
   confirmPassword = new FormControl('', [Validators.required,Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).*$/)]);
   password = new FormControl('', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).*$/)]);
@@ -50,6 +54,21 @@ export class RegisterComponent {
     }
     return null;
   }
+  redirectToRegVerify(companyEmail: string | null) {
+    if (companyEmail) {
+      const queryParams = {
+      };
+      const navigationExtras: NavigationExtras = {
+        queryParams: queryParams
+      };
+      this.router.navigate(['/login/login'], navigationExtras);
+    } else {
+      this.snackBar.open('Personal email is null',
+        'Dismiss',
+        { duration: 2000 }
+      );
+  }
+}
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -57,7 +76,6 @@ export class RegisterComponent {
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
- 
   getMobileNumberErrorMessage() {
     if (this.mobileNumber.hasError('required')) {
       return 'Mobile number is required';
@@ -69,9 +87,9 @@ export class RegisterComponent {
   
     return '';
   }
-  getLocationErrorMessage() {
-    if (this.location.hasError('required')) {
-      return 'Location is required';
+  getDOBErrorMessage() {
+    if (this.DOB.hasError('required')) {
+      return 'DOB is required';
     }
   
     return '';
@@ -94,40 +112,55 @@ export class RegisterComponent {
     if (this.designation.hasError('required')) {
       return 'Designation is required';
     }
-  
+    return '';
+  }
+  getDobErrorMessage() {
+    if (this.DOB.hasError('required')) {
+      return 'Date of Birth is required';
+    }
     return '';
   }
 
   constructor(
     private authService:AuthService,   
     private router: Router,
+    private snackBar: MatSnackBar,
   ){}
 
   submit(){
     if (this.email.valid && this.mobileNumber.valid
-       && this.location.valid && this.firstName.valid 
+       && this.DOB.valid && this.firstName.valid 
        && this.lastName.valid && this.designation.valid
       && this.password.valid && this.confirmPassword.valid)
       {
       const registerData={
         companyEmail: this.email.value,
         contact: this.mobileNumber.value,
-        location: this.location.value,
+        dateOfBirth: this.DOB.value,
         firstName: this.firstName.value,
         lastName: this.lastName.value,
-        personalEmail: this.email.value,
         designation: this.designation.value,
         password: this.password.value,
       };
-
       this.authService.register(registerData).subscribe(
         () => {
-          console.log("registration Successful");
+          const companyEmail = registerData.companyEmail;
+          this.redirectToRegVerify(companyEmail);
+          this.snackBar.open('Registration successful!', 'Dismiss', {
+            duration: 2000
+          });
         },
-      (error)=>{
-        console.log("registration failed");
-      }
-      )
+        (error) => {
+          this.snackBar.open(
+            error.error.message || 'Registration failed. Please try again.',
+            'Dismiss',
+            { duration: 2000 }
+          );
+          this.errorMessage = error.error.message || '';
+          this.loading = false;
+          this.loadingMessage = "Sign Up";
+        }
+      );
     }
   }
 

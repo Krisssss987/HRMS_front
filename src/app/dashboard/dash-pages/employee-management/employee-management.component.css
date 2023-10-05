@@ -18,3 +18,13 @@
     overflow: auto;
     max-height: 500px;
   }
+  .example-container {
+    height: 350px;
+    overflow: auto;
+  }
+  div::-webkit-scrollbar{
+    display: none;
+  }  
+  table {
+    width: 100%;
+  }

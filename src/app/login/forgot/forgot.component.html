@@ -14,7 +14,7 @@
                 </mat-form-field>
               </div>
             <br> 
-              <button mat-raised-button style="background-color:rgb(42,160,160); color: whitesmoke;">Submit</button>
+              <button mat-raised-button style="background-color:rgb(42,160,160); color: whitesmoke;" (click)="submit()" [disabled]="loading">{{loadingMessage}}</button>
             </div>
             <br>
             <div class="row">

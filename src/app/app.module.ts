@@ -23,7 +23,7 @@ import { UserModule } from './user/user.module';
     LoginModule,
     DashboardModule,
     UserModule,
-    HttpClientModule
+    HttpClientModule,
     
   ],
   providers: [],

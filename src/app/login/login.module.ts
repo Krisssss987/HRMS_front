@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PasswordMatchDirective } from './password-match.directive';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -36,10 +38,6 @@ import { PasswordMatchDirective } from './password-match.directive';
     RegisterComponent,
     PasswordMatchDirective,
     PasswordMatchDirective,
-    
-    
-    
-    
   ],
   imports: [
     CommonModule,
@@ -53,13 +51,17 @@ import { PasswordMatchDirective } from './password-match.directive';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    
-   
-    
-
-    LoginRoutingModule,MatIconModule,
-    MatInputModule,MatCardModule,MatFormFieldModule,MatToolbarModule,MatButtonModule,
-    FormsModule, ReactiveFormsModule
+    MatDatepickerModule,
+    MatSnackBarModule,
+    LoginRoutingModule,
+    MatIconModule,
+    MatInputModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatButtonModule,
+    FormsModule, 
+    ReactiveFormsModule
   ]
 })
 export class LoginModule { }

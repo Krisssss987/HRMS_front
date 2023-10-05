@@ -3,22 +3,30 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginLayoutComponent } from './login/login-layout/login-layout.component';
 import { DashLayoutComponent } from './dashboard/dash-layout/dash-layout.component';
 import { UsersLayoutComponent } from './user/users-layout/users-layout.component';
-
-
-
+import { AuthGuard } from './login/auth/auth.guard';
+import { RoleGuard } from './login/auth/role.guard';
+import { LoginGuard } from './login/auth/login.guard';
 
 const routes: Routes = [
 {
   path:'', redirectTo:'login', pathMatch:'full'
 },
 {
-  path:'', component:LoginLayoutComponent, children: [{path:'login', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)}]
+  path:'', component:LoginLayoutComponent,
+  canActivate:[LoginGuard],
+  children: [{path:'login', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)}]
 },
 {
-  path:'sa', component:DashLayoutComponent, children: [{path:'', loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)}]
+  path:'sa',
+  canActivate: [AuthGuard, RoleGuard],
+  data: { roles: ['Super Employee'] },
+  component:DashLayoutComponent, children: [{path:'', loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)}]
 },
 {
-  path:'', component:UsersLayoutComponent, children: [{path:'dashboard', loadChildren:()=>import('./user/user.module').then(m=>m.UserModule)}]
+  path:'',
+  canActivate:[AuthGuard,RoleGuard],
+  data: { roles: ['Intern', 'Employee'] },
+   component:UsersLayoutComponent, children: [{path:'dashboard', loadChildren:()=>import('./user/user.module').then(m=>m.UserModule)}]
 },
 { path: '**', redirectTo: 'login' }
 
