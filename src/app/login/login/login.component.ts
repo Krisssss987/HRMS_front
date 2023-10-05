@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  username = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
   errorMessage = '';
   loading: boolean = false;
@@ -22,14 +23,7 @@ export class LoginComponent {
     private router: Router
   ) {}
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Email is required';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
+ 
   getPasswordErrorMessage() {
     if (this.password.hasError('required')) {
       return 'Password is required';

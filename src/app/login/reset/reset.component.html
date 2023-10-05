@@ -7,7 +7,8 @@
                     <h2 style="color:rgb(42,160,160);" class="text-center"><b>Reset Your Passsword</b></h2>
                     <mat-form-field class="pw">
                         <mat-label>Enter your password</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+                        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -20,7 +21,8 @@
                 <div class="form-group">
                     <mat-form-field class="cpw">
                         <mat-label>Confirm your password</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="confirmpassword" required>
+                        <mat-error *ngIf="confirmpassword.invalid">{{getConfirmPasswordErrorMessage()}}</mat-error>
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -28,7 +30,7 @@
                     </mat-form-field>
                 </div>
 
-                <button mat-raised-button style="background-color:rgb(42,160,160); color: whitesmoke;" class="full-width-button">Reset Password</button>
+                <button mat-raised-button style="background-color:rgb(42,160,160); color: whitesmoke;" class="full-width-button"  (click)="submit()">Reset Password</button>
 
                 <div class="row">
                     <div class="col">
