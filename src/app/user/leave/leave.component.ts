@@ -18,7 +18,7 @@ export class LeaveComponent implements OnInit{
   loading: boolean = false;
   loadingMessage: string = "Sign Up";
 
-  reasonForLeave= new FormControl('', [Validators.required,Validators.minLength(8)]);
+  reasonForLeave= new FormControl('', [Validators.required,Validators.minLength(5)]);
   startDate= new FormControl('', Validators.required);
   endDate= new FormControl('', Validators.required);
   totalNumberOfLeaves= new FormControl('', [Validators.required,Validators.pattern(/^[0-9]*$/)]);
