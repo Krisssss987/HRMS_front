@@ -14,12 +14,8 @@
     width: 100%;
   }
   
-  .mat-table {
-    overflow: auto;
-    max-height: 500px;
-  }
   .example-container {
-    height: 350px;
+    max-height: 43vh;
     overflow: auto;
   }
   div::-webkit-scrollbar{

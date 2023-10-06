@@ -1,68 +1,76 @@
 <div class="container-fluid">
-    <div class="container-fluid">
-        <div class="row-mt-5">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-sm-12 col-md-12 mt-3">   
+              <h1 class="text-center"><b>Timesheet</b></h1>
+            </div>
+            
+        </div>            
+
+        <div class="row mt-2">
             <div class="col-12 col-sm-12 col-sm-12 col-md-12">
-                <div class="timesheet">
-                    <h2>Timesheet</h2>
+                <div class="d-flex justify-content-between">
+                     <mat-form-field appearance="outline">
+                        <input matInput placeholder="Search">
+                     </mat-form-field>
+
+                     <mat-form-field appearance="outline">
+                         <mat-label>Create Timesheet</mat-label>
+                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                         <mat-datepicker #picker></mat-datepicker>
+                         <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+                    </mat-form-field>
                 </div>
-
-                <div class="row mt-5">
-                    <div class="col-12 col-sm-12 col-sm-12 col-md-12">
-                        <div class="d-flex justify-content-between">
-                            <mat-form-field appearance="outline">
-                                <input matInput placeholder="Search">
-                            </mat-form-field>
-
-                            <mat-form-field appearance="outline">
-                                <mat-label>Create Timesheet</mat-label>
-                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                                <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-
-                <section class="example-container mat-elevation-z8" tabindex="0"
-                    class="col-12 col-sm-12 col-sm-12 col-md-12">
-                    <table mat-table [dataSource]="dataSource">
-
-                        <!-- project_title Column -->
-                        <ng-container matColumnDef="project_title" sticky>
-                            <th mat-header-cell *matHeaderCellDef> Project title </th>
-                            <td mat-cell *matCellDef="let element"> {{element.project_title}} </td>
-                        </ng-container>
-
-                        <!--  Status Column -->
-                        <ng-container matColumnDef="status">
-                            <th mat-header-cell *matHeaderCellDef> Status </th>
-                            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-                        </ng-container>
-
-                        <!-- submitted_date Column -->
-                        <ng-container matColumnDef="submitted_date">
-                            <th mat-header-cell *matHeaderCellDef> Submitted date</th>
-                            <td mat-cell *matCellDef="let element"> {{element.submitted_date|date}} </td>
-                        </ng-container>
-
-                        <!-- Timesheet date Column -->
-                        <ng-container matColumnDef="timesheet_date">
-                            <th mat-header-cell *matHeaderCellDef> Timesheet date </th>
-                            <td mat-cell *matCellDef="let element"> {{element.timesheet_date|date}} </td>
-                        </ng-container>
-
-                        <!-- Remark Column -->
-                        <ng-container matColumnDef="remark">
-                            <th mat-header-cell *matHeaderCellDef> Remark </th>
-                            <td mat-cell *matCellDef="let element"> {{element.remark}} </td>
-                        </ng-container>
-
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                    </table>
-                </section>
-
             </div>
         </div>
-    </div>
+  
+        <div class="card">
+          <div class="card-body">          
+            <div class="example-container">
+            
+              <table mat-table [dataSource]="dataSource">
+        
+                <!-- Project Title Column -->
+                <ng-container matColumnDef="ProjectTitle">
+                  <th mat-header-cell *matHeaderCellDef>Project Title</th>
+                  <td mat-cell *matCellDef="let element">{{ element.ProjectTitle }}</td>
+                </ng-container>
+            
+                <!-- Status Column -->
+                <ng-container matColumnDef="Status">
+                  <th mat-header-cell *matHeaderCellDef>Status</th>
+                  <td mat-cell *matCellDef="let element">{{ element.Status }}</td>
+                </ng-container>
+            
+                <!-- Submitted Date Column -->
+                <ng-container matColumnDef="SubmittedDate">
+                  <th mat-header-cell *matHeaderCellDef>Submitted Date</th>
+                  <td mat-cell *matCellDef="let element">{{ element.SubmittedDate }}</td>
+                </ng-container>
+            
+                <!-- Timesheet Date Column -->
+                <ng-container matColumnDef="TimesheetDate">
+                  <th mat-header-cell *matHeaderCellDef>Timesheet Date</th>
+                  <td mat-cell *matCellDef="let element">{{ element.TimesheetDate }}</td>
+                </ng-container>
+                
+                <!-- Remarks Column -->
+                <ng-container matColumnDef="Remarks">
+                  <th mat-header-cell *matHeaderCellDef>Remarks</th>
+                  <td mat-cell *matCellDef="let element">{{ element.Remarks }}</td>
+                </ng-container>
+        
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            
+            </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                             showFirstLastButtons
+                             aria-label="Select page of periodic elements">
+            </mat-paginator>
+          </div>
+        </div>
+        
 </div>
+        
+
