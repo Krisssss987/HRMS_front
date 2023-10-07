@@ -1,31 +1,14 @@
-.timesheet{
+title{
     text-align: center;
-    margin-top: 5px;
+    font-weight: 700;
 }
-
 .example-container {
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-    margin-top: 7px;
-  }
-  
-  table {
-    width:100%;
-  }
-  
-  th.mat-column-position, td.mat-column-position {
-    padding: 3px;
-    font-size: 14px;
+    max-height: 43vh;
     overflow: auto;
-    max-height: 500px;
-  }
-  
-  .mat-mdc-table-sticky-border-elem-right {
-    border-left: 1px solid #e0e0e0;
-  }
-  
-  .mat-mdc-table-sticky-border-elem-left {
-    border-right: 1px solid #e0e0e0;
-  }
- 
+}
+div::-webkit-scrollbar{
+    display: none;
+}  
+table {
+    width: 100%;
+}

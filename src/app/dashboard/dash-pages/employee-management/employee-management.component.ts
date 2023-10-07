@@ -20,9 +20,15 @@ export class EmployeeManagementComponent {
     return day !== 0;
     
   };
+  constructor(
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar,
+    public dashService:DashService,) {
+  }
+
   
  
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'symbo', 'extraColumn1', 'extraColumn2'];
+  displayedColumns: string[] = ['Employee_ID', 'EmployeeName', 'Role', 'Email', 'PhoneNumber', 'DOB', 'Supervisor'];
 
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
@@ -36,43 +42,52 @@ export class EmployeeManagementComponent {
     this.dataSource.filter = filterValue;
   }
 
-  
+    openAddUserDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.height = 'auto';
+    dialogConfig.maxWidth = '90vw';
+    const dialogRef = this.dialog.open(AddEmployeeComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(userAdded => {});
+  }
+
   
 }
 
+
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  symbo: string;
-  extraColumn1: string; // Add this property
-  extraColumn2: string; // Add this property
+  Employee_ID: number;
+  EmployeeName: string;
+  Role: string;
+  Email: string;
+  PhoneNumber: string;
+  DOB: string; // Add this property
+  Supervisor: string; // Add this property
 
 }
 
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C',symbo: 'H',  extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al',symbo: 'H',  extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si',symbo: 'H',extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P',symbo: 'H', extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S',symbo: 'H',  extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl',symbo: 'H', extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar',symbo: 'H',  extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K',symbo: 'H',  extraColumn1: 'H',extraColumn2: 'H'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca',symbo: 'H',  extraColumn1: 'H',extraColumn2: 'H'},
+  {Employee_ID: 1, EmployeeName: 'Hydrogen', Role: '1.0079', Email: 'H',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 2, EmployeeName: 'Helium', Role: '4.0026', Email: 'He',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 3, EmployeeName: 'Lithium', Role: '6.941', Email: 'Li',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 4, EmployeeName: 'Beryllium', Role:' 9.0122', Email: 'Be',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 5, EmployeeName: 'Boron', Role:' 10.811', Email: 'B',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 6, EmployeeName: 'Carbon', Role:' 12.0107', Email: 'C',PhoneNumber: 'H',  DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 7, EmployeeName: 'Nitrogen', Role: '14.0067', Email: 'N',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 8, EmployeeName: 'Oxygen', Role: '15.9994', Email: 'O',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 9, EmployeeName: 'Fluorine', Role:' 18.9984', Email: 'F',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 10, EmployeeName: 'Neon', Role: '20.1797', Email: 'Ne',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 11, EmployeeName: 'Sodium', Role: '22.9897', Email: 'Na',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 12, EmployeeName: 'Magnesium', Role: '24.305', Email: 'Mg',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 13, EmployeeName: 'Aluminum', Role: '26.9815', Email: 'Al',PhoneNumber: 'H',  DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 14, EmployeeName: 'Silicon', Role: '28.0855', Email: 'Si',PhoneNumber: 'H',DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 15, EmployeeName: 'Phosphorus', Role: '30.9738', Email: 'P',PhoneNumber: 'H', DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 16, EmployeeName: 'Sulfur', Role: '32.065', Email: 'S',PhoneNumber: 'H',  DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 17, EmployeeName: 'Chlorine', Role: '35.453', Email: 'Cl',PhoneNumber: 'H', DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 18, EmployeeName: 'Argon', Role: '39.948', Email: 'Ar',PhoneNumber: 'H',  DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 19, EmployeeName: 'Potassium', Role: '39.0983', Email: 'K',PhoneNumber: 'H',  DOB: 'H',Supervisor: 'H'},
+  {Employee_ID: 20, EmployeeName: 'Calcium', Role: '40.078', Email: 'Ca',PhoneNumber: 'H',  DOB: 'H',Supervisor: 'H'},
 ];
 
 
