@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   reset(resetData: any): Observable<any>{
-    return this.http.post(`${this.API_URL}/reset`, this.resetData)
+    return this.http.post(`${this.API_URL}/reset-password`, resetData)
   }
   resetData(arg0: string, resetData: any): Observable<any> {
     throw new Error('Method not implemented.');

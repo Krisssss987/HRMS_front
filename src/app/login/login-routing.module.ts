@@ -4,12 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { ResetComponent } from './reset/reset.component';
+import { EmailGuard } from './auth/email.guard';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'forgot',component:ForgotComponent},
-  {path:'reset',component:ResetComponent},
+  {path:'reset',
+  canActivate:[EmailGuard],
+  component:ResetComponent},
   {path:'',redirectTo:'login',pathMatch:'full'}
 ];
 

@@ -42,23 +42,21 @@ export class ForgotComponent {
       this.authService.forgot(forgotData).subscribe(
         () => {
           const companyEmail = forgotData.companyEmail;
-          console.log("Link Sent Successfully")
+          console.log("Link Sent Successfully");
+          this.redirectToLoginPage();
         },
         (error) => {
-          console.log("Failed to send link")
+          console.log("Failed to send link");
+          this.redirectToLoginPage();
         }
       );
     }
   }
 
-  
-
-
-
-
-
-
-
-
+  redirectToLoginPage() {
+    setTimeout(() => {
+      this.router.navigate(['/login/login']);
+    }, 2000); // 4-second delay (4000 milliseconds)
+  }
 }
 

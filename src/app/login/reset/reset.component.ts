@@ -12,6 +12,7 @@ import { AuthService } from '../auth/auth.service';
 
 export class ResetComponent {
   hide = true;
+  hide2 = true;
 
   token!: string;
   password = new FormControl('', [Validators.required, Validators.minLength(8)]);
