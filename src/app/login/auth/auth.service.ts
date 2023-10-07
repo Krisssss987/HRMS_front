@@ -104,7 +104,6 @@ export class AuthService {
     sessionStorage.removeItem('token'); // Clear the token
     this.isLoggedIn(); // Set the logged-in status to false
     this.setDesignation(''); // Clear the user type
-    
   console.log('Navigating to login...');
   this.router.navigate(['/login/login']); // Additional cleanup or redirect logic can be added here
   }
