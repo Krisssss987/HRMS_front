@@ -8,12 +8,26 @@ import { DashboardComponent } from './dash-pages/dashboard/dashboard.component';
 import { LeaveComponent } from './dash-pages/leave/leave.component';
 
 const routes: Routes = [
-  {path:'management',component:EmployeeManagementComponent},
-  {path:'attendance',component:AttendenceComponent},
-  {path:'timesheet',component:TimeSheetComponent},
-  {path:'dashboard',component:DashboardComponent},
-  {path:'leave',component:LeaveComponent},
-  {path:'',redirectTo:'dashboard',pathMatch:'full'}
+  {
+    path: '',
+    children: [ {
+        path: 'management',
+        component: EmployeeManagementComponent
+    },{
+      path: 'attendance',
+      component: AttendenceComponent
+    },{
+      path: 'timesheet',
+      component: TimeSheetComponent
+    },{
+      path: 'dashboard',
+      component: DashboardComponent
+    },{
+      path: 'leave',
+      component: LeaveComponent
+    },
+{path:'**',redirectTo:'dashboard',pathMatch:'full'}]
+}
 ];
 
 @NgModule({

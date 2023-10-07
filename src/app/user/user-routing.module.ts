@@ -5,10 +5,20 @@ import { LeaveComponent } from './leave/leave.component';
 import { CertificatesComponent } from './certificates/certificates.component';
 
 const routes: Routes = [
-  {path:'dashboard',component:DashboardComponent},
-  {path:'leave',component:LeaveComponent},
-  {path:'certificates',component:CertificatesComponent},
-  {path:'',redirectTo:'dashboard',pathMatch:'full'}
+  {
+    path: '',
+    children: [ {
+        path: 'dashboard',
+        component: DashboardComponent
+    },{
+        path: 'leave',
+        component: LeaveComponent
+    },{
+        path: 'certificates',
+        component: CertificatesComponent
+    },
+{path:'',redirectTo:'dashboard',pathMatch:'full'}]
+}
 ];
 
 @NgModule({

@@ -8,28 +8,35 @@ import { RoleGuard } from './login/auth/role.guard';
 import { LoginGuard } from './login/auth/login.guard';
 
 const routes: Routes = [
-{
-  path:'', redirectTo:'login', pathMatch:'full'
-},
-{
-  path:'', component:LoginLayoutComponent,
-  canActivate:[LoginGuard],
-  children: [{path:'login', loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)}]
-},
-{
-  path:'sa',
-  canActivate: [AuthGuard, RoleGuard],
-  data: { roles: ['Super Employee'] },
-  component:DashLayoutComponent, children: [{path:'', loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)}]
-},
-{
-  path:'',
-  canActivate:[AuthGuard,RoleGuard],
-  data: { roles: ['Intern', 'Employee'] },
-   component:UsersLayoutComponent, children: [{path:'dashboard', loadChildren:()=>import('./user/user.module').then(m=>m.UserModule)}]
-},
-{ path: '**', redirectTo: 'login' }
-
+  {path: '',redirectTo: 'login',pathMatch: 'full'},
+  {
+      path: '',
+      component: UsersLayoutComponent,
+      canActivate:[AuthGuard,RoleGuard],
+      data: { roles: ['Intern', 'Employee'] },
+      children: [{
+        path: 'dashboard',
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+      }]
+    }, {
+    path: '',
+   component: LoginLayoutComponent,
+    canActivate:[LoginGuard],
+    children: [{
+      path: 'login',
+      loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    }]
+  },
+  {
+    path: 'sa',
+    component: DashLayoutComponent,
+     canActivate: [AuthGuard, RoleGuard],
+    data: { roles: ['Super Employee'] },
+    children: [
+      { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+    ]
+  },
+  { path: '**', redirectTo: 'login' }
 ];
 
 @NgModule({

@@ -7,13 +7,24 @@ import { ResetComponent } from './reset/reset.component';
 import { EmailGuard } from './auth/email.guard';
 
 const routes: Routes = [
-  {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
-  {path:'forgot',component:ForgotComponent},
-  {path:'reset',
-  canActivate:[EmailGuard],
-  component:ResetComponent},
-  {path:'',redirectTo:'login',pathMatch:'full'}
+  {
+    path: '',
+    children: [ {
+        path: 'login',
+        component: LoginComponent
+    }, {
+        path: 'forgot',
+        component: ForgotComponent
+    }, {
+        path: 'register',
+        component: RegisterComponent
+    }, {
+        path: 'password',
+        canActivate:[EmailGuard],
+        component: ResetComponent
+    },
+{path:'',redirectTo:'login',pathMatch:'full'}]
+}
 ];
 
 @NgModule({

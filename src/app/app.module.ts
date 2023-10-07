@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './login/login.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { UserModule } from './user/user.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { UserModule } from './user/user.module';
     DashboardModule,
     UserModule,
     HttpClientModule,
+    RouterModule
     
   ],
   providers: [],

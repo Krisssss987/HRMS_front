@@ -45,5 +45,6 @@ export class ContainerComponent {
 
   logout(){
     this.authService.logout();
+    this.router.navigate(['/login/login']);
   }
 }
