@@ -15,7 +15,8 @@ export class AuthService {
   decryptUsers!: any;
   
   constructor(private http: HttpClient, private router: Router) {}
-  private readonly API_URL = 'http://localhost:3000';
+  private readonly API_URL = 'http://ec2-3-110-121-113.ap-south-1.compute.amazonaws.com:3000';
+  //private readonly API_URL = 'http://localhost:3000';
 
   register(registerData: any): Observable<any> {
     return this.http.post(`${this.API_URL}/register`, registerData);
