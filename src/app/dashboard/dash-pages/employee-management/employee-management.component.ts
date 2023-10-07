@@ -12,7 +12,13 @@ import { DashService } from '../../dash.service';
   templateUrl: './employee-management.component.html',
   styleUrls: ['./employee-management.component.css'],
 })
-export class EmployeeManagementComponent {
+export class EmployeeManagementComponent implements OnInit{
+
+  ngOnInit(): void {
+    this.userDetails();
+  }
+
+  CompanyEmail!: string | null;
 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -26,7 +32,21 @@ export class EmployeeManagementComponent {
     public dashService:DashService,) {
   }
 
-  
+  userDetails() {
+    this.CompanyEmail = sessionStorage.getItem('CompanyEmail');
+    if (this.CompanyEmail) {
+      this.dashService.userDetails(this.CompanyEmail).subscribe(
+        (users) => {
+          this.dataSource = users.userDetails;
+          console.log(this.dataSource)
+        },
+        (error) => {
+          // Handle error
+        }
+      );
+    }
+  }
+
  
   displayedColumns: string[] = ['Employee_ID', 'EmployeeName', 'Role', 'Email', 'PhoneNumber', 'DOB', 'Supervisor'];
 
