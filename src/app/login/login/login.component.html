@@ -7,6 +7,7 @@
             <h2 style="color:rgb(42,160,160);" class="text-center"><b>Sign In</b></h2>
             <mat-form-field class="user" appearance="outline">
               <mat-label>Enter your Username</mat-label>
+              <mat-icon matPrefix><i class="material-icons">person</i></mat-icon>
               <input matInput [formControl]="email" placeholder="" required>
               <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>

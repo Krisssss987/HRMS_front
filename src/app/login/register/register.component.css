@@ -62,12 +62,7 @@ h3{
 }
 @media (max-width: 600px) {
   .mat-form-field-label {
-    font-size: 12px; /* Reduce the font size for smaller screens */
+    font-size: 22px; /* Reduce the font size for smaller screens */
   }
 }
 
-@media (max-width: 600px) {
-  .mat-form-field .mat-form-field-label {
-    font-size: 12px; /* Reduce the font size for smaller screens */
-  }
-}

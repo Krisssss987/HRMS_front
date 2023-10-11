@@ -10,6 +10,7 @@
                 <mat-form-field class="form-feild" appearance="outline">
                   <mat-label>Username and Email</mat-label>
                   <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                  <mat-icon matPrefix><i class="material-icons">email</i></mat-icon>
                   <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
               </div>
