@@ -1,126 +1,134 @@
-<div class="container">
-  <div class="row">
-    <!-- row for the whole page -->
-    <div class="register-box pt-2">
-      <mat-card class="register-card mx-auto ">
-        <mat-card-header>
-          <h2 class="mx-auto color-temp ">Create your account</h2>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="container">
-            <!-- first row  -->
-            <div class="row">
-              <div>
-                <h3>Personal Details*</h3>
-              </div>
-            </div>
-            <div class="column-container">
+
+<div class="container-fluid mb-0 bg-img ">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- row for the whole page -->
+      <div class="register-box pt-2">
+        <mat-card class="register-card mx-auto ">
+          <mat-card-header>
+            <h2 class="mx-auto color-temp fw-bold fs-3 ">Create your account</h2>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="container">
+              <!-- first row  -->
               <div class="row">
-                <div class="col-xl-6 col-md-6 col-sm-6 col-6">
-                  <!-- left col -->
-                  <mat-form-field class="form-feild">
-                    <mat-label>First Name </mat-label>
-                    <input matInput placeholder="First name" [formControl]="firstName" required>
-                    <mat-error *ngIf="firstName.invalid">{{ getFirstNameErrorMessage() }}</mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="form-feild">
-                    <mat-label>Enter Email</mat-label>
-                    <input matInput placeholder="Email" [formControl]="email" required>
-                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="form-feild">
-                    <mat-label>Designation</mat-label>
-                    <input matInput placeholder="Designation" [formControl]="designation">
-                    <mat-error *ngIf="designation.invalid">{{ getDesignationErrorMessage() }}</mat-error>
-                  </mat-form-field>
-
+                <div>
+                  <h3 >Personal Details*</h3>
                 </div>
-                <div class="col-xl-6 col-md-6 col-sm-6 col-6">
-                  <!-- right col -->
-                  <mat-form-field class="form-feild">
-                    <mat-label>Last Name</mat-label>
-                    <input matInput placeholder="Last Name" [formControl]="lastName" required>
-                    <mat-error *ngIf="lastName.invalid">{{ getLastNameErrorMessage() }}</mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="form-feild">
-                    <mat-label>Contact Number</mat-label>
-                    <input matInput placeholder="Contact" [formControl]="mobileNumber" required>
-                    <mat-error *ngIf="mobileNumber.invalid">{{ getMobileNumberErrorMessage() }}</mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="form-field w-100">
-                    <mat-label>Date of Birth</mat-label>
-                    <input matInput [matDatepicker]="picker" [formControl]="DOB">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="DOB.invalid">{{ getDobErrorMessage() }}</mat-error>
-                  </mat-form-field>
-
+              </div>
+              <div class="column-container">
+                <div class="row">
+                  <div class="col-xl-6 col-md-6 col-sm-6 col-6">
+                    <!-- left col -->
+                    <mat-form-field class="form-feild" appearance="outline">
+                      <mat-label>First Name </mat-label>
+                      <mat-icon matPrefix><i class="material-icons">person_add</i></mat-icon>
+                      <input matInput placeholder="First name" [formControl]="firstName" required>
+                      <mat-error *ngIf="firstName.invalid">{{ getFirstNameErrorMessage() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-feild" appearance="outline">
+                      <mat-label>Enter Email</mat-label>
+                      <mat-icon matPrefix><i class="material-icons">email</i></mat-icon>
+                      <input matInput placeholder="Email" [formControl]="email" required>
+                      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-feild" appearance="outline">
+                      <mat-label>Designation</mat-label>
+                      <mat-icon matPrefix><i class="material-icons">person_pin_circle</i></mat-icon>
+                      <input matInput placeholder="Designation" [formControl]="designation">
+                      <mat-error *ngIf="designation.invalid">{{ getDesignationErrorMessage() }}</mat-error>
+                    </mat-form-field>
+  
+                  </div>
+                  <div class="col-xl-6 col-md-6 col-sm-6 col-6">
+                    <!-- right col -->
+                    <mat-form-field class="form-feild" appearance="outline">
+                      <mat-label>Last Name</mat-label>
+                      <mat-icon matPrefix><i class="material-icons">person_add</i></mat-icon>
+                      <input matInput placeholder="Last Name" [formControl]="lastName" required>
+                      <mat-error *ngIf="lastName.invalid">{{ getLastNameErrorMessage() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-feild" appearance="outline">
+                      <mat-label>Contact Number</mat-label>
+                      <mat-icon matPrefix><i class="material-icons">perm_contact_cal</i></mat-icon>
+                      <input matInput placeholder="Contact" [formControl]="mobileNumber" required>
+                      <mat-error *ngIf="mobileNumber.invalid">{{ getMobileNumberErrorMessage() }}</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="form-field w-100" appearance="outline">
+                      <mat-label>Date of Birth</mat-label>
+                      <input matInput [matDatepicker]="picker" [formControl]="DOB">
+                      <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-error *ngIf="DOB.invalid">{{ getDobErrorMessage() }}</mat-error>
+                    </mat-form-field>
+  
+                  </div>
+                  
+                  
+  
                 </div>
                 
-                
-
+  
               </div>
-              
-
-            </div>
-            <div class="row">
-              <div>
-                <h3>Set Password*</h3>
-              </div>
-            </div>
-            <div class="column-container">
               <div class="row">
-                <div class="col-xl-6 col-md-6 col-sm-6 col-6">
-                  <!-- left col -->
-                  <mat-form-field class="form-feild pb-3">
-                    <mat-label>Enter your password</mat-label>
-                    <input matInput [type]="hide1 ? 'password' : 'text'" [formControl]="password">
-                    
-                    <!-- Display the most important error message -->
-                    <mat-error *ngIf="password.hasError('required')">
-                      Password is required
-                    </mat-error>
-                    <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
-                      Password should be at least 8 characters long
-                    </mat-error>
-                    <mat-error *ngIf="password.hasError('pattern') && !password.hasError('minlength') && !password.hasError('required')">
-                      Password must include lowercase, uppercase, digit, and special character (@#$%^&+=).
-                    </mat-error>
-                    
-                    <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
-                      <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                  </mat-form-field>
-                  
-                  <button mat-raised-button style="color: whitesmoke; background-color: rgb(42,160,160);" class="w-100 mt-1" (click)="submit()">Sign Up</button>
-                  
+                <div>
+                  <h3>Set Password*</h3>
                 </div>
-                <div class="col-xl-6 col-md-6 col-sm-6 col-6 ">
-                  <!-- right col -->
-                  <mat-form-field class="form-feild pb-3">
-                    <mat-label>Confirm your password</mat-label>
-                     <input matInput [type]="hide2 ? 'password' : 'text'" [formControl]="confirmPassword" >
-                     <mat-error *ngIf="confirmPassword.hasError('required')">Password is required</mat-error>
-                     <mat-error *ngIf="confirmPassword.hasError('minlength')">Password should be at least 8 characters long</mat-error>
-                     <mat-error *ngIf="confirmPassword.hasError('passwordMismatch')">Passwords do not match</mat-error>
-                     <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
-                     <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
-                   </button> 
-                  </mat-form-field>
-                  <button class="link" routerLink="/login/login" mat-raised-button class="w-100 mt-1">Sign In</button>
+              </div>
+              <div class="column-container">
+                <div class="row">
+                  <div class="col-xl-6 col-md-6 col-sm-6 col-6">
+                    <!-- left col -->
+                    <mat-form-field class="form-feild pb-3" appearance="outline">
+                      <mat-label>Enter your password</mat-label>
+                      <input matInput [type]="hide1 ? 'password' : 'text'" [formControl]="password">
+                      
+                      <!-- Display the most important error message -->
+                      <mat-error *ngIf="password.hasError('required')">
+                        Password is required
+                      </mat-error>
+                      <mat-error *ngIf="password.hasError('minlength') && !password.hasError('required')">
+                        Password should be at least 8 characters long
+                      </mat-error>
+                      <mat-error *ngIf="password.hasError('pattern') && !password.hasError('minlength') && !password.hasError('required')">
+                        Password must include lowercase, uppercase, digit, and special character (@#$%^&+=).
+                      </mat-error>
+                      
+                      <button mat-icon-button matSuffix (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                        <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    
+                    <button mat-raised-button style="color: whitesmoke; background-color: rgb(42,160,160);" class="w-100 mt-1" (click)="submit()">Sign Up</button>
+                    
+                  </div>
+                  <div class="col-xl-6 col-md-6 col-sm-6 col-6 ">
+                    <!-- right col -->
+                    <mat-form-field class="form-feild pb-3" appearance="outline">
+                      <mat-label>Confirm your password</mat-label>
+                       <input matInput [type]="hide2 ? 'password' : 'text'" [formControl]="confirmPassword" >
+                       <mat-error *ngIf="confirmPassword.hasError('required')">Password is required</mat-error>
+                       <mat-error *ngIf="confirmPassword.hasError('minlength')">Password should be at least 8 characters long</mat-error>
+                       <mat-error *ngIf="confirmPassword.hasError('passwordMismatch')">Passwords do not match</mat-error>
+                       <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+                       <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                     </button> 
+                    </mat-form-field>
+                    <button class="link" routerLink="/login/login" mat-raised-button class="w-100 mt-1">Sign In</button>
+                    
+                  </div>
                   
+  
                 </div>
                 
-
+  
               </div>
-              
-
             </div>
-          </div>
-        </mat-card-content>
-
-
-      </mat-card>
+          </mat-card-content>
+  
+  
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

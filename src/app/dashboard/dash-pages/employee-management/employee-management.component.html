@@ -1,20 +1,46 @@
 <div class="container-fluid">
   <div class="container-fluid">
-    <div class="row mt-5">
-      <mat-form-field class="col-12  col-sm-6 col-lg-2">
-        <input matInput (keyup)="applyFilter($event)" placeholder="search">
-      </mat-form-field>
+    <div class="row ">
+      <h1 class="text-center fs-3 mt-1 fw-bold">Employee Management</h1>
+
     </div>
-    <div class="row">
+    <div class="row ">
       <div class="card">
-        <div class="d-flex justify-content-between">
-        <h2 class="mt-2">Attendance details</h2>
-        <!--button was here  -->
-        <button (click)="openAddUserDialog()" class="mt-1" mat-mini-fab>
-          <mat-icon aria-label="Example icon-button">person_add</mat-icon>
-        </button>
+        <h3 class="fw-bold">New Employee</h3>
+         <form>
+            <mat-form-field class="example-full-width">
+              <mat-label>Employee ID</mat-label>
+              <input matInput placeholder="Employee ID">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Employee Name</mat-label>
+              <input matInput placeholder="Employee Name">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Role</mat-label>
+              <input matInput placeholder="Role">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Email" >
+            </mat-form-field>
+            <!-- Add more MatInput fields for other employee details here -->
+
+            <button mat-raised-button color="primary" >Add Employee</button>
+          </form>
       </div>
-      <div class="card-body">          
+    
+    </div>
+    <div class="row mt-1">
+      <div class="card py-0">
+        <div class="d-flex justify-content-between">
+          <h3 class="mt-1 fw-bold">Employee details</h3>
+         <!--button was here  -->
+       </div>
+       <div class="card-body py-0">          
         <div class="example-container">
         
           <table mat-table [dataSource]="dataSource">
@@ -62,11 +88,9 @@
         
           
         </div>
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                         showFirstLastButtons
-                         aria-label="Select page of periodic elements">
-          </mat-paginator>
-      </div>
+        <mat-paginator  class="d-flex justify-content-center" [pageSizeOptions]="[5, 10, 20]" >
+        </mat-paginator>
+       </div>
       </div> 
     </div>
   </div>

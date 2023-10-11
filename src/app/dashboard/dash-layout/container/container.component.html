@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z8 h-10">
+<mat-toolbar class="h-10">
     <button
       mat-icon-button
       *ngIf="sidenav.mode === 'over'"
@@ -11,16 +11,14 @@
     <span> SenseLive - HRMS</span>
     <span class="example-spacer"></span>
 
-    <div class="d-flex flex-row-reverse">
-    <button class="p-1" mat-mini-fab style="background-color: whitesmoke;" aria-label="logout" (click)="logout()" routerLink="/login/login">
+    <div class="d-flex flex-row-reverse ">
+    <button class="btn" type="button" mat-mini-fab style="background-color: whitesmoke;" aria-label="logout" (click)="logout()" routerLink="/login/login">
       <mat-icon style="color: black;">exit_to_app</mat-icon>
     </button>
     </div>
 </mat-toolbar>
-  
-  
   <mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8 ">
       <img
         class="avatar"
         src="..\..\..\assets\img\logo.ico"
@@ -55,5 +53,5 @@
         <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  
 <app-footer></app-footer>
-```  
