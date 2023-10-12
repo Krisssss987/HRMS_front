@@ -15,7 +15,7 @@ mat-card-content{
 }
 
 .example-container {
-    height: 70vh;
+    max-height: 58vh;
     overflow: auto;
   }
   div::-webkit-scrollbar{
