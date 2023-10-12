@@ -1,8 +1,40 @@
 body {
 	background-color: #f5f7fa;
+  width: 100%;
+}
+mat-card{
+  height: 330px;
+}
+.example-container {
+  height: 400px;
+  max-width: 100%;
+  overflow: auto;
 }
 
-.card{
-  margin-bottom: 20px;
+table {
+  width: 800px;
+}
+
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
+}
+th{
+  text-align: center;
+}
+td{
+  text-align: center;
 }
 

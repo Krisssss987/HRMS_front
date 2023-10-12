@@ -12,7 +12,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 
 })
 export class LeaveComponent {
-  displayedColumns: string[] = ['Employee_ID', 'EmployeeName', 'Role', 'Email', 'PhoneNumber', 'DOB', 'Supervisor', 'ApprovedReject'];
+  displayedColumns: string[] = ['Date', 'EmployeeName', 'Leave', 'Days', 'Status', 'Actions', 'View'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
   ngAfterViewInit() {
@@ -21,36 +21,36 @@ export class LeaveComponent {
 
 }
 export interface PeriodicElement {
-  Employee_ID: number;
+  Date: number;
   EmployeeName: string;
-  Role: string;
-  Email: string;
-  PhoneNumber: string;
-  DOB: string; // Add this property
-  Supervisor: string; // Add this property
+  Leave: string;
+  Days: string;
+  Status: string;
+  Actions: string;
+  Supervisor: string;
   ApprovedReject: string;
 
 }
   
 const ELEMENT_DATA: PeriodicElement[] = [
-  { Employee_ID: 1, EmployeeName: 'Hydrogen', Role: '1.0079', Email: 'H', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 2, EmployeeName: 'Helium', Role: '4.0026', Email: 'He', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 3, EmployeeName: 'Lithium', Role: '6.941', Email: 'Li', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 4, EmployeeName: 'Beryllium', Role: '9.0122', Email: 'Be', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 5, EmployeeName: 'Boron', Role: '10.811', Email: 'B', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 6, EmployeeName: 'Carbon', Role: '12.0107', Email: 'C', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 7, EmployeeName: 'Nitrogen', Role: '14.0067', Email: 'N', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 8, EmployeeName: 'Oxygen', Role: '15.9994', Email: 'O', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 9, EmployeeName: 'Fluorine', Role: '18.9984', Email: 'F', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 10, EmployeeName: 'Neon', Role: '20.1797', Email: 'Ne', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 11, EmployeeName: 'Sodium', Role: '22.9897', Email: 'Na', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 12, EmployeeName: 'Magnesium', Role: '24.305', Email: 'Mg', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 13, EmployeeName: 'Aluminum', Role: '26.9815', Email: 'Al', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 14, EmployeeName: 'Silicon', Role: '28.0855', Email: 'Si', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 15, EmployeeName: 'Phosphorus', Role: '30.9738', Email: 'P', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 16, EmployeeName: 'Sulfur', Role: '32.065', Email: 'S', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 17, EmployeeName: 'Chlorine', Role: '35.453', Email: 'Cl', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 18, EmployeeName: 'Argon', Role: '39.948', Email: 'Ar', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
-  { Employee_ID: 19, EmployeeName: 'Potassium', Role: '39.0983', Email: 'K', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
-  { Employee_ID: 20, EmployeeName: 'Calcium', Role: '40.078', Email: 'Ca', PhoneNumber: 'H', DOB: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 1, EmployeeName: 'Hydrogen', Leave: '1.0079', Days: 'H', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 2, EmployeeName: 'Helium', Leave: '4.0026', Days: 'He', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 3, EmployeeName: 'Lithium', Leave: '6.941', Days: 'Li', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 4, EmployeeName: 'Beryllium', Leave: '9.0122', Days: 'Be', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 5, EmployeeName: 'Boron', Leave: '10.811', Days: 'B', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 6, EmployeeName: 'Carbon', Leave: '12.0107', Days: 'C', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 7, EmployeeName: 'Nitrogen', Leave: '14.0067', Days: 'N', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 8, EmployeeName: 'Oxygen', Leave: '15.9994', Days: 'O', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 9, EmployeeName: 'Fluorine', Leave: '18.9984', Days: 'F', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 10, EmployeeName: 'Neon', Leave: '20.1797', Days: 'Ne', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 11, EmployeeName: 'Sodium', Leave: '22.9897', Days: 'Na', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 12, EmployeeName: 'Magnesium', Leave: '24.305', Days: 'Mg', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 13, EmployeeName: 'Aluminum', Leave: '26.9815', Days: 'Al', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 14, EmployeeName: 'Silicon', Leave: '28.0855', Days: 'Si', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 15, EmployeeName: 'Phosphorus', Leave: '30.9738', Days: 'P', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 16, EmployeeName: 'Sulfur', Leave: '32.065', Days: 'S', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 17, EmployeeName: 'Chlorine', Leave: '35.453', Days: 'Cl', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 18, EmployeeName: 'Argon', Leave: '39.948', Days: 'Ar', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
+  { Date: 19, EmployeeName: 'Potassium', Leave: '39.0983', Days: 'K', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Approved' },
+  { Date: 20, EmployeeName: 'Calcium', Leave: '40.078', Days: 'Ca', Status: 'H', Actions: 'H', Supervisor: 'H', ApprovedReject: 'Rejected' },
 ];

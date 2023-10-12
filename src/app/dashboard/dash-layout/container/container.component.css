@@ -21,7 +21,7 @@ mat-sidenav {
 }
 
 mat-sidenav-container {
-  height:87vh;
+  height: calc(100vh - 100px);
 }
 
 .menu-button {

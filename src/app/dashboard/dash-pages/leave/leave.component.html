@@ -1,104 +1,190 @@
-<div class="container-fluid mt-2">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <h1 class="text-center"><b>Leave Details</b></h1>
-      </div>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-2">
+    <div class="col-md-8">
+      <h1 class="text-center"><b>Leave Details</b></h1>
     </div>
-
-
-    <div class="row">
-        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4 display-4">
-            <mat-card>
-                  <mat-card-content>23</mat-card-content>
-                  <mat-card-content>Approved Leave</mat-card-content>
-              </mat-card>
-        </div> 
-        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4 display-4">
-            <mat-card>
-                  <mat-card-content>03</mat-card-content>
-                  <mat-card-content>Rejected Leave</mat-card-content>
-              </mat-card>
-        </div> 
-        <div class="col-lg-4 col-sm-4 col-md-4 col-xl-4 display-4">
-            <mat-card>
-                  <mat-card-content>05</mat-card-content>
-                  <mat-card-content>Upcoming Holidays</mat-card-content>
-              </mat-card>
-        </div>        
-    </div>
-    <div class="row mt-5">
-      <div class="card">
-        <div class="card-body">          
-          <div class="example-container">
-          
-            <table mat-table [dataSource]="dataSource">
-    
-              <!-- Position Column -->
-              <ng-container matColumnDef="Employee_ID">
-                <th mat-header-cell *matHeaderCellDef>Employee ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.Employee_ID}} </td>
-              </ng-container>
-          
-              <!-- Name Column -->
-              <ng-container matColumnDef="EmployeeName">
-                <th mat-header-cell *matHeaderCellDef> Employee Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.EmployeeName}} </td>
-              </ng-container>
-          
-              <!-- Weight Column -->
-              <ng-container matColumnDef="Role">
-                <th mat-header-cell *matHeaderCellDef>Role  </th>
-                <td mat-cell *matCellDef="let element"> {{element.Role}} </td>
-              </ng-container>
-          
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="Email">
-                <th mat-header-cell *matHeaderCellDef>Email </th>
-                <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
-              </ng-container>
-              <ng-container matColumnDef="PhoneNumber">
-                <th mat-header-cell *matHeaderCellDef>Phone no </th>
-                <td mat-cell *matCellDef="let element"> {{element.PhoneNumber}} </td>
-              </ng-container>
-              <ng-container matColumnDef="DOB">
-                <th mat-header-cell *matHeaderCellDef>DOB </th>
-                <td mat-cell *matCellDef="let element"> {{ element.DOB }} </td>
-              </ng-container>
-              
-              <ng-container matColumnDef="Supervisor">
-                <th mat-header-cell *matHeaderCellDef>Supervisor</th>
-                <td mat-cell *matCellDef="let element"> {{ element.Supervisor }} </td>
-              </ng-container>
-    
-              <ng-container matColumnDef="ApprovedReject">
-                <th mat-header-cell *matHeaderCellDef>Approved/Reject</th>
-                <td mat-cell *matCellDef="let element">{{ element.ApprovedReject }}</td>
-              </ng-container>
-              
-          
-              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-          
+  </div>
+  <div class="card">
+  <mat-tab-group  color="accent">
+    <mat-tab label="Pending">
+      <div class="card-body">          
+        <div class="example-container">        
+          <table mat-table [dataSource]="dataSource">  
+            <!-- Position Column -->
+            <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef>Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="EmployeeName">
+              <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.EmployeeName}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Leave">
+              <th mat-header-cell *matHeaderCellDef>Leave Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.Leave}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Days">
+              <th mat-header-cell *matHeaderCellDef>No. of Days </th>
+              <td mat-cell *matCellDef="let element"> {{element.Days}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Actions">
+              <th mat-header-cell *matHeaderCellDef>Actions </th>
+              <td mat-cell *matCellDef="let element" >
+                <button mat-mini-fab>
+                  <mat-icon aria-label="Example icon-button">check</mat-icon>
+                </button>
+                &nbsp;
+                <button mat-mini-fab>
+                  <mat-icon aria-label="Example icon-button">close</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="View">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td  class="align" mat-cell *matCellDef="let element" >
+                <button mat-icon-button color="dark">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
             
-          </div>
-          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                           showFirstLastButtons
-                           aria-label="Select page of periodic elements">
-            </mat-paginator>
+            
+            
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>   
         </div>
-
+        <mat-paginator [pageSizeOptions]="[10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
       </div>
-      
-    </div>
-  
+    </mat-tab>
+    <mat-tab label="Approved">
+      <div class="card-body">          
+        <div class="example-container">        
+          <table mat-table [dataSource]="dataSource">  
+            <!-- Position Column -->
+            <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="EmployeeName">
+              <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.EmployeeName}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Leave">
+              <th mat-header-cell *matHeaderCellDef>Leave Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.Leave}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Days">
+              <th mat-header-cell *matHeaderCellDef>No. of Days </th>
+              <td mat-cell *matCellDef="let element"> {{element.Days}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Actions">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element" >
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="View">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td class="align" mat-cell *matCellDef="let element" >
+                <button mat-icon-button color="dark">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>   
+        </div>
+        <mat-paginator [pageSizeOptions]="[10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+      </div>
+    </mat-tab>
+    <mat-tab label="Declined"> 
+      <div class="card-body">          
+        <div class="example-container">        
+          <table mat-table [dataSource]="dataSource">  
+            <!-- Position Column -->
+            <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="EmployeeName">
+              <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.EmployeeName}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Leave">
+              <th mat-header-cell *matHeaderCellDef>Leave Type  </th>
+              <td mat-cell *matCellDef="let element"> {{element.Leave}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Days">
+              <th mat-header-cell *matHeaderCellDef>No. of Days </th>
+              <td mat-cell *matCellDef="let element"> {{element.Days}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Actions">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element" >
+                
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="View">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td class="align" mat-cell *matCellDef="let element" >
+                <button mat-icon-button color="dark">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            
+                       
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>   
+        </div>
+        <mat-paginator [pageSizeOptions]="[10, 20]"
+                         showFirstLastButtons
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-

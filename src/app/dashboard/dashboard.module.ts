@@ -15,7 +15,7 @@ import { MatListModule} from '@angular/material/list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
-
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -28,6 +28,7 @@ import { AddEmployeeComponent } from './dash-pages/employee-management/add-emplo
 import { MatDialogModule } from '@angular/material/dialog';
 import { LeaveComponent } from './dash-pages/leave/leave.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     DashLayoutComponent,
@@ -60,7 +61,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule,
+    MatSelectModule
   ]
 })
 export class DashboardModule { }

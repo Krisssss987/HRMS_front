@@ -10,8 +10,12 @@ mat-card-content{
     text-align: center;
     font-size: 22px;
 }
+.align{
+  text-align: right;
+}
+
 .example-container {
-    max-height: 43vh;
+    max-height: 58vh;
     overflow: auto;
   }
   div::-webkit-scrollbar{
