@@ -18,7 +18,7 @@ export class AttendenceComponent {
     
   };
   
- 
+// constructor and  dashservis 
   displayedColumns: string[] = ['Employee_ID', 'EmployeeName', 'Role', 'Date', 'InTime', 'OutTime', 'TotalHours'];
 
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
@@ -69,6 +69,3 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {Employee_ID: 19, EmployeeName: 'Potassium', Role: '39.0983', Date: 'K',InTime: 'H',  OutTime: 'H',TotalHours: 'H'},
   {Employee_ID: 20, EmployeeName: 'Calcium', Role: '40.078', Date: 'Ca',InTime: 'H',  OutTime: 'H',TotalHours: 'H'},
 ];
-
-
-
