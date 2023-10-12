@@ -35,6 +35,7 @@ export class DashboardComponent implements AfterViewInit {
   ngAfterViewInit() {
     Highcharts.chart('chartContainer', this.chartOptions);
     Highcharts.chart('pieChartContainer', this.pieChartOptions);
+    Highcharts.chart('pieChartContainer2', this.pieChartOptions2);
   }
 
   chartOptions: Highcharts.Options = {
@@ -92,6 +93,31 @@ export class DashboardComponent implements AfterViewInit {
       ]
     }]
   };
+  pieChartOptions2: Highcharts.Options = {
+    chart: {
+      type: 'pie'
+    },    
+    credits:{
+      enabled:false
+    },
+    
+    exporting:{
+      enabled:false
+    },
+    title: {
+      text: ''
+    },
+    series: [{
+      type: 'pie',
+      name: 'Employee',
+      data: [
+        ['Present', 70],
+        ['Absent', 30],
+      ]
+    }]
+  };
+
+
   foods: Food[] = [
     {value: '1day', viewValue: '1day'},
     {value: '1 week', viewValue: '1 week'},
