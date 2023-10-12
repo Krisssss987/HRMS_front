@@ -28,6 +28,7 @@ import { AddEmployeeComponent } from './dash-pages/employee-management/add-emplo
 import { MatDialogModule } from '@angular/material/dialog';
 import { LeaveComponent } from './dash-pages/leave/leave.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     DashLayoutComponent,
@@ -61,7 +62,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatPaginatorModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule
   ]
 })
 export class DashboardModule { }

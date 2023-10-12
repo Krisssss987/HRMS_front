@@ -3,6 +3,29 @@ import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 HC_exporting(Highcharts);
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
+export interface PeriodicElement {
+  name: string;
+  NoOfDays: number;
+  from: string;
+  To: string;
+  type:string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {NoOfDays: 2, name: 'Vishal Chouhan', from: '11-10-23', To: '13-10-23',type:'medical'},
+  {NoOfDays: 2, name: 'krishna lokhande', from: '11-10-23', To: '13-10-23',type:'medical'},
+  {NoOfDays: 2, name: 'gaurav jadhav', from: '11-10-23', To: '13-10-23',type:'medical'},
+  {NoOfDays: 2, name: 'kaushal pohekar', from: '11-10-23', To: '13-10-23',type:'medical'},
+  {NoOfDays: 2, name: 'Vishal Chouhan', from: '11-10-23', To: '13-10-23',type:'medical'},
+  {NoOfDays: 2, name: 'krishna lokhande', from: '11-10-23', To: '13-10-23',type:'medical'},
+  {NoOfDays: 2, name: 'gaurav jadhav', from: '11-10-23', To: '13-10-23',type:'medical'},
+  {NoOfDays: 2, name: 'kaushal pohekar', from: '11-10-23', To: '13-10-23',type:'medical'},
+];
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,6 +35,7 @@ export class DashboardComponent implements AfterViewInit {
   ngAfterViewInit() {
     Highcharts.chart('chartContainer', this.chartOptions);
     Highcharts.chart('pieChartContainer', this.pieChartOptions);
+    Highcharts.chart('pieChartContainer2', this.pieChartOptions2);
   }
 
   chartOptions: Highcharts.Options = {
@@ -21,32 +45,27 @@ export class DashboardComponent implements AfterViewInit {
     credits:{
       enabled:false
     },
+    exporting:{
+      enabled:false
+    },
     title: {
       text: ''
     },
     xAxis: {
-      categories: ['']
+      categories: ['Mon','Tue','Wed','Thu','Fri','sat']
     },
     yAxis: {
       title: {
-        text: 'No. of Employees'
+        text: '',
       }
     },
     series: [{
       type: 'column',
-      name: 'Total Employee',
-      data: [5]
+      name: 'Total working hours this week',
+      data: [4,6,8,2,1,4],
+      color: '#E57C23' // Set the color to #EE8437
     },
-    {
-      type: 'column',
-      name: 'Present Employee',
-      data: [10]
-    },
-    {
-      type: 'column',
-      name: 'Absent Employee',
-      data: [7]
-    }]
+   ]
   };
 
   pieChartOptions: Highcharts.Options = {
@@ -54,6 +73,10 @@ export class DashboardComponent implements AfterViewInit {
       type: 'pie'
     },    
     credits:{
+      enabled:false
+    },
+    
+    exporting:{
       enabled:false
     },
     title: {
@@ -70,6 +93,40 @@ export class DashboardComponent implements AfterViewInit {
       ]
     }]
   };
+  pieChartOptions2: Highcharts.Options = {
+    chart: {
+      type: 'pie'
+    },    
+    credits:{
+      enabled:false
+    },
+    
+    exporting:{
+      enabled:false
+    },
+    title: {
+      text: ''
+    },
+    series: [{
+      type: 'pie',
+      name: 'Employee',
+      data: [
+        ['Present', 70],
+        ['Absent', 30],
+      ]
+    }]
+  };
+
+
+  foods: Food[] = [
+    {value: '1day', viewValue: '1day'},
+    {value: '1 week', viewValue: '1 week'},
+    {value: '1 month', viewValue: '1 month'},
+  ];
   
+  displayedColumns = [
+    'name',   'NoOfDays',  'from',  'To','type'
+  ];
+  dataSource = ELEMENT_DATA;
   
 }
