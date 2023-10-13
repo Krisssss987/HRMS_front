@@ -1,6 +1,6 @@
 <div class="body">
-<div class="container mt-2">
-<div class="row col-lg-12 col-md-12 col-sm-12">
+<div class="container-fluid mt-2">
+<div class="row">
   <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
     <mat-card >
       <mat-card-header class="d-flex justify-content-center">
@@ -9,7 +9,7 @@
       </mat-card-header>
       <mat-divider></mat-divider>
       <div class="card-body pb-0">
-        <div [style.height.vh]="30" id="chartContainer"></div>
+        <div class="chart" id="chartContainer"></div>
       </div>
     </mat-card>
   </div>
@@ -42,38 +42,38 @@
       <mat-divider></mat-divider>
       <mat-card-content >
        
-        <div class="row d-flex justify-content-around mt-3">
-          <div class="col">
-          <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" class="mx-4">
+        <div class="row col-12 mt-3">
+          <div class="col-4" style="text-align: center;">
+          <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
             <mat-icon>assignment_ind</mat-icon>
           </button>
           <p>Assign Leave</p>
         </div>
-        <div class="col">
+        <div class="col-4" style="text-align: center;">
           <button mat-mini-fab color="warn"  aria-label="Example icon button with a filter list icon" class="mx-2">
             <mat-icon>date_range</mat-icon>
           </button>
           <p>Leave List</p>
         </div>
-        <div class="col">
+        <div class="col-4" style="text-align: center;">
           <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" class="mx-3">
             <mat-icon>filter_list</mat-icon>
           </button>
           <p>Timesheets</p>
         </div>
-        <div class="col">
+        <div class="col-4" style="text-align: center;">
           <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" class="mx-4">
             <mat-icon>assignment_ind</mat-icon>
           </button>
           <p>Apply Leave</p>
         </div>
-        <div class="col">
+        <div class="col-4" style="text-align: center;">
           <button mat-mini-fab color="warn"  aria-label="Example icon button with a filter list icon" class="mx-2">
             <mat-icon>date_range</mat-icon>
           </button>
           <p>My Leave</p>
         </div>
-        <div class="col">
+        <div class="col-4" style="text-align: center;">
           <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon" class="mx-3">
             <mat-icon>filter_list</mat-icon>
           </button>
@@ -94,12 +94,12 @@
     </mat-card-header>
     <mat-divider></mat-divider>
     <div class="card-body pb-0">
-      <div [style.height.vh]="30" id="pieChartContainer"></div>
+      <div style="height: 232px;" id="pieChartContainer"></div>
     </div>
   </mat-card>
 
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-4 mt-3">
+    <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
       <mat-card>
         <mat-card-header class="d-flex justify-content-center">
           <mat-icon aria-hidden="false" class="mt-1" aria-label="Example home icon" fontIcon="assignment"></mat-icon>
@@ -160,7 +160,7 @@
         
       </mat-card>
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
+    <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-2">
       <mat-card>
         <mat-card-header class="d-flex justify-content-center">
           <mat-icon aria-hidden="false" class="mt-1" aria-label="Example home icon" fontIcon="supervisor_account"></mat-icon>
@@ -168,7 +168,7 @@
         </mat-card-header>
         <mat-divider></mat-divider>
         <div class="card-body pb-0">
-          <div [style.height.vh]="30" id="pieChartContainer2"></div>
+          <div class="chart" id="pieChartContainer2"></div>
         </div>
       </mat-card>
     
