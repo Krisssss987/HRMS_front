@@ -5,14 +5,21 @@ body {
 mat-card{
   height: 330px;
 }
+
+.chart{
+  height: 265px;
+}
+
 .example-container {
   height: 400px;
   max-width: 100%;
   overflow: auto;
 }
 
+
+
 table {
-  width: 800px;
+  width: 100%;
 }
 
 td.mat-column-star {
