@@ -24,10 +24,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import { RouterModule } from '@angular/router';
-
-
-
-
+import { ProfileComponent } from './profile/profile.component';
+import { UploadimageComponent } from './profile/uploadimage/uploadimage.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -37,7 +37,9 @@ import { RouterModule } from '@angular/router';
     UsersLayoutComponent,
     UsersFooterComponent,
     UsersContainerComponent,
-    CertificatesComponent
+    CertificatesComponent,
+    ProfileComponent,
+    UploadimageComponent
   ],
   imports: [
     CommonModule,
@@ -61,9 +63,8 @@ import { RouterModule } from '@angular/router';
     MatTableModule,
     MatButtonModule,
     RouterModule,
-
-  
-    
+    MatTooltipModule,
+    MatProgressBarModule
   ]
 })
 export class UserModule { }
