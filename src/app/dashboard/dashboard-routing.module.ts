@@ -6,6 +6,7 @@ import { AttendenceComponent } from './dash-pages/attendence/attendence.componen
 import { TimeSheetComponent } from './dash-pages/time-sheet/time-sheet.component';
 import { DashboardComponent } from './dash-pages/dashboard/dashboard.component';
 import { LeaveComponent } from './dash-pages/leave/leave.component';
+import { ViewComponent } from './dash-pages/leave/view/view.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
     },{
       path: 'leave',
       component: LeaveComponent
+    },{
+      path: 'viewLeave',
+      component: ViewComponent
     },
 {path:'**',redirectTo:'dashboard',pathMatch:'full'}]
 }

@@ -64,9 +64,8 @@ export class EmployeeManagementComponent implements OnInit{
 
     openAddUserDialog(): void {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '500px';
     dialogConfig.height = 'auto';
-    dialogConfig.maxWidth = '90vw';
+    dialogConfig.maxWidth = '50vh';
     const dialogRef = this.dialog.open(AddEmployeeComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(userAdded => {});
   }

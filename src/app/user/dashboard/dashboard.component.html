@@ -1,15 +1,109 @@
-<div class="container">
+<div class="container-fluid mt-3">
   <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
-      <mat-card>
+    <div class="col col-lg-4 col-md-6 col-sm-12">
+      <mat-card class="qr">
         <mat-card-header class="d-flex justify-content-center">
           <mat-icon aria-hidden="false" class="mt-1" aria-label="Example home icon" fontIcon="select_all"></mat-icon>
           <h2 class="mx-2">Scan QR Code</h2>
         </mat-card-header>
         <mat-divider></mat-divider>
-
-     
+       
       </mat-card>
     </div>
+  
+
+    <div class="col">
+      <div class="row mt-1">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <mat-card >
+            <mat-card-header class="d-flex justify-content-center">
+                <mat-icon aria-hidden="false" class="mt-1" aria-label="Example home icon" fontIcon="today"></mat-icon>
+                 <h2 class="mx-2">Total work</h2>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <div class="card-body pb-0">
+              <div [style.height.vh]="30" id="chartContainer"></div>
+            </div>
+          </mat-card>
+        </div>
+
+    <div class=" col-lg-6 col-md-6 col-sm-12">
+     <mat-card>
+      <mat-card-header class="d-flex justify-content-center">
+        <mat-icon aria-hidden="false" class="mt-1" aria-label="Example home icon" fontIcon="account_circle"></mat-icon>
+        <h2 class="mx-2">attandance by last 7 days</h2>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <div [style.height.vh]="30" id="pieChartContainer2"></div>
+     </mat-card>
+    </div>
+
+    <div class=" col-lg-12 col-md-12 col-sm-12 mt-3">
+      <mat-card>
+       <mat-card-header class="d-flex justify-content-center">
+         <mat-icon aria-hidden="false" class="mt-1" aria-label="Example home icon" fontIcon="assignment_turned_in"></mat-icon>
+         <h2 class="mx-2">Task sheet</h2>
+       </mat-card-header>
+       <mat-divider></mat-divider>
+       <section class="example-container " tabindex="0">
+       <mat-table [dataSource]="dataSource" >
+        <!-- Task_name Column -->
+        <ng-container matColumnDef="Task_name">
+          <mat-header-cell *matHeaderCellDef> Task name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Task_name}} </mat-cell>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="priority">
+          <mat-header-cell *matHeaderCellDef> Priority </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.priority}} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Deadline">
+          <mat-header-cell *matHeaderCellDef> Deadline </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Deadline}} </mat-cell>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>Task status</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-form-field class="mt-2">
+              <mat-label>Select status</mat-label>
+              <select matNativeControl [disabled]="disableSelect.value">
+                <option value="Pending">Pending</option>
+                <option value="Done">Done</option>
+                <option value="Revisit">Revisit</option>
+              </select>
+            </mat-form-field>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Progrees">
+          <mat-header-cell *matHeaderCellDef> Progress % </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+           <div class="col">
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            <div class="row ml-auto">
+              <p>40/100</p>
+            </div>
+          </div>
+
+          </mat-cell>
+        
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </section>
+      </mat-card>
+     </div>
+   
   </div>
 </div>
+  </div>
+</div>
+
+

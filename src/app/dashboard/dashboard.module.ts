@@ -4,7 +4,6 @@ import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angula
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashLayoutComponent } from './dash-layout/dash-layout.component';
-import { DashPagesComponent } from './dash-pages/dash-pages.component';
 import { FooterComponent } from './dash-component/footer/footer.component';
 import { EmployeeManagementComponent } from './dash-pages/employee-management/employee-management.component';
 import { AttendenceComponent } from './dash-pages/attendence/attendence.component';
@@ -29,10 +28,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LeaveComponent } from './dash-pages/leave/leave.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
+import { ViewComponent } from './dash-pages/leave/view/view.component';
 @NgModule({
   declarations: [
     DashLayoutComponent,
-    DashPagesComponent,
     FooterComponent,
     EmployeeManagementComponent,
     AttendenceComponent,
@@ -41,6 +40,7 @@ import {MatSelectModule} from '@angular/material/select';
     ContainerComponent,
     AddEmployeeComponent,
     LeaveComponent,
+    ViewComponent,
   ],
 
   imports: [
