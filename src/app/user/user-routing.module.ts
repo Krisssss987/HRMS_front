@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LeaveComponent } from './leave/leave.component';
 import { CertificatesComponent } from './certificates/certificates.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,12 @@ const routes: Routes = [
     },{
         path: 'leave',
         component: LeaveComponent
-    },{
+    },
+    {
+      path: 'profile',
+      component: ProfileComponent
+  },
+    {
         path: 'certificates',
         component: CertificatesComponent
     },

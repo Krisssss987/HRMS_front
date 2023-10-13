@@ -1,10 +1,15 @@
-.qr-code-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.qr{
+    height:83vh;
+}
 
-  .qr-code-container img {
+  .example-container {
+    height: 280px;
     max-width: 100%;
-    height: auto;
+    overflow: auto;
+  }
+  mat-header-cell{
+    text-align: center;
+  }
+  mat-cell{
+    text-align: center;
   }
