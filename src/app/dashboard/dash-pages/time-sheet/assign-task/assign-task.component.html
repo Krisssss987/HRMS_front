@@ -1,0 +1,66 @@
+<div class="container-fluid">
+	<div class="row model-head mb-2">
+	  <div class="col-lg-12 col-md-12 col-sm-12 pt-1">
+		<div class="model-title">Assign task </div>
+	  </div>
+	</div>
+	<form  class="row">
+	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Employee Name</mat-label>
+		  <input matInput type="text"  name="EmployeeName" required>
+		</mat-form-field>
+	  </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Employee UID</mat-label>
+		  <input matInput type="text"  name="EmployeeUID" required>
+		</mat-form-field>
+	  </div>
+	
+	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
+		<mat-form-field class="from-field">
+		  <mat-label>Project title</mat-label>
+		  <input matInput type="text" name="Projecttitle" required>
+
+		</mat-form-field>
+	  </div>
+	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
+		
+        <mat-form-field class="from-field">
+            <mat-label>status</mat-label>
+            <input matInput type="text"  name="status" required >
+  
+          </mat-form-field>
+	  </div>
+	  <div class="col-md-12 mb-2">
+		<mat-form-field class="from-field">
+            <mat-label>Remarks</mat-label>
+            <input matInput type="text"  name="Remarks" required >
+          </mat-form-field>
+	  </div>
+
+	  <div class="col-md-12 mb-2">
+		<mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+	  </div>
+
+	  <div class="row">
+	  <div class="col-lg-6 col-md-6 col-sm-6 justify-content-end d-flex mb-2">
+		<button mat-raised-button  mat-dialog-close>Close</button>
+	  </div>
+	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
+		<button mat-raised-button style="background: rgb(45, 160, 160);"  type="submit"  [mat-dialog-close]="true" >Save</button>
+	  </div>
+	</div>
+	</form>
+  </div>
+  

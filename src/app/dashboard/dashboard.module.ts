@@ -29,6 +29,7 @@ import { LeaveComponent } from './dash-pages/leave/leave.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import { ViewComponent } from './dash-pages/leave/view/view.component';
+import { AssignTaskComponent } from './dash-pages/time-sheet/assign-task/assign-task.component';
 @NgModule({
   declarations: [
     DashLayoutComponent,
@@ -41,6 +42,7 @@ import { ViewComponent } from './dash-pages/leave/view/view.component';
     AddEmployeeComponent,
     LeaveComponent,
     ViewComponent,
+    AssignTaskComponent,
   ],
 
   imports: [

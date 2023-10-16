@@ -1,10 +1,24 @@
-import { DatePipe } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-
-import { MatPaginator } from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AssignTaskComponent } from './assign-task/assign-task.component';
 
+export interface PeriodicElement {
+   title: string;
+  Emp_title: string;
+  deadline: string;
+  status: string;
+  remarks:string;
+  assigned:string;
 
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {Emp_title: 'Vishal chouhan', title: 'HRMS', deadline: '14-10-23',assigned:'16-10-23', status: 'pending',remarks:'You have to update the chatbox'},
+
+];
 
 
 @Component({
@@ -14,50 +28,25 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 })
 
 export class TimeSheetComponent {
+  displayedColumns: string[] = ['Emp_title', 'title', 'remarks','status', 'assigned','deadline','actions'];
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  title = 'timesheet';
+  constructor(public dialog: MatDialog) {}
 
-  myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
-    return day !== 0;  
-  };
-  displayedColumns: string[] = ['ProjectTitle', 'Status', 'SubmittedDate', 'TimesheetDate', 'Remarks'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  openAssignTaskDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.height = 'auto';
+    dialogConfig.maxWidth = '90vw';
+    const dialogRef = this.dialog.open(AssignTaskComponent, dialogConfig);
+    // dialogRef.afterClosed().subscribe(deviceAdded => {});
+  }
+
 }
 
-export interface PeriodicElement {
-  ProjectTitle: string;
-  Status: string;
-  SubmittedDate: string;
-  TimesheetDate: string;
-  Remarks: string;
- 
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  { ProjectTitle: '1', Status: 'Hydrogen', SubmittedDate: '1.0079', TimesheetDate: 'H', Remarks: 'H'},
-  { ProjectTitle: '2', Status: 'Helium', SubmittedDate: '4.0026', TimesheetDate: 'He', Remarks: 'H' },
-  { ProjectTitle: '3', Status: 'Lithium', SubmittedDate: '6.941', TimesheetDate: 'Li', Remarks: 'H'},
-  { ProjectTitle: '4', Status: 'Beryllium', SubmittedDate: '9.0122', TimesheetDate: 'Be', Remarks: 'H' },
-  { ProjectTitle: '5', Status: 'Boron', SubmittedDate: '10.811', TimesheetDate: 'B', Remarks: 'H'},
-  { ProjectTitle: '6', Status: 'Carbon', SubmittedDate: '12.0107', TimesheetDate: 'C', Remarks: 'H' },
-  { ProjectTitle: '7', Status: 'Nitrogen', SubmittedDate: '14.0067', TimesheetDate: 'N', Remarks: 'H' },
-  { ProjectTitle: '8', Status: 'Oxygen', SubmittedDate: '15.9994', TimesheetDate: 'O', Remarks: 'H'},
-  { ProjectTitle: '9', Status: 'Fluorine', SubmittedDate: '18.9984', TimesheetDate: 'F', Remarks: 'H' },
-  { ProjectTitle: '10', Status: 'Neon', SubmittedDate: '20.1797', TimesheetDate: 'Ne', Remarks: 'H' },
-  { ProjectTitle: '11', Status: 'Sodium', SubmittedDate: '22.9897', TimesheetDate: 'Na', Remarks: 'H' },
-  { ProjectTitle: '12', Status: 'Magnesium', SubmittedDate: '24.305', TimesheetDate: 'Mg', Remarks: 'H' },
-  { ProjectTitle: '13', Status: 'Aluminum', SubmittedDate: '26.9815', TimesheetDate: 'Al', Remarks: 'H' },
-  { ProjectTitle: '14', Status: 'Silicon', SubmittedDate: '28.0855', TimesheetDate: 'Si', Remarks: 'H' },
-  { ProjectTitle: '15', Status: 'Phosphorus', SubmittedDate: '30.9738', TimesheetDate: 'P', Remarks: 'H'},
-  { ProjectTitle: '16', Status: 'Sulfur', SubmittedDate: '32.065', TimesheetDate: 'S', Remarks: 'H' },
-  { ProjectTitle: '17', Status: 'Chlorine', SubmittedDate: '35.453', TimesheetDate: 'Cl', Remarks: 'H' },
-  { ProjectTitle: '18', Status: 'Argon', SubmittedDate: '39.948', TimesheetDate: 'Ar', Remarks: 'H' },
-  { ProjectTitle: '19', Status: 'Potassium', SubmittedDate: '39.0983', TimesheetDate: 'K', Remarks: 'H' },
-  { ProjectTitle: '20', Status: 'Calcium', SubmittedDate: '40.078', TimesheetDate: 'Ca', Remarks: 'H'},
-];
+
 
