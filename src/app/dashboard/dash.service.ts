@@ -42,4 +42,8 @@ export class DashService {
   leaveDetails(leaveId: string):Observable<any> {
     return this.http.get(`${this.API_URL}/getLeaveInfo/${leaveId}`);
   }
+
+  leaveToday(leaveDate : any):Observable<any> {
+    return this.http.get(`${this.API_URL}/getLeaveByDate`,leaveDate);
+  }
 }
