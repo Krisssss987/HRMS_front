@@ -1,6 +1,9 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
+import { DashService } from '../../dash.service';
+import { Router } from '@angular/router';
 HC_exporting(Highcharts);
 
 interface Food {
@@ -15,23 +18,42 @@ export interface PeriodicElement {
   type:string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {NoOfDays: 2, name: 'Vishal Chouhan', from: '11-10-23', To: '13-10-23',type:'medical'},
-  {NoOfDays: 2, name: 'krishna lokhande', from: '11-10-23', To: '13-10-23',type:'medical'},
-  {NoOfDays: 2, name: 'gaurav jadhav', from: '11-10-23', To: '13-10-23',type:'medical'},
-  {NoOfDays: 2, name: 'kaushal pohekar', from: '11-10-23', To: '13-10-23',type:'medical'},
-  {NoOfDays: 2, name: 'Vishal Chouhan', from: '11-10-23', To: '13-10-23',type:'medical'},
-  {NoOfDays: 2, name: 'krishna lokhande', from: '11-10-23', To: '13-10-23',type:'medical'},
-  {NoOfDays: 2, name: 'gaurav jadhav', from: '11-10-23', To: '13-10-23',type:'medical'},
-  {NoOfDays: 2, name: 'kaushal pohekar', from: '11-10-23', To: '13-10-23',type:'medical'},
-];
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements AfterViewInit, OnInit {
+  dataSource: any;
+
+  ngOnInit(): void {
+    this.TodayLeave();
+  }
+
+  CompanyEmail!: string | null;
+
+  constructor(
+    public snackBar: MatSnackBar,
+    public dashService:DashService,
+    public router:Router
+  ){}
+
+  TodayLeave() {
+    this.CompanyEmail = sessionStorage.getItem('CompanyEmail');
+    if (this.CompanyEmail) {
+      this.dashService.leaveToday(this.CompanyEmail).subscribe(
+        (users) => {
+          this.dataSource = users.getLeaveInfo;
+          console.log(this.dataSource)
+        },
+        (error) => {
+          // Handle error
+        }
+      );
+    }
+  }
+
   ngAfterViewInit() {
     Highcharts.chart('chartContainer', this.chartOptions);
     Highcharts.chart('pieChartContainer', this.pieChartOptions);
@@ -127,6 +149,5 @@ export class DashboardComponent implements AfterViewInit {
   displayedColumns = [
     'name',   'NoOfDays',  'from',  'To','type'
   ];
-  dataSource = ELEMENT_DATA;
   
 }

@@ -12,7 +12,7 @@ mat-card{
 
 .example-container {
   height: 400px;
-  max-width: 100%;
+  max-width: 800px;
   overflow: auto;
 }
 

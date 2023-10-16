@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { UsersService } from '../users.service';
 import { AuthService } from 'src/app/login/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-leave',
@@ -93,7 +94,7 @@ export class LeaveComponent implements OnInit{
     return '';
   }
 
-  constructor(private userService:UsersService,private authService:AuthService,private snackBar:MatSnackBar) {
+  constructor(private userService:UsersService,private authService:AuthService,private snackBar:MatSnackBar,private router:Router) {
   }
 
   firstName=this.authService.getFirstName();
@@ -124,7 +125,7 @@ export class LeaveComponent implements OnInit{
         discussWithSupervisor:this.discussedWithSupervisor.value,
         totalLeaveDays:this.totalNumberOfLeaves.value,
         emergencyContact:this.emergencyContact.value,
-        comments:this.reasonForLeave.value
+        comments:this.reasonForLeave.value,
       };
       this.userService.leaveApp(internleave).subscribe(
         () => {
