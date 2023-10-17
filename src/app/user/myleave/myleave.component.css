@@ -1,0 +1,14 @@
+mat-card-content{
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+}
+mat-card{
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 768px){
+    mat-card{
+        flex-direction: column;
+    }
+}

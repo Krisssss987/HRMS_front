@@ -28,6 +28,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { UploadimageComponent } from './profile/uploadimage/uploadimage.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MyleaveComponent } from './myleave/myleave.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     UsersContainerComponent,
     CertificatesComponent,
     ProfileComponent,
-    UploadimageComponent
+    UploadimageComponent,
+    MyleaveComponent,
   ],
   imports: [
     CommonModule,
@@ -63,6 +66,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatTableModule,
     MatButtonModule,
     RouterModule,
+    MatPaginatorModule,
     MatTooltipModule,
     MatProgressBarModule
   ]
