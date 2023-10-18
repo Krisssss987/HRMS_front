@@ -30,7 +30,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MyleaveComponent } from './myleave/myleave.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -68,6 +68,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RouterModule,
     MatPaginatorModule,
     MatTooltipModule,
+    HttpClientModule,
     MatProgressBarModule
   ]
 })

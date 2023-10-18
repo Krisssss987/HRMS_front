@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator,MatPaginatorModule} from '@angular/material/paginator';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,7 +11,25 @@ import {MatPaginator,MatPaginatorModule} from '@angular/material/paginator';
 })
 
 
-export class MyleaveComponent {
+export class MyleaveComponent implements OnInit {
+
+  public getJsonValue: any;
+  public postJsonValue: any;
+  constructor(private http: HttpClient) {
+
+  }
+  ngOnInit(): void {
+    this.getMethod();
+
+  }
+  public getMethod() {
+    this.http.get('https://jsonplaceholder.typicode.com/posts/1').subscribe((data) => {
+      console.log(data);
+      this.getJsonValue = data;
+    }
+
+    );
+  }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
