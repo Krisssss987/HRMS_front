@@ -4,10 +4,9 @@
         <h1 class="text-center">Leave Management </h1>
       </div>
     </div>
-    <div class="row mt-4">
-      <div class="col-md-6 col-sm-6 col-6">
+    <div class="container-fluid mt-4">
         <div class="row">
-          <div>
+          <div class="col-xl-6 col-md-6 col-sm-12">
             <h4>Reason For Leave*</h4>
             <mat-form-field class="input-full-width">
                 <mat-label>Reason For Leave</mat-label>
@@ -16,7 +15,7 @@
               </mat-form-field>
             
           </div>
-          <div >
+          <div class="col-xl-6 col-md-6 col-sm-12">
             <h4>Leave Start and end date</h4>
             <mat-form-field class="input-full-width">
                 <mat-label>Enter a date range</mat-label>
@@ -30,7 +29,7 @@
                 <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
               </mat-form-field>
           </div>
-          <div >
+          <div class="col-xl-6 col-md-6 col-sm-12" >
             <h4>Total Number Of Leaves</h4>
               <mat-form-field class="input-full-width">
                 <mat-label>Total Number Of Leave  </mat-label>
@@ -38,7 +37,7 @@
                 <mat-error *ngIf="totalNumberOfLeaves.invalid">{{ getTotalNumberOfLeavesErrorMessage() }}</mat-error>
               </mat-form-field>
           </div>
-          <div >
+          <div class="col-xl-6 col-md-6 col-sm-12">
             <h4 class="input-full-width"> If medical, please provide a brief discription of the illness or medical condition</h4>
               <mat-form-field class="input-full-width">
                 <mat-label>Discription of illness or medical condition </mat-label>
@@ -46,10 +45,7 @@
                 <mat-error *ngIf="illnessDescription.invalid">{{ getIllnessDescriptionErrorMessage() }}</mat-error>
               </mat-form-field>
           </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-sm-6 col-6">
-        <div>
+         <div class="col-xl-6 col-md-6 col-sm-12">
             <h4>Have you discussed your leave with your supervisor or manager?</h4>
             <!-- <label class="example-margin">Align:</label> -->
             <mat-form-field class="input-full-width">
@@ -61,7 +57,7 @@
             <mat-error *ngIf="discussedWithSupervisor.invalid">{{ getDiscussedWithSupervisorErrorMessage() }}</mat-error>
           </mat-form-field>
           </div>
-          <div>
+          <div class="col-xl-6 col-md-6 col-sm-12">
             <h4>Type of Leave</h4>
             <!-- <label class="example-margin">Align:</label> -->
             <mat-form-field class="input-full-width">
@@ -73,7 +69,7 @@
             <mat-error *ngIf="typeOfLeave.invalid">{{ getTypeOfLeaveErrorMessage() }}</mat-error>
           </mat-form-field>
           </div>
-          <div>
+          <div class="col-xl-6 col-md-6 col-sm-12">
             <h4>Emergency Contact (Name, Relationship, Phone Number)</h4>
             <mat-form-field class="input-full-width">
                 <mat-label>Contact Number</mat-label>
@@ -82,7 +78,7 @@
                 <mat-error *ngIf="emergencyContact.hasError('pattern')">Enter a valid 10-digit mobile number.</mat-error>
               </mat-form-field>
           </div>
-          <div>
+          <div class="col-xl-6 col-md-6 col-sm-12"> 
             <h4>How do you plan to handle your pending tasks or workload during your absence?</h4>
             <mat-form-field class="input-full-width ">
                 <mat-label>Plan to handle your pending tasks</mat-label>
@@ -90,7 +86,6 @@
                 <mat-error *ngIf="pendingTasksHandling.invalid">{{ getPendingTasksHandlingErrorMessage() }}</mat-error>
               </mat-form-field>
           </div>
-      </div>
       <div class="row justify-content-center">
         <button (click)="submit()" style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="btn justify-content-center">Submit</button>
 

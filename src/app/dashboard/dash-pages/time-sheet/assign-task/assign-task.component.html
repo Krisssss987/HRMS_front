@@ -6,20 +6,20 @@
 	</div>
 	<form  class="row">
 	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
-		<mat-form-field class="from-field">
+		<mat-form-field class="from-field" appearance="outline">
 		  <mat-label>Employee Name</mat-label>
 		  <input matInput type="text"  name="EmployeeName" required>
 		</mat-form-field>
 	  </div>
       <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
-		<mat-form-field class="from-field">
+		<mat-form-field class="from-field" appearance="outline">
 		  <mat-label>Employee UID</mat-label>
 		  <input matInput type="text"  name="EmployeeUID" required>
 		</mat-form-field>
 	  </div>
 	
 	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
-		<mat-form-field class="from-field">
+		<mat-form-field class="from-field" appearance="outline">
 		  <mat-label>Project title</mat-label>
 		  <input matInput type="text" name="Projecttitle" required>
 
@@ -27,21 +27,21 @@
 	  </div>
 	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
 		
-        <mat-form-field class="from-field">
+        <mat-form-field class="from-field" appearance="outline">
             <mat-label>status</mat-label>
             <input matInput type="text"  name="status" required >
   
           </mat-form-field>
 	  </div>
 	  <div class="col-md-12 mb-2">
-		<mat-form-field class="from-field">
+		<mat-form-field class="from-field" appearance="outline">
             <mat-label>Remarks</mat-label>
             <input matInput type="text"  name="Remarks" required >
           </mat-form-field>
 	  </div>
 
 	  <div class="col-md-12 mb-2">
-		<mat-form-field>
+		<mat-form-field appearance="outline">
             <mat-label>Enter a date range</mat-label>
             <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
               <input matStartDate formControlName="start" placeholder="Start date">
@@ -52,15 +52,15 @@
             <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
 	  </div>
-
 	  <div class="row">
-	  <div class="col-lg-6 col-md-6 col-sm-6 justify-content-end d-flex mb-2">
-		<button mat-raised-button  mat-dialog-close>Close</button>
+		<div class="col-xl-6 col-md-6 col-sm-12 ">
+			<button mat-raised-button  mat-dialog-close class="w-100 mt-1">Close</button></div>
+		<div class="col-xl-6 col-md-6 col-sm-12 ">
+			<button mat-raised-button style="background: rgb(45, 160, 160);" class="w-100 mt-1" type="submit"  [mat-dialog-close]="true" >Save</button>
+		</div>
+
 	  </div>
-	  <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
-		<button mat-raised-button style="background: rgb(45, 160, 160);"  type="submit"  [mat-dialog-close]="true" >Save</button>
-	  </div>
-	</div>
+
 	</form>
   </div>
   

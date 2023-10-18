@@ -6,7 +6,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 
 export interface PeriodicElement {
-   title: string;
+  title: string;
   Emp_title: string;
   deadline: string;
   status: string;
@@ -40,7 +40,7 @@ export class TimeSheetComponent {
   openAssignTaskDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
-    dialogConfig.height = 'auto';
+    dialogConfig.height = '63vh';
     dialogConfig.maxWidth = '90vw';
     const dialogRef = this.dialog.open(AssignTaskComponent, dialogConfig);
     // dialogRef.afterClosed().subscribe(deviceAdded => {});

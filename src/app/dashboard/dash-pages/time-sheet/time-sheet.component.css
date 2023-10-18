@@ -1,20 +1,27 @@
 /* Structure */
 table {
-    width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  .example-container {
-    height: 400px;
-    max-width: 100%;
-    overflow: auto;
-  }
-  th{
-text-align: center;
-  }
-  td{
-    text-align: center;
-  }
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.example-container {
+  height: 50vh;
+  max-width: 100%;
+  overflow: auto;
+}
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

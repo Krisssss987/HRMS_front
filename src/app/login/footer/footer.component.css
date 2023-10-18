@@ -1,7 +1,9 @@
 .footer {
+    margin-top: 5vh;
     position: fixed;
     bottom: 0;
-    height: 5vh;
+    z-index: 1;
+    height:min-content;
     width: 100%; 
     background-color: rgb(42,160,160,255);
     color: whitesmoke;

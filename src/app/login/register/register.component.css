@@ -1,10 +1,4 @@
-.bg-img{
-  height: 86.5vh;
-  background-image:url("src/assets/img/Multitasking-rafiki.png");/* Replace 'path-to-your-image.jpg' with the actual path to your image */
-  background-size: cover; /* Adjust this property to control how the image covers the element */
-  background-position: center; /* Adjust this property to control the position of the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-}
+
 .register-box{
   margin: 0;
   padding: 10px;
@@ -12,8 +6,9 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-size: cover;
+  z-index: 0;
 }
+
 /* color */
 .color-temp{
   color:rgb(42,160,160);
@@ -23,10 +18,10 @@
 }
 
 mat-card{
-  backdrop-filter: blur(30px); /* Apply a blur effect */
+ 
   border-radius: 10px; /* Optionally, round the corners for a frosted glass effect */
   background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
-  box-shadow: 0 0 10px rgba(42, 160,160, 0.7); /* Add a subtle shadow */
+  box-shadow: 0 0 10px rgba(109, 109, 109, 0.5); /* Add a subtle shadow */
 }
 
 .register-card{
@@ -49,20 +44,25 @@ h3{
 .column-container {
   display: block;
 }
-@media screen and (max-width: 600px) {
-  .register-card{
-    width: 100%;
-  }
-  .bg-img{
-    height: 100vh;
-  }
-  .mat-form-field-label{
-    font-size: 10px;
-  }
-}
+
 @media (max-width: 600px) {
   .mat-form-field-label {
     font-size: 22px; /* Reduce the font size for smaller screens */
   }
+  mat-card{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+  
 }
+@media(max-height:400px) {
+  .mat-form-field-label {
+    font-size: 22px; /* Reduce the font size for smaller screens */
+  }
+  mat-card{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+}
+
 

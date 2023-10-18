@@ -15,3 +15,35 @@ h4,h1{
 .btn{
     width: fit-content;
 }
+@media (max-width: 576px) {
+    h1 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 18px;
+    }
+    .mat-label,
+    input,
+    mat-select,
+    textarea {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+  
+  /* Larger screens */
+  @media (min-width: 577px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+    h4 {
+      font-size: 1.2rem;
+    }
+    .mat-label,
+    input,
+    mat-select,
+    textarea {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  }

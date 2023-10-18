@@ -1,7 +1,12 @@
-.color-temp{
-  background-color:rgb(42,160,160,255);
-}
-
+mat-toolbar-row{
+  justify-content:center;}
 h2{
 color: whitesmoke;
+}
+mat-toolbar{
+  background-color:rgb(42,160,160,255);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: fit-content;
 }

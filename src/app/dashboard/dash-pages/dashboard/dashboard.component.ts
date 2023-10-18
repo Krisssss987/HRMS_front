@@ -85,7 +85,7 @@ export class DashboardComponent implements AfterViewInit, OnInit {
       type: 'column',
       name: 'Total working hours this week',
       data: [4,6,8,2,1,4],
-      color: '#E57C23' // Set the color to #EE8437
+      color: '#2aa0a0' // Set the color to #EE8437
     },
    ]
   };
