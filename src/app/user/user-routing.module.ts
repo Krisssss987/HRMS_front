@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LeaveComponent } from './leave/leave.component';
 import { CertificatesComponent } from './certificates/certificates.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MyleaveComponent } from './myleave/myleave.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,11 @@ const routes: Routes = [
     {
       path: 'profile',
       component: ProfileComponent
-  },
+    },
+    {
+      path: 'myleave',
+      component: MyleaveComponent
+    },
     {
         path: 'certificates',
         component: CertificatesComponent
