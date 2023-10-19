@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <mat-card class="login-box">
+        <mat-card-content>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-3">
+                    <form class="form-container">
+            
+                      <div class="form-group">
+                        <h2 style="color:rgb(42,160,160);" class="text-center"><b>Resend Verification!</b></h2>
+                        <mat-form-field class="user" appearance="outline">
+                          <mat-label>Username and Email</mat-label>
+                        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                      </div>
+                    
+            
+                     
+                    </form>
+                    <div class="row">
+                        <div class="col">
+                          <div class="d-flex justify-content-between">
+                            <a class="link" routerLink="/login/login"><b>Verified? Sign In</b></a>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+              </div>
+        </mat-card-content>
+      </mat-card>
+</div>

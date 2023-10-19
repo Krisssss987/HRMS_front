@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PasswordMatchDirective } from './password-match.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ResendVerificationComponent } from './login/login-components/resend-verification/resend-verification.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     RegisterComponent,
     PasswordMatchDirective,
     PasswordMatchDirective,
+    ResendVerificationComponent,
   ],
   imports: [
     CommonModule,

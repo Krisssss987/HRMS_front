@@ -1,4 +1,4 @@
-<mat-toolbar class="h-10">
+<mat-toolbar style="height: 60px;">
     <button
       mat-icon-button
       *ngIf="sidenav.mode === 'over'"
@@ -12,7 +12,7 @@
     <span class="example-spacer"></span>
 
     <div class="d-flex flex-row-reverse ">
-    <button class="btn" type="button" mat-mini-fab style="background-color: whitesmoke;" aria-label="logout" (click)="logout()" routerLink="/login/login">
+    <button class="" type="button" mat-mini-fab style="background-color: whitesmoke;" aria-label="logout" (click)="logout()" routerLink="/login/login">
       <mat-icon style="color: black;">exit_to_app</mat-icon>
     </button>
     </div>

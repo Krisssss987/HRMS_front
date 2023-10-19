@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
+import {FormControl, Validators, FormsModule, ReactiveFormsModule, FormGroup} from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatDialogConfig,MatDialog } from '@angular/material/dialog';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
@@ -13,6 +14,16 @@ import { DashService } from '../../dash.service';
   styleUrls: ['./employee-management.component.css'],
 })
 export class EmployeeManagementComponent implements OnInit{
+  signupForm: FormGroup | undefined;
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
+  contactNo = new FormControl('', [Validators.required,Validators.pattern(/^[0-9]{10}$/)]);
+  DOB = new FormControl('', [Validators.required]);
+  Total = new FormControl('', [Validators.required]);
+  roles = new FormControl('', [Validators.required]);
+  supervisor = new FormControl('', [Validators.required]);
+  employeeEmail = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('',);
 
   ngOnInit(): void {
     this.userDetails();
@@ -69,6 +80,7 @@ export class EmployeeManagementComponent implements OnInit{
     const dialogRef = this.dialog.open(AddEmployeeComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(userAdded => {});
   }
+  
 
   
 }

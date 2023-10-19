@@ -3,7 +3,9 @@
     flex-direction: column;
     min-width: 300px;
   }
-  
+  .btn{
+    width: 200px;
+  }
   .example-header {
     min-height: 64px;
     padding: 8px 24px 0;
@@ -13,9 +15,15 @@
     font-size: 14px;
     width: 100%;
   }
-  
+  .column-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px 0;
+  }
   .example-container {
-    max-height: 35vh;
+    max-height: 33vh;
     overflow: auto;
   }
   div::-webkit-scrollbar{

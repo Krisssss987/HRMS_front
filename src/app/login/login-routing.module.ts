@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotComponent } from './forgot/forgot.component';
 import { ResetComponent } from './reset/reset.component';
 import { EmailGuard } from './auth/email.guard';
+import { ResendVerificationComponent } from './login/login-components/resend-verification/resend-verification.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
         path: 'password',
         canActivate:[EmailGuard],
         component: ResetComponent
+    }, {
+        path: 'resend-verification',
+        component: ResendVerificationComponent
     },
 {path:'',redirectTo:'login',pathMatch:'full'}]
 }

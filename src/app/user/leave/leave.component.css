@@ -15,35 +15,48 @@ h4,h1{
 .btn{
     width: fit-content;
 }
-@media (max-width: 576px) {
-    h1 {
-      font-size: 24px;
-    }
+/* @media(min-width: 768px) {
     h4 {
-      font-size: 18px;
-    }
-    .mat-label,
-    input,
-    mat-select,
-    textarea {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-  }
-  
-  /* Larger screens */
-  @media (min-width: 577px) {
-    h1 {
-      font-size: 1.5rem;
-    }
+        font-size: 10px;
+      }
+    
+}
+@media(min-width: 1000px) {
     h4 {
-      font-size: 1.2rem;
+        font-size: 18px;
+      }
+    
+} */
+/* @media (width <= 1300px){
+    h4{
+        font-size: 15px;
     }
-    .mat-label,
-    input,
-    mat-select,
-    textarea {
-      font-size: 18px;
-      line-height: 1.6;
+    
+}
+@media (width >1050px){
+    h4{
+        font-size:0.7rem;
     }
-  }
+    
+} */
+/* @media (width <768px){
+    h4{
+        font-size:16px;
+        color: aqua;
+    }
+    
+}
+@media (width >768px){
+    h4{
+        font-size:10px;
+        color: rgb(14, 85, 34);
+    }
+    
+}
+
+@media (width >1200px){
+    h4{
+        font-size:14px;
+    }
+    
+} */
