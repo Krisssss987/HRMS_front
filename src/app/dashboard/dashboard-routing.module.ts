@@ -7,6 +7,7 @@ import { TimeSheetComponent } from './dash-pages/time-sheet/time-sheet.component
 import { DashboardComponent } from './dash-pages/dashboard/dashboard.component';
 import { LeaveComponent } from './dash-pages/leave/leave.component';
 import { ViewComponent } from './dash-pages/leave/view/view.component';
+import { LeaveIdGuard } from '../login/auth/leave.guard';
 
 const routes: Routes = [
   {
@@ -28,6 +29,7 @@ const routes: Routes = [
       component: LeaveComponent
     },{
       path: 'viewLeave',
+      canActivate: [LeaveIdGuard],
       component: ViewComponent
     },
 {path:'**',redirectTo:'dashboard',pathMatch:'full'}]

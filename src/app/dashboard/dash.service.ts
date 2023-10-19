@@ -18,6 +18,10 @@ export class DashService {
     this.leaveIdSource.next(leaveId);
   }
 
+  getLeaveId(): string {
+    return this.leaveIdSource.value;
+  }
+
   addUser(userRegister: any): Observable<any> {
     return this.http.post(`${this.API_URL}/addUser`, userRegister);
   }
