@@ -81,7 +81,7 @@ export class LoginComponent {
   redirectUser(Designation: string) {
     if (Designation === 'Intern' || Designation === 'Employee') {
       this.router.navigate(['dashboard']);
-    } else if (Designation === 'Super Employee') {
+    } else if (Designation === 'Manager') {
       this.router.navigate(['/sa']);
     }
   }

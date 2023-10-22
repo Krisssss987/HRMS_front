@@ -31,7 +31,7 @@ const routes: Routes = [
     path: 'sa',
     component: DashLayoutComponent,
      canActivate: [AuthGuard, RoleGuard],
-    data: { roles: ['Super Employee'] },
+    data: { roles: ['Manager'] },
     children: [
       { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
     ]

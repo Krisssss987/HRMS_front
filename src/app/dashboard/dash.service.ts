@@ -50,4 +50,13 @@ export class DashService {
   leaveToday(leaveDate : any):Observable<any> {
     return this.http.get(`${this.API_URL}/getLeaveByDate`,leaveDate);
   }
+  taskSheet():Observable<any> {
+    return this.http.get(`${this.API_URL}/getTaskSheet`);
+  }
+  InternDetails():Observable<any> {
+    return this.http.get(`${this.API_URL}/getInternDetails`);
+  }
+  SupervisiorDetails():Observable<any> {
+    return this.http.get(`${this.API_URL}/getSupervisorDetails`);
+  }
 }

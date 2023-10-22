@@ -1,9 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
+import { DashService } from '../../dash.service';
+
 
 export interface PeriodicElement {
   title: string;
@@ -15,10 +15,7 @@ export interface PeriodicElement {
 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {Emp_title: 'Vishal chouhan', title: 'HRMS', deadline: '14-10-23',assigned:'16-10-23', status: 'pending',remarks:'You have to update the chatbox'},
-
-];
+const ELEMENT_DATA: PeriodicElement[] = [];
 
 
 @Component({
@@ -27,12 +24,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./time-sheet.component.css'] 
 })
 
-export class TimeSheetComponent {
-  displayedColumns: string[] = ['Emp_title', 'title', 'remarks','status', 'assigned','deadline','actions'];
+export class TimeSheetComponent implements OnInit{
+  displayedColumns: string[] = ['Emp_title', 'title', 'remarks', 'assigned','deadline','actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private dashService: DashService) {}
 
+  ngOnInit(): void {
+    this.timesheet();
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -44,6 +44,18 @@ export class TimeSheetComponent {
     dialogConfig.maxWidth = '90vw';
     const dialogRef = this.dialog.open(AssignTaskComponent, dialogConfig);
     // dialogRef.afterClosed().subscribe(deviceAdded => {});
+  }
+
+  timesheet(){
+    this.dashService.taskSheet().subscribe(
+      (taskSheets) =>{
+        console.log(taskSheets.getTaskSheet);
+        this.dataSource = taskSheets.getTaskSheet;
+      },
+      (error) =>{
+        console.log("Tasksheet Data is not Fetching!!", error);
+      }
+    );
   }
 
 }

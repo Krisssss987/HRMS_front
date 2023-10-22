@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashLayoutComponent } from './dash-layout/dash-layout.component';
@@ -49,6 +50,7 @@ import { AssignTaskComponent } from './dash-pages/time-sheet/assign-task/assign-
     CommonModule,
     DashboardRoutingModule,
     MatIconModule,
+    MatAutocompleteModule,
     MatListModule,
     MatDatepickerModule,
     MatFormFieldModule,

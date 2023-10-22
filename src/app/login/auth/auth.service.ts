@@ -29,6 +29,7 @@ export class AuthService {
   setToken(token: string): void {
     this.token = token;
     sessionStorage.setItem('token', token);
+    console.log('Token set in session storage.', token);
     this.getUserDetails();
   }
 
@@ -50,6 +51,7 @@ export class AuthService {
 
   setDesignation(Designation: string) {
     sessionStorage.setItem('Designation', Designation);
+    console.log('Designation set in session storage.', Designation);
   }
 
   getDesignation(): string | null {
