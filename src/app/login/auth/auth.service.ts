@@ -102,6 +102,7 @@ export class AuthService {
     return this.getToken() !== null;
   }
 
+// LogOut
   logout(): void {
     sessionStorage.removeItem('token'); // Clear the token
     this.isLoggedIn(); // Set the logged-in status to false
