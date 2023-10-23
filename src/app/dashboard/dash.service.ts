@@ -59,5 +59,8 @@ export class DashService {
   SupervisiorDetails():Observable<any> {
     return this.http.get(`${this.API_URL}/getSupervisorDetails`);
   }
-  
+  assignTask(assignTask: any): Observable<any> {
+    return this.http.post(`${this.API_URL}/taskUpdate`, assignTask);
+  }
+
 }

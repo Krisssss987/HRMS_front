@@ -25,7 +25,7 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 })
 
 export class TimeSheetComponent implements OnInit{
-  displayedColumns: string[] = ['Emp_title', 'title', 'remarks', 'assigned','deadline','actions'];
+  displayedColumns: string[] = ['Emp_title', 'title', 'remarks', 'assigned', 'priority','deadline','actions'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   constructor(public dialog: MatDialog, private dashService: DashService) {}

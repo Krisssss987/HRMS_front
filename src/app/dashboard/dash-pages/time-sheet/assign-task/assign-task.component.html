@@ -8,7 +8,7 @@
     <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
       <mat-form-field class="from-field" appearance="outline">
         <mat-label>Employee Name</mat-label>
-        <mat-select placeholder="Pick one" [formControl]="EmployeeName">
+        <mat-select placeholder="Pick one" [formControl]="EmployeeName" name="EmployeeName">
           <mat-option *ngFor="let Employee of employeeOptions" [value]="Employee" (click)="open(Employee)">
             {{ Employee.FirstName }} {{ Employee.LastName }}
           </mat-option>
@@ -19,7 +19,7 @@
     <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
       <mat-form-field class="from-field" appearance="outline">
         <mat-label>Supervisor</mat-label>
-        <mat-select placeholder="Pick one" [formControl]="Supervisor">
+        <mat-select placeholder="Pick one" [formControl]="Supervisor" name="Supervisor" >
           <mat-option *ngFor="let supervisor of supervisorOptions" [value]="supervisor.Username">
             {{ supervisor.FirstName }} {{ supervisor.LastName }}
           </mat-option>
@@ -31,21 +31,21 @@
     <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
       <mat-form-field class="from-field" appearance="outline">
         <mat-label>Project title</mat-label>
-        <input matInput type="text" name="Projecttitle" [formControl]="Projecttitle" required>
+        <input matInput type="text" name="Projecttitle" [formControl]="Projecttitle" required >
         <mat-error *ngIf="Projecttitle.invalid">Project title is Required.</mat-error>
       </mat-form-field>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
       <mat-form-field class="from-field" appearance="outline">
         <mat-label>Remarks</mat-label>
-        <input matInput type="text" [formControl]="Remarks" required>
+        <input matInput type="text" [formControl]="Remarks" required name="Remarks"   >
         <mat-error *ngIf="Remarks.invalid">Remarks is Required.</mat-error>
       </mat-form-field>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
       <mat-form-field class="from-field" appearance="outline">
         <mat-label>Priority</mat-label>
-        <mat-select placeholder="Priority" [formControl]="Priority">
+        <mat-select placeholder="Priority" [formControl]="Priority" required name="Priority">
           <mat-option value="Low">Low</mat-option>
           <mat-option value="Normal">Normal</mat-option>
           <mat-option value="High">High</mat-option>
@@ -58,8 +58,8 @@
       <mat-form-field appearance="outline">
         <mat-label>Enter a date range</mat-label>
         <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-          <input matStartDate [formControl]="StartDate" placeholder="Start date">
-          <input matEndDate [formControl]="EndDate" placeholder="End date">
+          <input matStartDate [formControl]="StartDate" placeholder="Start date" required name="StartDate">
+          <input matEndDate [formControl]="EndDate" placeholder="End date" required name="EndDate" >
         </mat-date-range-input>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>

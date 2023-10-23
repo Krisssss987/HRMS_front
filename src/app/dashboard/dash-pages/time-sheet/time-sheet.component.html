@@ -27,33 +27,38 @@
           
             <!-- Emp_title Column -->
             <ng-container matColumnDef="Emp_title">
-              <th mat-header-cell *matHeaderCellDef> Employee title </th>
-              <td mat-cell *matCellDef="let element"> {{element.Emp_title}} </td>
+              <th mat-header-cell *matHeaderCellDef> Employee Name</th>
+              <td mat-cell *matCellDef="let element"> {{element.EmployeeName}} </td>
             </ng-container>
           
             <!-- title Column -->
             <ng-container matColumnDef="title">
               <th mat-header-cell *matHeaderCellDef> Project title </th>
-              <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.Status}} </td>
             </ng-container>
 
              <!-- Assigned Column -->
              <ng-container matColumnDef="assigned">
               <th mat-header-cell *matHeaderCellDef> Assign Date </th>
-              <td mat-cell *matCellDef="let element"> {{element.assigned}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.StartDate}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="priority">
+              <th mat-header-cell *matHeaderCellDef> Priority</th>
+              <td mat-cell *matCellDef="let element"> {{element.Priority}} </td>
             </ng-container>
           
             <!-- deadline Column -->
             <ng-container matColumnDef="deadline">
               <th mat-header-cell *matHeaderCellDef> Deadline </th>
-              <td mat-cell *matCellDef="let element"> {{element.deadline}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.EndDate}} </td>
             </ng-container>
           
             <!-- status Column -->
 
             <ng-container matColumnDef="remarks">
               <th mat-header-cell *matHeaderCellDef> Remarks </th>
-              <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.Remark }} </td>
             </ng-container>
 
             <ng-container matColumnDef="actions">
@@ -79,7 +84,7 @@
         </section>
           
         </mat-card-content>
-        <mat-paginator [length]="200" [pageSizeOptions]="[10, 50, 100]" aria-label="Select page">
+        <mat-paginator [length]="200" [pageSizeOptions]="[5, 10, 15]" aria-label="Select page">
         </mat-paginator>
       </mat-card>
       </div>

@@ -86,17 +86,27 @@ export class AssignTaskComponent implements OnInit {
     
         if (startDate && endDate) {
           const taskSheetData = {
-            "companyEmail": this.userEmail,
+            "employeeEmail": this.userEmail,
             "employeeName": this.userName,
-            "supervisorName": this.Supervisor.value,
-            "projectTitle": this.Projecttitle.value,
+            "supervisorEmail": this.Supervisor.value,
+            "status": this.Projecttitle.value,
             "remarks": this.Remarks.value,
             "priority": this.Priority.value,
             "startDate": this.formatDateToString(startDate), // Format start date
             "endDate": this.formatDateToString(endDate) // Format end date
           };
     
+          
+          this.dashService.assignTask(taskSheetData).subscribe(
+            (taskSheet) =>{
+              console.log("TaskSheet Data", taskSheet);
+            },
+            (error) =>{
+              console.log("Tasksheet Data is not Fetching!!", error);
+            }
+          );
           console.log("TaskSheet Data", taskSheetData);
+
         } else {
           console.log("Invalid date format");
         }
