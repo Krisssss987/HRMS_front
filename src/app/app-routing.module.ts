@@ -20,7 +20,7 @@ const routes: Routes = [
       }]
     }, {
     path: '',
-   component: LoginLayoutComponent,
+    component: LoginLayoutComponent,
     canActivate:[LoginGuard],
     children: [{
       path: 'login',
@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'sa',
     component: DashLayoutComponent,
-     canActivate: [AuthGuard, RoleGuard],
+    canActivate: [AuthGuard, RoleGuard],
     data: { roles: ['Manager'] },
     children: [
       { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
