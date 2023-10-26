@@ -80,8 +80,38 @@ export class EmployeeManagementComponent implements OnInit{
   }
   
 
-  
+  onSaveClick(): void {
+    if(this.firstName.valid && this.lastName.valid && this.DOB.valid
+      && this.contactNo.valid && this.Total.valid && this.roles.valid 
+      && this.supervisor.valid && this.employeeEmail.valid){
+      const addUser = {
+        companyEmail: this.employeeEmail.value,
+        contact: this.contactNo.value,
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        designation: this.roles.value,
+        password: this.employeeEmail.value,
+        supervisor: this.supervisor.value,
+        totalWorkingDays: this.Total.value,
+        dateOfBirth: this.DOB.value
+      }
+      this.dashService.addUser(addUser).subscribe(
+        () =>{
+        this.snackBar.open('User Added Successful!', 'Dismiss', {
+          duration: 2000
+        });
+        },
+      (error) => {
+        this.snackBar.open(
+            error.error.message || 'Failed to add User. Please try again.',
+            'Dismiss',
+            { duration: 2000 }
+          );
+      });
+    }
+  }
 }
+
 
 
 export interface PeriodicElement {
