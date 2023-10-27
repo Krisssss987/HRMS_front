@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-6 col-lg-3">
-        <form class="form-container" >
+        <form class="form-container" (submit)="submit()">
 
           <div class="form-group">
             <h2 style="color:rgb(42,160,160);" class="text-center"><b>Sign In</b></h2>
@@ -29,7 +29,7 @@
             </mat-form-field>
           </div>
           
-          <button  (click)="submit()" style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="full-width-button">Sign In</button>
+          <button  style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="full-width-button">Sign In</button>
 
           <div class="row">
             <div class="col">

@@ -8,6 +8,7 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DashService } from '../../dash.service';
 import { DatePipe } from '@angular/common';
+import { EditEmpComponent } from './edit-emp/edit-emp.component';
 
 
 @Component({
@@ -115,12 +116,48 @@ export class EmployeeManagementComponent implements OnInit{
     }
   }
 
-  openEditEmployee(employee: any): void{
-    console.log(employee);
+ // openEditEmployee(employee: any): void{
+   // console.log(employee);
+  //}
+  openEditEmployee(user: any): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.height = '63vh';
+    dialogConfig.maxWidth = '90vw';
+    dialogConfig.data = { user };
+    const dialogRef = this.dialog.open(EditEmpComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(deviceAdded => {
+      this.userDetails();
+    });
   }
+  getRoleTextStyle(role: string): any {
+    let textStyle = {};
+  
+    if (role === 'Manager') {
+      textStyle = {
+        color: 'blue', // Set the color for Manager role
+      };
+    } else if (role === 'Supervisor') {
+      textStyle = {
+        color: 'green', // Set the color for Supervisor role
+      };
+      
+    } // Add more conditions for other roles if needed
+    else if (role === 'Intern') {
+      textStyle = {
+        color: 'red', // Set the color for Employee role
+      };
+      
+    } else {  // Default color  
+      textStyle = {
+        color: 'black',
+      };
+    }
+  
+    return textStyle;
+  }
+  
 }
-
-
 
 export interface PeriodicElement {
   Employee_ID: number;

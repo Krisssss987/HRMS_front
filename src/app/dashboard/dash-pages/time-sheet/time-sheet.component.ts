@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { DashService } from '../../dash.service';
 import { UpdatTaskComponent } from './updat-task/updat-task.component';
+import {MatPaginator} from '@angular/material/paginator';
 
 
 export interface PeriodicElement {
@@ -27,9 +28,13 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 
 export class TimeSheetComponent implements OnInit{
   displayedColumns: string[] = ['Emp_title', 'title', 'remarks', 'assigned', 'priority','deadline','actions'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource: MatTableDataSource<PeriodicElement>;
 
-  constructor(public dialog: MatDialog, private dashService: DashService) {}
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+
+  constructor(public dialog: MatDialog, private dashService: DashService) {
+    this.dataSource = new MatTableDataSource<PeriodicElement>([]);
+  }
 
   ngOnInit(): void {
     this.timesheet();
@@ -46,20 +51,23 @@ export class TimeSheetComponent implements OnInit{
     const dialogRef = this.dialog.open(AssignTaskComponent, dialogConfig);
     // dialogRef.afterClosed().subscribe(deviceAdded => {});
   }
-  UpdateAssignTaskDialog(): void {
+  UpdateAssignTaskDialog(task: any): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';
     dialogConfig.height = '63vh';
     dialogConfig.maxWidth = '90vw';
+    dialogConfig.data = { task} ;
     const dialogRef = this.dialog.open(UpdatTaskComponent, dialogConfig);
-    // dialogRef.afterClosed().subscribe(deviceAdded => {});
+    dialogRef.afterClosed().subscribe(deviceAdded => {
+      this.timesheet();
+    });
   }
 
   timesheet(){
     this.dashService.taskSheet().subscribe(
       (taskSheets) =>{
-        console.log(taskSheets.getTaskSheet);
-        this.dataSource = taskSheets.getTaskSheet;
+        this.dataSource.data = taskSheets.getTaskSheet;
+        this.dataSource.paginator = this.paginator;
       },
       (error) =>{
         console.log("Tasksheet Data is not Fetching!!", error);

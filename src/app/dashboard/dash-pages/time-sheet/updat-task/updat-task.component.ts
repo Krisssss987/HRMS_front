@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { DashService } from 'src/app/dashboard/dash.service';
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { DatePipe } from '@angular/common';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -17,6 +18,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   styleUrls: ['./updat-task.component.css']
 })
 export class UpdatTaskComponent implements OnInit {
+  
   EmployeeName = new FormControl('', [Validators.required]);
   employeeOptions: any = [];
   supervisorOptions: any = [];
@@ -28,13 +30,22 @@ export class UpdatTaskComponent implements OnInit {
   StartDate = new FormControl('', [Validators.required]);
   EndDate = new FormControl('', [Validators.required]);
 
+  task: any;
+  
+
   filteredOptions: Observable<string[]> | undefined;
   userEmail!: string;
   userName!: string;
 
   constructor(
-    public dashService:DashService, ) {}
-
+    public dialogRef: MatDialogRef<UpdatTaskComponent>,
+    public dashService: DashService, 
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {
+    this.task = data.task; // Corrected variable name
+    console.log(this.task); // Corrected variable name
+  }
+  
   ngOnInit() {
     this.EmployeeList();
     this.SupervisiorList();
@@ -70,6 +81,7 @@ export class UpdatTaskComponent implements OnInit {
         }
       );
     }
+    
 
     open(employeeOptions: any) {
       this.userEmail = employeeOptions.CompanyEmail;
@@ -130,4 +142,8 @@ export class UpdatTaskComponent implements OnInit {
     
       return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
+    onCancelClick(): void {
+      this.dialogRef.close();
+    }
+    
 }

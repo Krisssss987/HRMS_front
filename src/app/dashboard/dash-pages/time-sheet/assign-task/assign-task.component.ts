@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
 import { DashService } from 'src/app/dashboard/dash.service';
 
 @Component({
@@ -25,6 +23,7 @@ export class AssignTaskComponent implements OnInit {
   filteredOptions: Observable<string[]> | undefined;
   userEmail!: string;
   userName!: string;
+  projectName: any;
 
   constructor(
     public dashService:DashService, ) {}
@@ -32,6 +31,7 @@ export class AssignTaskComponent implements OnInit {
   ngOnInit() {
     this.EmployeeList();
     this.SupervisiorList();
+    this.projectTitle();
   }
   
   CompanyEmail!: string | null;
@@ -44,7 +44,6 @@ export class AssignTaskComponent implements OnInit {
      EmployeeList(){
       this.dashService.InternDetails().subscribe(
         (InternDetails) =>{
-          console.log(InternDetails.getInternDetails);
           this.employeeOptions = InternDetails.getInternDetails; 
         },
         (error) =>{
@@ -56,11 +55,21 @@ export class AssignTaskComponent implements OnInit {
     SupervisiorList(){
       this.dashService.SupervisiorDetails().subscribe(
         (supervisor) =>{
-          console.log("Supervisior List", supervisor.getSupervisiorDetails);
           this.supervisorOptions = supervisor.getSupervisiorDetails;
         },
         (error) =>{
           console.log("Tasksheet Data is not Fetching!!", error);
+        }
+      );
+    }
+
+    projectTitle(){
+      this.dashService.projectDetails().subscribe(
+        (projects) =>{
+          this.projectName = projects.getProjectName;
+        },
+        (error) =>{
+          console.log("Data is not Fetching!!", error);
         }
       );
     }

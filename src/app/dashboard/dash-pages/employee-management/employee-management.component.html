@@ -122,10 +122,11 @@
         
                     <ng-container matColumnDef="EmployeeName">
                       <th mat-header-cell *matHeaderCellDef>Role</th>
-                      <td mat-cell *matCellDef="let element"> 
-                        <div>{{element.Designation}}</div>
-                        </td>
+                      <td mat-cell *matCellDef="let element" [ngStyle]="getRoleTextStyle(element.Designation)">
+                        {{ element.Designation }}
+                      </td>
                     </ng-container>
+                    
         
                     <ng-container matColumnDef="Role">
                       <th mat-header-cell *matHeaderCellDef>Supervisior</th>
