@@ -1,27 +1,27 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+/* Structure */
+table {
+  width: 100%;
 }
 
-.example-header {
-  min-height: 64px;
-  padding: 8px 24px 0;
-}
-
-.mat-form-field {
+.mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
 }
 
 .example-container {
-  height: 43vh;
+  height: 50vh;
+  max-width: 100%;
   overflow: auto;
 }
 
-table {
-  width: 100%;
+th {
+  text-align: center;
 }
-div::-webkit-scrollbar{
+
+td {
+  text-align: center;
+}
+
+::-webkit-scrollbar {
   display: none;
-}  
+}

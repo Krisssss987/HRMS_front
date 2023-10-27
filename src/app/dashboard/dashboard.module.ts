@@ -32,6 +32,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ViewComponent } from './dash-pages/leave/view/view.component';
 import { AssignTaskComponent } from './dash-pages/time-sheet/assign-task/assign-task.component';
 import { UpdatTaskComponent } from './dash-pages/time-sheet/updat-task/updat-task.component';
+import { AFilterComponent } from './dash-pages/attendence/a-filter/a-filter.component';
 @NgModule({
   declarations: [
     DashLayoutComponent,
@@ -46,6 +47,7 @@ import { UpdatTaskComponent } from './dash-pages/time-sheet/updat-task/updat-tas
     ViewComponent,
     AssignTaskComponent,
     UpdatTaskComponent,
+    AFilterComponent,
   ],
 
   imports: [

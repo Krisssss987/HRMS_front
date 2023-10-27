@@ -1,0 +1,22 @@
+.model-head {
+    background: rgb(45, 160, 160);
+    height: 50px;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .model-title{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 550;
+  }
+  
+  .from-field{
+    width: 100%;
+  }
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

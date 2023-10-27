@@ -8,12 +8,16 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DashService } from '../../dash.service';
 
+
 @Component({
   selector: 'app-employee-management',
   templateUrl: './employee-management.component.html',
   styleUrls: ['./employee-management.component.css'],
 })
 export class EmployeeManagementComponent implements OnInit{
+
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+
   signupForm: FormGroup | undefined;
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
@@ -24,6 +28,8 @@ export class EmployeeManagementComponent implements OnInit{
   supervisor = new FormControl('', [Validators.required]);
   employeeEmail = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('',);
+
+  dataSource: MatTableDataSource<PeriodicElement>;
 
   ngOnInit(): void {
     this.userDetails();
@@ -40,7 +46,8 @@ export class EmployeeManagementComponent implements OnInit{
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    public dashService:DashService,) {
+    public dashService:DashService) {
+      this.dataSource = new MatTableDataSource<PeriodicElement>([]);
   }
 
   userDetails() {
@@ -48,7 +55,8 @@ export class EmployeeManagementComponent implements OnInit{
     if (this.CompanyEmail) {
       this.dashService.userDetails(this.CompanyEmail).subscribe(
         (users) => {
-          this.dataSource = users.userDetails;
+          this.dataSource.data = users.userDetails;
+          this.dataSource.paginator = this.paginator;
           console.log(this.dataSource)
         },
         (error) => {
@@ -60,11 +68,6 @@ export class EmployeeManagementComponent implements OnInit{
 
  
   displayedColumns: string[] = ['Employee_ID', 'EmployeeName', 'Role', 'Email', 'PhoneNumber', 'DOB', 'Supervisor'];
-  dataSource = new MatTableDataSource<PeriodicElement>([]);
-  @ViewChild(MatPaginator, {static: true}) paginator!: MatPaginator;
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-  }
   applyFilter(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     const filterValue = inputElement.value.trim().toLowerCase();
@@ -109,6 +112,10 @@ export class EmployeeManagementComponent implements OnInit{
           );
       });
     }
+  }
+
+  openEditEmployee(employee: any): void{
+    console.log(employee);
   }
 }
 
