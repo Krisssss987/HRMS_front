@@ -7,6 +7,7 @@ import { MatDialogConfig,MatDialog } from '@angular/material/dialog';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DashService } from '../../dash.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -46,7 +47,8 @@ export class EmployeeManagementComponent implements OnInit{
   constructor(
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    public dashService:DashService) {
+    public dashService:DashService,
+    public datepipe: DatePipe) {
       this.dataSource = new MatTableDataSource<PeriodicElement>([]);
   }
 
@@ -55,9 +57,11 @@ export class EmployeeManagementComponent implements OnInit{
     if (this.CompanyEmail) {
       this.dashService.userDetails(this.CompanyEmail).subscribe(
         (users) => {
-          this.dataSource.data = users.userDetails;
+          this.dataSource.data = users.userDetails.map((user: PeriodicElement) => {
+            user.formattedDate = this.datepipe.transform(user.DOB, 'dd-MM-yyyy');
+            return user;
+          });
           this.dataSource.paginator = this.paginator;
-          console.log(this.dataSource)
         },
         (error) => {
           // Handle error
@@ -73,15 +77,6 @@ export class EmployeeManagementComponent implements OnInit{
     const filterValue = inputElement.value.trim().toLowerCase();
     this.dataSource.filter = filterValue;
   }
-
-    openAddUserDialog(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.height = 'auto';
-    dialogConfig.maxWidth = '50vh';
-    const dialogRef = this.dialog.open(AddEmployeeComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(userAdded => {});
-  }
-  
 
   onSaveClick(): void {
     if(this.firstName.valid && this.lastName.valid && this.DOB.valid
@@ -100,9 +95,10 @@ export class EmployeeManagementComponent implements OnInit{
       }
       this.dashService.addUser(addUser).subscribe(
         () =>{
-        this.snackBar.open('User Added Successful!', 'Dismiss', {
-          duration: 2000
-        });
+          this.snackBar.open('User Added Successful!', 'Dismiss', {
+            duration: 2000
+          });
+          this.userDetails();
         },
       (error) => {
         this.snackBar.open(
@@ -110,6 +106,11 @@ export class EmployeeManagementComponent implements OnInit{
             'Dismiss',
             { duration: 2000 }
           );
+      });
+      
+    } else {
+      this.snackBar.open('Please fill all the fields', 'Dismiss', {
+        duration: 2000
       });
     }
   }
@@ -129,6 +130,6 @@ export interface PeriodicElement {
   PhoneNumber: string;
   DOB: string; // Add this property
   Supervisor: string; // Add this property
-
+  formattedDate: string | null; // Add this property
 }
 

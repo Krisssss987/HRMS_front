@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
@@ -33,6 +33,7 @@ import { ViewComponent } from './dash-pages/leave/view/view.component';
 import { AssignTaskComponent } from './dash-pages/time-sheet/assign-task/assign-task.component';
 import { UpdatTaskComponent } from './dash-pages/time-sheet/updat-task/updat-task.component';
 import { AFilterComponent } from './dash-pages/attendence/a-filter/a-filter.component';
+import { EditEmpComponent } from './dash-pages/employee-management/edit-emp/edit-emp.component';
 @NgModule({
   declarations: [
     DashLayoutComponent,
@@ -48,6 +49,7 @@ import { AFilterComponent } from './dash-pages/attendence/a-filter/a-filter.comp
     AssignTaskComponent,
     UpdatTaskComponent,
     AFilterComponent,
+    EditEmpComponent,
   ],
 
   imports: [
@@ -72,6 +74,8 @@ import { AFilterComponent } from './dash-pages/attendence/a-filter/a-filter.comp
     MatSnackBarModule,
     MatTabsModule,
     MatSelectModule
-  ]
+  ],
+
+  providers: [DatePipe]
 })
 export class DashboardModule { }

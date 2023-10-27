@@ -3,6 +3,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { DashService } from '../../dash.service';
+import { UpdatTaskComponent } from './updat-task/updat-task.component';
 
 
 export interface PeriodicElement {
@@ -45,6 +46,14 @@ export class TimeSheetComponent implements OnInit{
     const dialogRef = this.dialog.open(AssignTaskComponent, dialogConfig);
     // dialogRef.afterClosed().subscribe(deviceAdded => {});
   }
+  UpdateAssignTaskDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.height = '63vh';
+    dialogConfig.maxWidth = '90vw';
+    const dialogRef = this.dialog.open(UpdatTaskComponent, dialogConfig);
+    // dialogRef.afterClosed().subscribe(deviceAdded => {});
+  }
 
   timesheet(){
     this.dashService.taskSheet().subscribe(
@@ -56,6 +65,17 @@ export class TimeSheetComponent implements OnInit{
         console.log("Tasksheet Data is not Fetching!!", error);
       }
     );
+  }
+  getPriorityColor(priority: string): string {
+    if (priority === 'High') {
+      return 'red'; // Set the color for 'High' priority
+    } else if (priority === 'Normal') {
+      return 'orange'; // Set the color for 'Medium' priority
+    } else if (priority === 'Low') {
+      return 'green'; // Set the color for 'Low' priority
+    } else {
+      return 'black'; // Default color
+    }
   }
 
 }
