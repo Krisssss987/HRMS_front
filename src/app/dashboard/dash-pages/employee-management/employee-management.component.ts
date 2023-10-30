@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DashService } from '../../dash.service';
 import { DatePipe } from '@angular/common';
 import { EditEmpComponent } from './edit-emp/edit-emp.component';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class EmployeeManagementComponent implements OnInit{
   lastName = new FormControl('', [Validators.required]);
   contactNo = new FormControl('', [Validators.required,Validators.pattern(/^[0-9]{10}$/)]);
   DOB = new FormControl('', [Validators.required]);
-  Total = new FormControl('', [Validators.required]);
+  Total = new FormControl('', [Validators.required,Validators.pattern(/^[0-9]{3}$/)]);
   roles = new FormControl('', [Validators.required]);
   supervisor = new FormControl('', [Validators.required]);
   employeeEmail = new FormControl('', [Validators.required, Validators.email]);
@@ -58,6 +59,7 @@ export class EmployeeManagementComponent implements OnInit{
     if (this.CompanyEmail) {
       this.dashService.userDetails(this.CompanyEmail).subscribe(
         (users) => {
+          console.log('User Details:', users);
           this.dataSource.data = users.userDetails.map((user: PeriodicElement) => {
             user.formattedDate = this.datepipe.transform(user.DOB, 'dd-MM-yyyy');
             return user;
@@ -80,9 +82,16 @@ export class EmployeeManagementComponent implements OnInit{
   }
 
   onSaveClick(): void {
-    if(this.firstName.valid && this.lastName.valid && this.DOB.valid
-      && this.contactNo.valid && this.Total.valid && this.roles.valid 
-      && this.supervisor.valid && this.employeeEmail.valid){
+    if (
+      this.firstName.valid &&
+      this.lastName.valid &&
+      this.DOB.valid &&
+      this.contactNo.valid &&
+      this.Total.valid &&
+      this.roles.valid &&
+      this.supervisor.valid &&
+      this.employeeEmail.valid
+    ) {
       const addUser = {
         companyEmail: this.employeeEmail.value,
         contact: this.contactNo.value,
@@ -92,33 +101,80 @@ export class EmployeeManagementComponent implements OnInit{
         password: this.employeeEmail.value,
         supervisor: this.supervisor.value,
         totalWorkingDays: this.Total.value,
-        dateOfBirth: this.DOB.value
-      }
+        dateOfBirth: this.DOB.value,
+      };
       this.dashService.addUser(addUser).subscribe(
-        () =>{
-          this.snackBar.open('User Added Successful!', 'Dismiss', {
-            duration: 2000
-          });
+        () => {
           this.userDetails();
+          this.firstName.reset();
+          this.lastName.reset();
+          this.DOB.reset();
+          this.contactNo.reset();
+          this.Total.reset();
+          this.roles.reset();
+          this.supervisor.reset();
+          this.employeeEmail.reset();
+          Swal.fire({
+            title: 'User Added Successfully',
+            text: 'The user has been added successfully!',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+          });
         },
-      (error) => {
-        this.snackBar.open(
+        (error) => {
+          this.snackBar.open(
             error.error.message || 'Failed to add User. Please try again.',
             'Dismiss',
             { duration: 2000 }
           );
-      });
-      
+        });
     } else {
       this.snackBar.open('Please fill all the fields', 'Dismiss', {
         duration: 2000
       });
     }
   }
+  
 
- // openEditEmployee(employee: any): void{
-   // console.log(employee);
-  //}
+  deleteEmployee(user: any): void {
+    if (user.UserId) {
+      const UserId = user.UserId;
+  
+      Swal.fire({
+        title: 'Delete Employee',
+        text: 'Are you sure you want to delete this employee?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete',
+        cancelButtonText: 'No, cancel',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.dashService.deleteEmployee(UserId).subscribe(
+            () => {
+              console.log('Employee Deleted Successfully!!');
+              Swal.fire({
+                title: 'Employee Deleted',
+                text: 'Employee deleted successfully!',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+              }).then(() => {
+                this.userDetails();
+              });
+            },
+            (error) => {
+              console.error('Delete Employee is not Fetching!!', error);
+            }
+          );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          // Handle the "Cancel" action
+          Swal.fire('Delete Canceled', 'Employee deletion canceled', 'info');
+        }
+      });
+    }
+  }
+  
+  
+ 
   openEditEmployee(user: any): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '500px';

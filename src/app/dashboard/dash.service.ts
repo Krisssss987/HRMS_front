@@ -47,9 +47,10 @@ export class DashService {
     return this.http.get(`${this.API_URL}/getLeaveInfo/${leaveId}`);
   }
 
-  leaveToday(leaveDate : any):Observable<any> {
-    return this.http.get(`${this.API_URL}/getLeaveByDate`,leaveDate);
+  leaveToday():Observable<any> {
+    return this.http.get(`${this.API_URL}/getLeaveByDate`);
   }
+
   taskSheet():Observable<any> {
     return this.http.get(`${this.API_URL}/getTaskSheet`);
   }
@@ -72,4 +73,11 @@ export class DashService {
     return this.http.delete(`${this.API_URL}/deleteTask/${taskId}`);
   }
 
+  deleteEmployee(UserId: string): Observable<any> {
+    return this.http.delete(`${this.API_URL}/deleteEmployee/${UserId}`);
+  }
+
+  Divisions():Observable<any> {
+    return this.http.get(`${this.API_URL}/getDesignation`);
+  }
 }

@@ -130,13 +130,13 @@
         
                     <ng-container matColumnDef="Role">
                       <th mat-header-cell *matHeaderCellDef>Supervisior</th>
-                      <td mat-cell *matCellDef="let element"></td>
+                       <td mat-cell *matCellDef="let element"> {{ element.Supervisor }} </td>
                     </ng-container>
         
                     <ng-container matColumnDef="Email">
                       <th mat-header-cell *matHeaderCellDef>Working Days</th>
                       <td mat-cell *matCellDef="let element">
-                        <div>Total: 180</div>
+                        <div>{{ element.TotalWorkingDays}}</div>
                         <div>Remaining : 150</div>
                       </td>
                     </ng-container>
@@ -157,7 +157,7 @@
                         <button mat-icon-button color="warn" (click)="openEditEmployee(element)">
                           <mat-icon>edit</mat-icon>
                         </button>
-                        <button mat-icon-button color="accent" (click)="openEditEmployee(element)">
+                        <button mat-icon-button color="accent" (click)="deleteEmployee(element)">
                           <mat-icon>delete</mat-icon>
                         </button>
                       </td>

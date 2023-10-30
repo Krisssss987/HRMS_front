@@ -32,7 +32,7 @@
       <mat-form-field class="from-field" appearance="outline">
         <mat-label>Project Title</mat-label>
         <mat-select placeholder="Pick one" [formControl]="Projecttitle" name="Project" >
-          <mat-option *ngFor="let project of projectName" [value]="project.ProjectTitle">
+          <mat-option *ngFor="let project of projectTitle" [value]="project.ProjectId">
             {{ project.ProjectTitle }}
           </mat-option>
         </mat-select>

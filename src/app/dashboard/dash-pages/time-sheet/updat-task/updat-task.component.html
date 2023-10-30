@@ -28,9 +28,13 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12 mb-2">
       <mat-form-field class="from-field" appearance="outline">
-        <mat-label>Project title</mat-label>
-        <input matInput type="text" name="Projecttitle" [formControl]="Projecttitle" required  [(ngModel)]="task.Projecttitle">
-        <mat-error *ngIf="Projecttitle.invalid">Project title is Required.</mat-error>
+        <mat-label>Project Title</mat-label>
+        <mat-select placeholder="Pick one" [formControl]="Projecttitle" name="Project" >
+          <mat-option *ngFor="let project of projectTitle" [value]="project.ProjectId">
+            {{ project.ProjectTitle }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="Projecttitle.hasError('required')">Please select a Project Title.</mat-error>
       </mat-form-field>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
@@ -70,7 +74,7 @@
       </div>
       <div class="col-xl-6 col-md-6 col-sm-12">
         <button mat-raised-button style="background: rgb(45, 160, 160);" class="w-100 mt-1" type="submit"
-          (click)="SaveTaskSheet()">Save</button>
+          >Save</button>
       </div>
     </div>
   </form>

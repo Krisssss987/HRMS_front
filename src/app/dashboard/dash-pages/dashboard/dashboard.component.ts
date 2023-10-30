@@ -26,9 +26,11 @@ export interface PeriodicElement {
 })
 export class DashboardComponent implements AfterViewInit, OnInit {
   dataSource: any;
+  division: any[] = [];
 
   ngOnInit(): void {
     this.TodayLeave();
+    this.Division();
   }
 
   CompanyEmail!: string | null;
@@ -40,18 +42,27 @@ export class DashboardComponent implements AfterViewInit, OnInit {
   ){}
 
   TodayLeave() {
-    this.CompanyEmail = sessionStorage.getItem('CompanyEmail');
-    if (this.CompanyEmail) {
-      this.dashService.leaveToday(this.CompanyEmail).subscribe(
-        (users) => {
-          this.dataSource = users.getLeaveInfo;
-          console.log(this.dataSource)
-        },
-        (error) => {
-          // Handle error
-        }
-      );
+    this.dashService.leaveToday().subscribe(
+      (users) => {
+        this.dataSource = users.getLeaveInfoByDate;
+        console.log(this.dataSource)
+      },
+      (error) => {
+        // Handle error
+      }
+    );
+  }
+
+  Division() {
+    this.dashService.Divisions().subscribe(
+    (division) => {
+      this.division = division.designations;
+      console.log(this.division);
+    },
+    (error) => {
+      // Handle error
     }
+    );
   }
 
   ngAfterViewInit() {
@@ -107,14 +118,10 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     series: [{
       type: 'pie',
       name: 'Data',
-      data: [
-        ['FrontEnd Developer', 10],
-        ['BackEnd Developer', 20],
-        ['Designer', 30],
-        ['Intern', 30]
-      ]
+      data: this.division.map(item => [item.label, item.data])
     }]
   };
+
   pieChartOptions2: Highcharts.Options = {
     chart: {
       type: 'pie'

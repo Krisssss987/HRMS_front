@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "C:/Users/yatha/OneDrive/Desktop/Yatharth Deshpande"
+		},
+		{
+			"path": "C:/Users/yatha/OneDrive/Desktop/JAVA programing language"
+		},
+		{
+			"path": "../../../../../.."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"stdio.h": "c"
+		},
+		"git.decorations.enabled": true
+	}
+}

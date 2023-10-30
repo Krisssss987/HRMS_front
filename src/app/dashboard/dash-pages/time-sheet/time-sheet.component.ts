@@ -5,6 +5,7 @@ import { AssignTaskComponent } from './assign-task/assign-task.component';
 import { DashService } from '../../dash.service';
 import { UpdatTaskComponent } from './updat-task/updat-task.component';
 import {MatPaginator} from '@angular/material/paginator';
+import Swal from 'sweetalert2';
 
 
 export interface PeriodicElement {
@@ -74,6 +75,43 @@ export class TimeSheetComponent implements OnInit{
       }
     );
   }
+
+  DeleteAssignTask(task:any): void {
+    const taskId = task.TaskSheetID;
+    console.log("DeleteAssignTask method called with Task ID:", taskId);
+    // Show a confirmation dialog using SweetAlert2
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to delete this task. This action cannot be undone.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel',
+    }).then((result) => {
+      console.log("Inside SweetAlert2 callback"); // Add this log
+      if (result.isConfirmed) {
+        console.log("User confirmed deletion"); // Add this log
+        // Delete the task if the user confirmed
+        this.dashService.deleteTask(taskId).subscribe(
+          () => {
+            console.log('Task Deleted Successfully!!');
+            // Refresh the task list or update the view as needed
+            // You can also trigger any additional logic after successful deletion
+            Swal.fire('Deleted!', 'The task has been successfully deleted.', 'success');
+          },
+          (error) => {
+            console.error('Error deleting task:', error);
+            // Handle the error and potentially show an error message
+            Swal.fire('Error', 'Failed to delete the task. Please try again.', 'error');
+          }
+        );
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Cancellation alert
+        Swal.fire('Cancelled', 'The task deletion has been cancelled.', 'error');
+      }
+    });
+  }
+  
   getPriorityColor(priority: string): string {
     if (priority === 'High') {
       return 'red'; // Set the color for 'High' priority

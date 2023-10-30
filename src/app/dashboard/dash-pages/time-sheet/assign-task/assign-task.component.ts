@@ -12,6 +12,7 @@ export class AssignTaskComponent implements OnInit {
   EmployeeName = new FormControl('', [Validators.required]);
   employeeOptions: any = [];
   supervisorOptions: any = [];
+  projectTitle: any = [];
 
   Supervisor= new FormControl('', [Validators.required]);
   Projecttitle = new FormControl('', [Validators.required]);
@@ -31,7 +32,7 @@ export class AssignTaskComponent implements OnInit {
   ngOnInit() {
     this.EmployeeList();
     this.SupervisiorList();
-    this.projectTitle();
+    this.projectTitleList();
   }
   
   CompanyEmail!: string | null;
@@ -55,6 +56,7 @@ export class AssignTaskComponent implements OnInit {
     SupervisiorList(){
       this.dashService.SupervisiorDetails().subscribe(
         (supervisor) =>{
+          console.log("Supervisior List", supervisor.getSupervisiorDetails);
           this.supervisorOptions = supervisor.getSupervisiorDetails;
         },
         (error) =>{
@@ -63,16 +65,18 @@ export class AssignTaskComponent implements OnInit {
       );
     }
 
-    projectTitle(){
+    projectTitleList(){
       this.dashService.projectDetails().subscribe(
         (projects) =>{
-          this.projectName = projects.getProjectName;
+          console.log("Project List", projects.getProjectName);
+          this.projectTitle = projects.getProjectName;
         },
         (error) =>{
           console.log("Data is not Fetching!!", error);
         }
       );
     }
+
 
     open(employeeOptions: any) {
       this.userEmail = employeeOptions.CompanyEmail;
@@ -107,11 +111,14 @@ export class AssignTaskComponent implements OnInit {
     
           
           this.dashService.assignTask(taskSheetData).subscribe(
-            (taskSheet) =>{
-              console.log("TaskSheet Data", taskSheet);
+            () =>{
             },
             (error) =>{
-              console.log("Tasksheet Data is not Fetching!!", error);
+              if (error.status === 401) {
+                console.log("Unauthorized: Please log in or check your credentials.");
+              } else {
+                console.log("Error occurred:", error);
+              }
             }
           );
           console.log("TaskSheet Data", taskSheetData);

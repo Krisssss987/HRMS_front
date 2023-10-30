@@ -22,6 +22,7 @@ export class UpdatTaskComponent implements OnInit {
   EmployeeName = new FormControl('', [Validators.required]);
   employeeOptions: any = [];
   supervisorOptions: any = [];
+  projectTitle: any = [];
 
   Supervisor= new FormControl('', [Validators.required]);
   Projecttitle = new FormControl('', [Validators.required]);
@@ -49,6 +50,7 @@ export class UpdatTaskComponent implements OnInit {
   ngOnInit() {
     this.EmployeeList();
     this.SupervisiorList();
+    this.projectTitleList();
   }
   
   CompanyEmail!: string | null;
@@ -69,6 +71,19 @@ export class UpdatTaskComponent implements OnInit {
         }
       );
     }
+    
+    projectTitleList(){
+      this.dashService.projectDetails().subscribe(
+        (projects) =>{
+          console.log("Project List", projects.getProjectName);
+          this.projectTitle = projects.getProjectName;
+        },
+        (error) =>{
+          console.log("Data is not Fetching!!", error);
+        }
+      );
+    }
+
 
     SupervisiorList(){
       this.dashService.SupervisiorDetails().subscribe(
