@@ -1,6 +1,8 @@
 import {Component, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator,MatPaginatorModule} from '@angular/material/paginator';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AFilterComponent } from './a-filter/a-filter.component';
 
 
 
@@ -31,6 +33,18 @@ export class AttendenceComponent {
     const inputElement = event.target as HTMLInputElement;
     const filterValue = inputElement.value.trim().toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  constructor(public dialog: MatDialog){
+
+  }
+
+  openTimeFilterDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '320px';
+    dialogConfig.height = '28vh';
+    dialogConfig.maxWidth = '90vw';
+    const dialogRef = this.dialog.open(AFilterComponent, dialogConfig);
   }
 
   

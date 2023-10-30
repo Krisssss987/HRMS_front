@@ -9,7 +9,7 @@ table {
 }
 
 .example-container {
-  height: 50vh;
+  height: auto;
   max-width: 100%;
   overflow: auto;
 }

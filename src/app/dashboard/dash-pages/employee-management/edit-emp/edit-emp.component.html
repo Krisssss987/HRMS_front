@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row edit-employee mb-2">
+        <div class="col-md-12 col-sm-12">
+            <div class="edit-title">Edit - Employee Details</div>
+        </div>
+    </div>
+    <div class="row edit-fields">
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-label>Employee First Name</mat-label>
+                <mat-icon matPrefix><i class="material-icons">person_add</i></mat-icon>
+                <input matInput [formControl]="firstName" [(ngModel)]= "user.FirstName" matInput type="text" placeholder="">
+		        <mat-error *ngIf="firstName.invalid">Firstname is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-icon matPrefix><i class="material-icons">person_add</i></mat-icon>
+                <mat-label>Employee Last Name</mat-label>
+                <input matInput [formControl]="lastName" [(ngModel)]= "user.LastName" matInput type="text" placeholder="">
+		        <mat-error *ngIf="lastName.invalid">Lastname is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-icon matPrefix><i class="material-icons">calendar_month</i></mat-icon>
+                <mat-label>Total Working Days</mat-label>
+                <input matInput [formControl]="Total" matInput type="text" placeholder="">
+		        <mat-error *ngIf="Total.invalid">No. of Working days is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-label>Employee DOB</mat-label>     
+                <input matInput [formControl]="DOB" [matDatepickerFilter]="myFilter" [(ngModel)]= "user.DOB" [matDatepicker]="picker2">
+                <mat-datepicker-toggle matIconPrefix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+		        <mat-error *ngIf="DOB.invalid">DOB is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-icon matPrefix><i class="material-icons">email</i></mat-icon>
+                <mat-label>Employee Email</mat-label>
+                <input matInput [formControl]="employeeEmail" [(ngModel)]= "user.Username" matInput type="text" placeholder="">
+                <mat-error *ngIf="employeeEmail.invalid">Employee Email is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-icon matPrefix><i class="material-icons">contact_phone</i></mat-icon>
+                <mat-label>Contact No</mat-label>
+                <input matInput [formControl]="contactNo" [(ngModel)]= "user.ContactNo" type="text" placeholder="">
+		        <mat-error *ngIf="contactNo.invalid">Contact No. is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-icon matPrefix><i class="material-icons">developer_board</i></mat-icon>
+                <mat-label>Roles</mat-label>
+                <input matInput [formControl]="roles" [(ngModel)]= "user.Designation" type="text" placeholder="">
+		        <mat-error *ngIf="roles.invalid">Roles is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6 col-sm-12 mb-2">
+            <mat-form-field class="example-custom-width" appearance="outline">
+                <mat-icon matPrefix><i class="material-icons">person_add</i></mat-icon>
+                <mat-label>Supervisor</mat-label>
+                <input matInput [formControl]="supervisor" [(ngModel)]= "user.Supervisior" type="text" placeholder="">
+		        <mat-error *ngIf="supervisor.invalid">Supervisor Name is Required.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-12 col-sm-12 mb-2">
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button style="background-color: rgba(42, 160, 160, 1); color: whitesmoke;" class="btn" (click)="onSaveClick()">Update</button>
+                <div style="width: 10px;"></div>
+                <button mat-raised-button class="btn" (click)="onCancelClick()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

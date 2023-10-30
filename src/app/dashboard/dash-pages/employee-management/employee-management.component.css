@@ -1,3 +1,19 @@
+.managemnet-title{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.add-employee{
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.example-custom-width{
+  width: 100%;
+}
+
+
+
 .example-container {
     display: flex;
     flex-direction: column;
@@ -34,4 +50,9 @@
   }
   h3{
     height: 2vh;
+  }
+
+  table th{
+    font-size: 1.2rem;
+    font-weight: 600;
   }

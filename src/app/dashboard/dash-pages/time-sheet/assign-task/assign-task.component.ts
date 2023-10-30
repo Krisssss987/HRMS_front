@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
 import { DashService } from 'src/app/dashboard/dash.service';
 
 @Component({
@@ -14,6 +12,7 @@ export class AssignTaskComponent implements OnInit {
   EmployeeName = new FormControl('', [Validators.required]);
   employeeOptions: any = [];
   supervisorOptions: any = [];
+  projectTitle: any = [];
 
   Supervisor= new FormControl('', [Validators.required]);
   Projecttitle = new FormControl('', [Validators.required]);
@@ -25,6 +24,7 @@ export class AssignTaskComponent implements OnInit {
   filteredOptions: Observable<string[]> | undefined;
   userEmail!: string;
   userName!: string;
+  projectName: any;
 
   constructor(
     public dashService:DashService, ) {}
@@ -32,6 +32,7 @@ export class AssignTaskComponent implements OnInit {
   ngOnInit() {
     this.EmployeeList();
     this.SupervisiorList();
+    this.projectTitleList();
   }
   
   CompanyEmail!: string | null;
@@ -44,7 +45,6 @@ export class AssignTaskComponent implements OnInit {
      EmployeeList(){
       this.dashService.InternDetails().subscribe(
         (InternDetails) =>{
-          console.log(InternDetails.getInternDetails);
           this.employeeOptions = InternDetails.getInternDetails; 
         },
         (error) =>{
@@ -64,6 +64,19 @@ export class AssignTaskComponent implements OnInit {
         }
       );
     }
+
+    projectTitleList(){
+      this.dashService.projectDetails().subscribe(
+        (projects) =>{
+          console.log("Project List", projects.getProjectName);
+          this.projectTitle = projects.getProjectName;
+        },
+        (error) =>{
+          console.log("Data is not Fetching!!", error);
+        }
+      );
+    }
+
 
     open(employeeOptions: any) {
       this.userEmail = employeeOptions.CompanyEmail;
@@ -98,11 +111,14 @@ export class AssignTaskComponent implements OnInit {
     
           
           this.dashService.assignTask(taskSheetData).subscribe(
-            (taskSheet) =>{
-              console.log("TaskSheet Data", taskSheet);
+            () =>{
             },
             (error) =>{
-              console.log("Tasksheet Data is not Fetching!!", error);
+              if (error.status === 401) {
+                console.log("Unauthorized: Please log in or check your credentials.");
+              } else {
+                console.log("Error occurred:", error);
+              }
             }
           );
           console.log("TaskSheet Data", taskSheetData);
