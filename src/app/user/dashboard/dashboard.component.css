@@ -1,7 +1,9 @@
 .qr{
     height:83vh;
 }
-
+.small-row{
+  height: 50px;
+}
   .example-container {
     height: 280px;
     max-width: 100%;

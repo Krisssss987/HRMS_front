@@ -1,5 +1,4 @@
 <div class="container-fluid">
-    <mat-card class="login-box">
         <mat-card-content>
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-10 col-md-6 col-lg-3">
@@ -13,19 +12,20 @@
                         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                         </mat-form-field>
                       </div>
-                    
-            
-                     
-                    </form>
-                    <div class="row">
+                      <button  style="background-color:rgb(42,160,160); color: whitesmoke;" mat-raised-button class="full-width-button">Submit</button>
+                      <div class="row">
                         <div class="col">
                           <div class="d-flex justify-content-between">
                             <a class="link" routerLink="/login/login"><b>Verified? Sign In</b></a>
                           </div>
                         </div>
                       </div>
+
+            
+                     
+                    </form>
+                    
                 </div>
               </div>
         </mat-card-content>
-      </mat-card>
 </div>

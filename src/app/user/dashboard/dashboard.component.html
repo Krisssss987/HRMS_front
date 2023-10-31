@@ -50,25 +50,25 @@
         <!-- Task_name Column -->
         <ng-container matColumnDef="Task_name">
           <mat-header-cell *matHeaderCellDef> Task name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.Task_name}} </mat-cell>
+          <mat-cell *matCellDef="let element"class="small-row"> {{element.Task_name}} </mat-cell>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="priority">
           <mat-header-cell *matHeaderCellDef> Priority </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.priority}} </mat-cell>
+          <mat-cell *matCellDef="let element"class="small-row"> {{element.priority}} </mat-cell>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="Deadline">
           <mat-header-cell *matHeaderCellDef> Deadline </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.Deadline}} </mat-cell>
+          <mat-cell *matCellDef="let element"class="small-row"> {{element.Deadline}} </mat-cell>
         </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef>Task status</mat-header-cell>
-          <mat-cell *matCellDef="let element">
+          <mat-cell *matCellDef="let element"class="small-row">
             <mat-form-field class="mt-2">
               <mat-label>Select status</mat-label>
               <select matNativeControl [disabled]="disableSelect.value">
@@ -82,7 +82,7 @@
 
         <ng-container matColumnDef="Progrees">
           <mat-header-cell *matHeaderCellDef> Progress % </mat-header-cell>
-          <mat-cell *matCellDef="let element">
+          <mat-cell *matCellDef="let element"class="small-row">
            <div class="col">
             <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
             <div class="row ml-auto">
@@ -95,7 +95,7 @@
         </ng-container>
       
         <mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" class="small-row"></mat-row>
       </mat-table>
     </section>
       </mat-card>

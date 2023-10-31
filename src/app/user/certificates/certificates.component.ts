@@ -6,6 +6,9 @@ export interface PeriodicElement {
   startDate: string; // Changed from 'startDate' to 'Start Date'
   endDate: string; // Changed from 'endDate' to 'End Date'
   action: string; // No change for 'Action'
+
+
+  
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -30,4 +33,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class CertificatesComponent {
   displayedColumns: string[] = ['name', 'status', 'startDate', 'endDate', 'action'];
   dataSource = ELEMENT_DATA;
+
+
+  // Function to handle the download of the ID Card
+  downloadIDCard() {
+    // Implement the logic to download the ID Card here
+    // You can use a library like FileSaver.js or any method to trigger a file download.
+    // For example:
+    // const idCardUrl = 'URL_TO_ID_CARD';
+    // window.open(idCardUrl, '_blank');
+  }
+  // Function to handle the download of the Offer Letter
+  downloadOfferLetter() {
+    // Implement the logic to download the Offer Letter here
+  }
+
+  // Function to handle the download of the Term Sheet
+  downloadTermSheet() {
+    // Implement the logic to download the Term Sheet here
+  }
+
+  // Function to handle the download of the Certification
+  downloadCertification() {
+    // Implement the logic to download the Certification here
+  }
+
+  // Function to handle the download of the Application Letter
+  downloadApplicationLetter() {
+    // Implement the logic to download the Application Letter here
+  }
+
 }
