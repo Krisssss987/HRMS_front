@@ -19,11 +19,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class UpdatTaskComponent implements OnInit {
   
-  EmployeeName = new FormControl('', [Validators.required]);
+  EmployeeName = new FormControl({ value: '', disabled: true });
   employeeOptions: any = [];
   supervisorOptions: any = [];
   projectTitle: any = [];
-
+  Status= new FormControl('', [Validators.required]);
   Supervisor= new FormControl('', [Validators.required]);
   Projecttitle = new FormControl('', [Validators.required]);
   Remarks = new FormControl('', [Validators.required]);
@@ -109,6 +109,7 @@ export class UpdatTaskComponent implements OnInit {
         this.EmployeeName.valid &&
         this.Supervisor.valid &&
         this.Projecttitle.valid &&
+        this.Status.valid &&
         this.Remarks.valid &&
         this.Priority.valid &&
         this.StartDate.valid &&
@@ -122,7 +123,8 @@ export class UpdatTaskComponent implements OnInit {
             "employeeEmail": this.userEmail,
             "employeeName": this.userName,
             "supervisorEmail": this.Supervisor.value,
-            "status": this.Projecttitle.value,
+            "projectName": this.Projecttitle.value,
+            "status": this.Status.value,
             "remarks": this.Remarks.value,
             "priority": this.Priority.value,
             "startDate": this.formatDateToString(startDate), // Format start date
@@ -130,12 +132,12 @@ export class UpdatTaskComponent implements OnInit {
           };
     
           
-          this.dashService.assignTask(taskSheetData).subscribe(
+          this.dashService.updateTask(taskSheetData).subscribe(
             (taskSheet) =>{
-              console.log("TaskSheet Data", taskSheet);
+              console.log(" new TaskSheet Data", taskSheet);
             },
             (error) =>{
-              console.log("Tasksheet Data is not Fetching!!", error);
+              console.log(" not able to get new Tasksheet Data is not Fetching!!", error);
             }
           );
           console.log("TaskSheet Data", taskSheetData);

@@ -1,7 +1,10 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DashService } from 'src/app/dashboard/dash.service';
+import Swal from 'sweetalert2';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-assign-task',
@@ -13,6 +16,7 @@ export class AssignTaskComponent implements OnInit {
   employeeOptions: any = [];
   supervisorOptions: any = [];
   projectTitle: any = [];
+  Status= new FormControl('', [Validators.required]);
 
   Supervisor= new FormControl('', [Validators.required]);
   Projecttitle = new FormControl('', [Validators.required]);
@@ -27,7 +31,7 @@ export class AssignTaskComponent implements OnInit {
   projectName: any;
 
   constructor(
-    public dashService:DashService, ) {}
+    public dashService:DashService, public dialogRef:MatDialogRef<AssignTaskComponent> ) {}
 
   ngOnInit() {
     this.EmployeeList();
@@ -89,6 +93,7 @@ export class AssignTaskComponent implements OnInit {
         this.EmployeeName.valid &&
         this.Supervisor.valid &&
         this.Projecttitle.valid &&
+        this.Status.valid &&
         this.Remarks.valid &&
         this.Priority.valid &&
         this.StartDate.valid &&
@@ -102,34 +107,63 @@ export class AssignTaskComponent implements OnInit {
             "employeeEmail": this.userEmail,
             "employeeName": this.userName,
             "supervisorEmail": this.Supervisor.value,
-            "status": this.Projecttitle.value,
+            "projectTitle": this.Projecttitle.value,
+            "status": this.Status.value,
             "remarks": this.Remarks.value,
             "priority": this.Priority.value,
             "startDate": this.formatDateToString(startDate), // Format start date
             "endDate": this.formatDateToString(endDate) // Format end date
           };
     
-          
           this.dashService.assignTask(taskSheetData).subscribe(
-            () =>{
+            () => {
+               // Reset the form control
+               this.dialogRef.close();
+              Swal.fire({
+                icon: 'success',
+                title: 'Task Assigned',
+                text: 'Task has been assigned successfully!',
+              });
+    
+             
             },
-            (error) =>{
+            (error) => {
               if (error.status === 401) {
-                console.log("Unauthorized: Please log in or check your credentials.");
+                // Show an unauthorized alert using Swal
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Unauthorized',
+                  text: 'Please log in or check your credentials.',
+                });
               } else {
-                console.log("Error occurred:", error);
+                // Show a generic error alert using Swal
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error Occurred',
+                  text: 'An error occurred while assigning the task. Please try again.',
+                });
               }
             }
           );
-          console.log("TaskSheet Data", taskSheetData);
-
         } else {
-          console.log("Invalid date format");
+          // Show an invalid date format alert using Swal
+          Swal.fire({
+            icon: 'error',
+            title: 'Invalid Date Format',
+            text: 'Please enter valid start and end dates.',
+          });
         }
       } else {
-        console.log("Please Fill All the Fields");
+        // Show an alert for incomplete form using Swal
+        Swal.fire({
+          icon: 'warning',
+          title: 'Incomplete Form',
+          text: 'Please fill in all the required fields.',
+        });
       }
     }
+    
+    
     formatDateToString(date: Date): string {
       const year = date.getFullYear();
       const month = (date.getMonth() + 1).toString().padStart(2, '0');

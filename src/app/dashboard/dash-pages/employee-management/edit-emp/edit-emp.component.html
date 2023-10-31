@@ -25,7 +25,7 @@
             <mat-form-field class="example-custom-width" appearance="outline">
                 <mat-icon matPrefix><i class="material-icons">calendar_month</i></mat-icon>
                 <mat-label>Total Working Days</mat-label>
-                <input matInput [formControl]="Total" matInput type="text" placeholder="">
+                <input matInput [formControl]="Total" matInput type="text"  [(ngModel)]= "user.TotalWorkingDays" placeholder="">
 		        <mat-error *ngIf="Total.invalid">No. of Working days is Required.</mat-error>
             </mat-form-field>
         </div>
@@ -66,7 +66,7 @@
             <mat-form-field class="example-custom-width" appearance="outline">
                 <mat-icon matPrefix><i class="material-icons">person_add</i></mat-icon>
                 <mat-label>Supervisor</mat-label>
-                <input matInput [formControl]="supervisor" [(ngModel)]= "user.Supervisior" type="text" placeholder="">
+                <input matInput [formControl]="supervisor" [(ngModel)]= "user.Supervisor" type="text" placeholder="">
 		        <mat-error *ngIf="supervisor.invalid">Supervisor Name is Required.</mat-error>
             </mat-form-field>
         </div>

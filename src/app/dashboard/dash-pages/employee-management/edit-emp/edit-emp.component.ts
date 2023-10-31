@@ -82,50 +82,50 @@ export class EditEmpComponent implements OnInit {
       });
     }
   }
-  updateUser(UserId: number): void {
-    if (
-      this.firstName.valid &&
-      this.lastName.valid &&
-      this.DOB.valid &&
-      this.contactNo.valid &&
-      this.Total.valid &&
-      this.roles.valid &&
-      this.supervisor.valid &&
-      this.employeeEmail.valid
-    ) {
-      const updatedUser = {
-        UserId, // Add the UserId of the user you want to update
-        companyEmail: this.employeeEmail.value,
-        contact: this.contactNo.value,
-        firstName: this.firstName.value,
-        lastName: this.lastName.value,
-        designation: this.roles.value,
-        supervisor: this.supervisor.value,
-        totalWorkingDays: this.Total.value,
-        dateOfBirth: this.DOB.value,
-      };
+
+  // updateUser(UserId: number): void {
+  //   if (
+  //     this.firstName.valid &&
+  //     this.lastName.valid &&
+  //     this.DOB.valid &&
+  //     this.contactNo.valid &&
+  //     this.Total.valid &&
+  //     this.roles.valid &&
+  //     this.supervisor.valid &&
+  //     this.employeeEmail.valid
+  //   ) {
+  //     const updatedUser = {
+  //       UserId, // Add the UserId of the user you want to update
+  //       companyEmail: this.employeeEmail.value,
+  //       contact: this.contactNo.value,
+  //       firstName: this.firstName.value,
+  //       lastName: this.lastName.value,
+  //       designation: this.roles.value,
+  //       supervisor: this.supervisor.value,
+  //       totalWorkingDays: this.Total.value,
+  //       dateOfBirth: this.DOB.value,
+  //     };
   
-     // this.dashService.updateUser(updatedUser).subscribe(
-        // () => {
-        //   this.snackBar.open('User Updated Successfully!', 'Dismiss', {
-        //     duration: 2000
-        //   });
-        //   this.dialogRef.close();
-        //   this.userDetails(); // Refresh the user details after update
-        // },
-        // (error) => {
-        //   this.snackBar.open(
-        //     error.error.message || 'Failed to update User. Please try again.',
-        //     'Dismiss',
-        //     { duration: 2000 }
-        //   );
-        //   this.dialogRef.close();
-        // }
-      //);
-    }
-  }
-  
-  
+  //    // this.dashService.updateUser(updatedUser).subscribe(
+  //       // () => {
+  //       //   this.snackBar.open('User Updated Successfully!', 'Dismiss', {
+  //       //     duration: 2000
+  //       //   });
+  //       //   this.dialogRef.close();
+  //       //   this.userDetails(); // Refresh the user details after update
+  //       // },
+  //       // (error) => {
+  //       //   this.snackBar.open(
+  //       //     error.error.message || 'Failed to update User. Please try again.',
+  //       //     'Dismiss',
+  //       //     { duration: 2000 }
+  //       //   );
+  //       //   this.dialogRef.close();
+  //       // }
+  //     //);
+  //   }
+  // }
+
   onCancelClick(): void {
     this.dialogRef.close();
   }

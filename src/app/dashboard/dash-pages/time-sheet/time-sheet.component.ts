@@ -28,7 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 })
 
 export class TimeSheetComponent implements OnInit{
-  displayedColumns: string[] = ['Emp_title', 'title', 'remarks', 'assigned', 'priority','deadline','actions'];
+  displayedColumns: string[] = ['Emp_title', 'title', 'Status', 'remarks', 'assigned','priority','deadline','actions'];
   dataSource: MatTableDataSource<PeriodicElement>;
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
@@ -51,6 +51,9 @@ export class TimeSheetComponent implements OnInit{
     dialogConfig.maxWidth = '90vw';
     const dialogRef = this.dialog.open(AssignTaskComponent, dialogConfig);
     // dialogRef.afterClosed().subscribe(deviceAdded => {});
+    dialogRef.afterClosed().subscribe(deviceAdded => {
+      this.timesheet();
+    });
   }
   UpdateAssignTaskDialog(task: any): void {
     const dialogConfig = new MatDialogConfig();
@@ -69,6 +72,7 @@ export class TimeSheetComponent implements OnInit{
       (taskSheets) =>{
         this.dataSource.data = taskSheets.getTaskSheet;
         this.dataSource.paginator = this.paginator;
+        console.log("TaskSheet Data is Fetching!!", taskSheets.getTaskSheet);
       },
       (error) =>{
         console.log("Tasksheet Data is not Fetching!!", error);
@@ -96,6 +100,7 @@ export class TimeSheetComponent implements OnInit{
           () => {
             console.log('Task Deleted Successfully!!');
             // Refresh the task list or update the view as needed
+            this.timesheet();
             // You can also trigger any additional logic after successful deletion
             Swal.fire('Deleted!', 'The task has been successfully deleted.', 'success');
           },
