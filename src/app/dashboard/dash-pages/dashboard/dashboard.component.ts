@@ -118,7 +118,8 @@ export class DashboardComponent implements AfterViewInit, OnInit {
     series: [{
       type: 'pie',
       name: 'Data',
-      data: this.division.map(item => [item.label, item.data])
+      data: [
+        ["frontend",5],["backend",2],["design",1],["testing",1],]
     }]
   };
 

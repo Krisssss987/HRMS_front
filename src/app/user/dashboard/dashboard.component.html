@@ -76,7 +76,7 @@
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef>Task status</mat-header-cell>
           <mat-cell *matCellDef="let element"class="small-row">
-            <mat-form-field class="mt-2">
+            <mat-form-field class="mt-2" appearance="outline">
               <mat-label>Select status</mat-label>
               <select matNativeControl [disabled]="disableSelect.value">
                 <option value="Pending">Pending</option>
