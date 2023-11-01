@@ -29,6 +29,8 @@ export class AssignTaskComponent implements OnInit {
   userEmail!: string;
   userName!: string;
   projectName: any;
+  usersupervisorEmail!:string;
+  usersupervisorName!:string;
 
   constructor(
     public dashService:DashService, public dialogRef:MatDialogRef<AssignTaskComponent> ) {}
@@ -84,8 +86,12 @@ export class AssignTaskComponent implements OnInit {
 
     open(employeeOptions: any) {
       this.userEmail = employeeOptions.CompanyEmail;
-      this.userName = employeeOptions.FirstName + " " + employeeOptions.LastName;
+      this.userName = employeeOptions.FirstName + "" + employeeOptions.LastName;
       console.log(this.userEmail);
+    }
+    open1(supervisorOptions:any){
+      this.usersupervisorEmail= supervisorOptions.CompanyEmail
+      this.usersupervisorName=  supervisorOptions.FirstName + "" + supervisorOptions.LastName;
     }
     
     SaveTaskSheet() {
@@ -106,7 +112,8 @@ export class AssignTaskComponent implements OnInit {
           const taskSheetData = {
             "employeeEmail": this.userEmail,
             "employeeName": this.userName,
-            "supervisorEmail": this.Supervisor.value,
+            "supervisorEmail": this.usersupervisorEmail,
+            "supervisorName": this.usersupervisorName,
             "projectTitle": this.Projecttitle.value,
             "status": this.Status.value,
             "remarks": this.Remarks.value,

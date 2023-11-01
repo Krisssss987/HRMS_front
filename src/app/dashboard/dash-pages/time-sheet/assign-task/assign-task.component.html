@@ -19,8 +19,8 @@
     <div class="col-lg-6 col-md-6 col-sm-6 mb-2">
       <mat-form-field class="from-field" appearance="outline">
         <mat-label>Supervisor</mat-label>
-        <mat-select placeholder="Pick one" [formControl]="Supervisor" name="Supervisor" >
-          <mat-option *ngFor="let supervisor of supervisorOptions" [value]="supervisor.Username">
+        <mat-select placeholder="Pick one" [formControl]="Supervisor" name="SupervisorName"  >
+          <mat-option *ngFor="let supervisor of supervisorOptions" [value]="supervisor" (click)="open1(supervisor)">
             {{ supervisor.FirstName }} {{ supervisor.LastName }}
           </mat-option>
         </mat-select>
