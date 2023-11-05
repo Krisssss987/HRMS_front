@@ -19,7 +19,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class UpdatTaskComponent implements OnInit {
   
-  EmployeeName = new FormControl({ value: '', disabled: true });
+  EmployeeName = new FormControl('', [Validators.required]);
   employeeOptions: any = [];
   supervisorOptions: any = [];
   projectTitle: any = [];

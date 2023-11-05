@@ -1,73 +1,82 @@
 <div class="container mt-2">
     <mat-card>
-        <mat-card-header class="d-flex justify-content-center">
+        <mat-card-header class="d-flex justify-content-center" style="background-color: rgb(225, 227, 228);">
             <mat-icon aria-hidden="false" class="mt-1" aria-label="Example home icon" fontIcon="today"></mat-icon>
-            <h1 class="mx-2">Application for Leave</h1>
+            <h1 class="mx-2"><b>Application for Leave</b></h1>
         </mat-card-header>
         <mat-divider></mat-divider>
         <div class="card-body">
-            <div class="container-fluid mt-2">
-                <h2>
-                    <mat-card>
+            <div class="row">
+                <div class="container-fluid col-md-8 col-lg-8">
+                    <mat-card class="mt-2 mb-3 mx-2">
                         <mat-card-header style="background-color: rgb(225, 227, 228);" class="d-flex">
-                            <h2 class="mx-2"><b>Subject :</b></h2>
-                        </mat-card-header>
-                        <mat-divider></mat-divider>
-                        <div class="card-body">
-                            <div class="mx-4 mt-1 mb-1">{{subject}}</div>
-                        </div>
-                    </mat-card>
-                </h2>
-            </div>
-        
-            <div class="card-body">
-                <div class="container-fluid mt-3">
-                    <mat-card>
-                        <mat-card-header style="background-color: rgb(225, 227, 228);" class="d-flex">
-                            <h2 class="mx-2"><b>Personal Details :</b></h2>
+                            <h2 class="mx-2"><b>Personal Details:</b></h2>
                         </mat-card-header>
                         <mat-divider></mat-divider>
                         <div class="card-body">
                             <h2>
                             <div class="mx-4 mt-1 mb-1">Applicant's Name : {{name}}</div>
-                            <div class="mx-4 mt-1 mb-1">Type of Leave : {{type}}</div>
-                            <div class="mx-4 mt-1 mb-1">Total No. of Leaves : {{total}}</div>
-                            <div class="mx-4 mt-1 mb-1">
-                                <div class="mt-1 mb-1">
-                                    Start Date : {{start}}
-                                </div>
-                                <div class="mt-1 mb-1">
-                                    End Date : {{end}}
-                                </div>
-                            </div>
                             </h2>
                         </div>
                     </mat-card>
-                </div>
-            </div>
-
-            <div class="card-body">
-                <div class="container-fluid mt-3 mb-3">
-                    <mat-card>
+                    <mat-card class="mt-2 mb-3 mx-2">
                         <mat-card-header style="background-color: rgb(225, 227, 228);" class="d-flex">
-                            <h2 class="mx-2"><b>Company Details :</b></h2>
+                            <h2 class="mx-2"><b>Status Of Application:</b></h2>
                         </mat-card-header>
                         <mat-divider></mat-divider>
                         <div class="card-body">
                             <h2>
-                            <div class="mx-4 mt-1 mb-1">Supervisor Name : {{supervisor}}</div>
-                            <div class="mx-4 mt-1 mb-1">Discussion with Supervisor : {{discussion}}</div>
-                            <div class="mx-4 mt-1 mb-1">Emergency Contact No. : {{contact}}</div>
-                            <div class="mx-4 mt-1 mb-1">Pending Task Details : {{task}}</div>
-                            <div class="mx-4 mt-1 mb-1">Status : {{status}}</div>
+                                <div class="mx-4 mt-1 mb-1" [ngStyle]="{ color: getStatusColor(status) }">{{ status === '1' ? 'Approved' : status === '0' ? 'Rejected' : status }}</div>
+
+                            </h2>
+                        </div>
+                    </mat-card>
+                </div>
+                <div class="container-fluid col-md-4 col-lg-4">
+                    <h2>
+                        <mat-card class="mt-2 mb-3 mx-2">
+                            <mat-card-header style="background-color: rgb(225, 227, 228);" class="d-flex">
+                                <h2 class="mx-2"><b>Subject:</b></h2>
+                            </mat-card-header>
+                            <mat-divider></mat-divider>
+                            <div class="card-body">
+                                <div class="mx-4 mt-1 mb-1">{{subject}}</div>
+                                <div class="mx-4 mt-1 mb-1">Type of Leave : {{type}}</div>
+                                <div class="mx-4 mt-1 mb-1">Total No. of Leaves : {{total}}</div>
+                                <div class="mx-4 mt-1 mb-1">
+                                    <div class="mt-1 mb-1">
+                                        Start Date : {{start}}
+                                    </div>
+                                    <div class="mt-1 mb-1">
+                                        End Date : {{end}}
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="container-fluid mb-2">
+                    <mat-card>
+                        <mat-card-header style="background-color: rgb(225, 227, 228);" class="d-flex">
+                            <h2 class="mx-2"><b>Company Details:</b></h2>
+                        </mat-card-header>
+                        <mat-divider></mat-divider>
+                        <div class="card-body">
+                            <h2>
+                                <div class="mx-4 mt-1 mb-1">Supervisor Name : {{supervisor}}</div>
+                                <div class="mx-4 mt-1 mb-1">Discussion with Supervisor : {{discussion}}</div>
+                                <div class="mx-4 mt-1 mb-1">Emergency Contact No. : {{contact}}</div>
+                                <div class="mx-4 mt-1 mb-1">Pending Task Details : {{task}}</div>
                             </h2>
                         </div>
                     </mat-card>
                 </div>
             </div>
             <div class="container-fluid mb-3" style="text-align: end;">
-                <button mat-flat-button style="background-color:green; color: whitesmoke;">Approve</button>
-                    &nbsp;
+                <button mat-flat-button style="background-color:green; color: whitesmoke;" (click)="approveLeave()" >Approve</button>
+                &nbsp;
                 <button mat-flat-button style="background-color: red; color: whitesmoke;">Decline</button>
             </div>
         </div>

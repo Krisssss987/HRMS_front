@@ -76,8 +76,22 @@ export class DashService {
   deleteEmployee(UserId: string): Observable<any> {
     return this.http.delete(`${this.API_URL}/deleteEmployee/${UserId}`);
   }
+  updateEmployee(updatedEmployee: any): Observable<any> {
+    // Make a PUT request to update employee data
+    // You should define the URL and HTTP headers as needed
+    return this.http.put<any>(`${this.API_URL}/editUser`, updatedEmployee);
+  }
 
   Divisions():Observable<any> {
     return this.http.get(`${this.API_URL}/getDesignation`);
+  }
+  approveLeave(leaveId: string): Observable<any> {
+    return this.http.put(`${this.API_URL}/updateLeaveApproval/${leaveId}`, {});
+  }
+  updateleaveApproval(updateLeave:any):Observable<any>{
+    return this.http.put(`${this.API_URL}/updateLeaveApproval`, updateLeave);
+  }
+  attendanceDetails():Observable<any> {
+    return this.http.get(`${this.API_URL}/getAttendenceDetails`);
   }
 }

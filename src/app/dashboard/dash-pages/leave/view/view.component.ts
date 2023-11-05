@@ -68,4 +68,40 @@ export class ViewComponent implements OnInit{
       );
     } 
   }
+  approveLeave() {
+    
+    this.leaveId = this.Id;
+    // Add your approval logic here
+    if (this.leaveId) {
+      // You can call a service method to update the leave status in the database
+      this.DashDataService.approveLeave(this.leaveId).subscribe(
+        (response) => {
+          // Handle success, update the status property, or show a success message
+          this.status = '1'; // Update the status to 'Approved'
+          // Show a success message, or perform any other necessary actions
+          this.snackBar.open('Leave application approved successfully', 'Dismiss', {
+            duration: 2000,
+          });
+        },
+        (error) => {
+          // Handle error, show an error message, or perform any other necessary actions
+          this.snackBar.open('Error approving leave application', 'Dismiss', {
+            duration: 2000,
+            
+          });
+        }
+      );
+    }
+  }
+  
+  getStatusColor(status: string): string {
+    if (status === '1') {
+      return 'green'; // Set the color for 'Accepted'
+    } else if (status === '0') {
+      return 'red'; // Set the color for 'Rejected'
+    } else {
+      return 'yellow'; // Default color
+    }
+  }
+  
 }

@@ -23,7 +23,6 @@ export class EditEmpComponent implements OnInit {
   supervisor = new FormControl('', [Validators.required]);
   employeeEmail = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('',);
-
   user: any;
 
 
@@ -82,6 +81,45 @@ export class EditEmpComponent implements OnInit {
       });
     }
   }
+  EditEMP(id :string){
+    // 
+
+  }
+  // EditEmployee(): void {
+  //   if (this.firstName.valid && this.lastName.valid && this.DOB.valid && this.contactNo.valid && this.Total.valid && this.roles.valid && this.supervisor.valid && this.employeeEmail.valid) {
+  //     const updatedEmployee = {
+  //       // Include any relevant properties that you want to update.
+  //       // Assuming that user.UserId is available and unique for each employee.
+  //       UserId: this.user.UserId,
+  //       companyEmail: this.employeeEmail.value,
+  //       contact: this.contactNo.value,
+  //       firstName: this.firstName.value,
+  //       lastName: this.lastName.value,
+  //       designation: this.roles.value,
+  //       supervisor: this.supervisor.value,
+  //       totalWorkingDays: this.Total.value,
+  //       dateOfBirth: this.DOB.value,
+  //     };
+  
+  //     this.dashService.addUser(updatedEmployee).subscribe(
+  //       () => {
+  //         this.snackBar.open('Employee Updated Successfully!', 'Dismiss', {
+  //           duration: 2000
+  //         });
+  //         this.dialogRef.close(updatedEmployee); // Close the dialog and pass the updated data back to the calling component
+  //       },
+  //       (error) => {
+  //         this.snackBar.open(
+  //           error.error.message || 'Failed to update Employee. Please try again.',
+  //           'Dismiss',
+  //           { duration: 2000 }
+  //         );
+  //         this.dialogRef.close(); // Close the dialog without any data changes
+  //       }
+  //     );
+  //   }
+  // }
+  
 
   // updateUser(UserId: number): void {
   //   if (
@@ -125,6 +163,91 @@ export class EditEmpComponent implements OnInit {
   //     //);
   //   }
   // }
+  // EditEmployee(): void {
+  //   if (
+  //     this.firstName.valid &&
+  //     this.lastName.valid &&
+  //     this.DOB.valid &&
+  //     this.contactNo.valid &&
+  //     this.Total.valid &&
+  //     this.roles.valid &&
+  //     this.supervisor.valid &&
+  //     this.employeeEmail.valid
+  //   ) {
+  //     const updatedEmployee = {
+  //       UserId: this.user.UserId,
+  //       companyEmail: this.employeeEmail.value,
+  //       contact: this.contactNo.value,
+  //       firstName: this.firstName.value,
+  //       lastName: this.lastName.value,
+  //       designation: this.roles.value,
+  //       supervisor: this.supervisor.value,
+  //       totalWorkingDays: this.Total.value,
+  //       dateOfBirth: this.DOB.value,
+  //     };
+  
+  //     this.dashService.updateEmployee(updatedEmployee).subscribe(
+  //       () => {
+  //         this.snackBar.open('Employee Updated Successfully!', 'Dismiss', {
+  //           duration: 2000
+  //         });
+  //         this.dialogRef.close(updatedEmployee); // Close the dialog and pass the updated data back to the calling component
+  //       },
+  //       (error) => {
+  //         this.snackBar.open(
+  //           error.error.message || 'Failed to update Employee. Please try again.',
+  //           'Dismiss',
+  //           { duration: 2000 }
+  //         );
+  //         this.dialogRef.close(); // Close the dialog without any data changes
+  //       }
+  //     );
+  //   }
+  // }
+  EditEmployee(): void {
+    if (
+      this.firstName.valid &&
+      this.lastName.valid &&
+      this.DOB.valid &&
+      this.contactNo.valid &&
+      this.Total.valid &&
+      this.roles.valid &&
+      this.supervisor.valid &&
+      this.employeeEmail.valid
+    ) {
+      const updatedEmployee = {
+        UserId: this.user.UserId,
+        companyEmail: this.employeeEmail.value,
+        contact: this.contactNo.value,
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        designation: this.roles.value,
+        supervisor: this.supervisor.value,
+        totalWorkingDays: this.Total.value,
+        dateOfBirth: this.DOB.value,
+      };
+        if(this.UserId ){
+          
+        }
+      this.dashService.updateEmployee(updatedEmployee).subscribe(
+        () => {
+          this.snackBar.open('Employee Updated Successfully!', 'Dismiss', {
+            duration: 2000
+          });
+          this.dialogRef.close(updatedEmployee); // Close the dialog and pass the updated data back to the calling component
+        },
+        (error) => {
+          this.snackBar.open(
+            error.error.message || 'Failed to update Employee. Please try again.',
+            'Dismiss',
+            { duration: 2000 }
+          );
+          this.dialogRef.close(); // Close the dialog without any data changes
+        }
+      );
+    }
+  }
+  
 
   onCancelClick(): void {
     this.dialogRef.close();
