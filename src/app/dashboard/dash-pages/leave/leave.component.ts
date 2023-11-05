@@ -77,29 +77,6 @@ export class LeaveComponent  implements OnInit{
       );
     }
   }
-  updateStatus(element: any, newStatus: number) {
-    // Assuming your API expects "1" for accepted and "0" for rejected
-    const isApprovedValue = newStatus === 1 ? '1' : '0';
-
-    const updatedStatusData = {
-      // Add any other data you need to update here
-      employeeEmail: element.employeeEmail,
-      // ...
-      IsApproved: isApprovedValue,
-    };
-
-    this.dashService.updateleaveApproval(updatedStatusData).subscribe(
-      (response) => {
-        // Status updated successfully
-        // You may want to reload your data or perform other actions here
-        // For example, if you want to refresh the data after the status is updated:
-      },
-      (error) => {
-        // Handle error, show an alert, etc.
-      }
-    );
-  }
-
 
   displayedColumns: string[] = ['Date', 'EmployeeName', 'Leave', 'Days', 'Status', 'Actions', 'View'];
   dataSource = new MatTableDataSource<PeriodicElement>;

@@ -43,8 +43,8 @@ export class UpdatTaskComponent implements OnInit {
     public dashService: DashService, 
     @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
-    this.task = data.task; // Corrected variable name
-    console.log(this.task); // Corrected variable name
+    this.task = data.task;
+    console.log(this.task)
   }
   
   ngOnInit() {
@@ -120,28 +120,30 @@ export class UpdatTaskComponent implements OnInit {
     
         if (startDate && endDate) {
           const taskSheetData = {
-            "employeeEmail": this.userEmail,
-            "employeeName": this.userName,
+            "employeeEmail": this.task.EmployeeEmail,
+            "employeeName": this.task.EmployeeName,
             "supervisorEmail": this.Supervisor.value,
             "projectName": this.Projecttitle.value,
             "status": this.Status.value,
             "remarks": this.Remarks.value,
             "priority": this.Priority.value,
-            "startDate": this.formatDateToString(startDate), // Format start date
-            "endDate": this.formatDateToString(endDate) // Format end date
+            "startDate": this.formatDateToString(startDate),
+            "endDate": this.formatDateToString(endDate)
           };
-    
-          
-          this.dashService.updateTask(taskSheetData).subscribe(
-            (taskSheet) =>{
-              console.log(" new TaskSheet Data", taskSheet);
-            },
-            (error) =>{
-              console.log(" not able to get new Tasksheet Data is not Fetching!!", error);
-            }
-          );
-          console.log("TaskSheet Data", taskSheetData);
+          const taskId=this.task.TaskSheetID;
+          console.log(taskId);
 
+          if(taskId){
+            this.dashService.updateTask(taskSheetData,taskId).subscribe(
+              (taskSheet) =>{
+                console.log(" new TaskSheet Data", taskSheet);
+              },
+              (error) =>{
+                console.log(" not able to get new Tasksheet Data is not Fetching!!", error);
+              }
+            );
+            console.log("TaskSheet Data", taskSheetData);
+          }
         } else {
           console.log("Invalid date format");
         }

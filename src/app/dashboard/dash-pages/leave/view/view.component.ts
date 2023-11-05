@@ -31,6 +31,10 @@ export class ViewComponent implements OnInit{
   leaveId: string ='';
   Id: string ='';
 
+  leaveData = {
+    isApproved:'Declined'
+  };
+
   fetchLeaveId() {
     this.DashDataService.leaveId$.subscribe(
       (id) => {
@@ -69,28 +73,22 @@ export class ViewComponent implements OnInit{
     } 
   }
   approveLeave() {
-    
     this.leaveId = this.Id;
-    // Add your approval logic here
-    if (this.leaveId) {
-      // You can call a service method to update the leave status in the database
-      this.DashDataService.approveLeave(this.leaveId).subscribe(
-        (response) => {
-          // Handle success, update the status property, or show a success message
-          this.status = '1'; // Update the status to 'Approved'
-          // Show a success message, or perform any other necessary actions
-          this.snackBar.open('Leave application approved successfully', 'Dismiss', {
-            duration: 2000,
+    if(this.leaveId){
+      this.DashDataService.updateleaveApproval(this.leaveData,this.leaveId).subscribe(
+        () => {
+          this.snackBar.open('Leave Approved Successfully!', 'Dismiss', {
+            duration: 2000
           });
         },
         (error) => {
-          // Handle error, show an error message, or perform any other necessary actions
-          this.snackBar.open('Error approving leave application', 'Dismiss', {
-            duration: 2000,
-            
-          });
+          this.snackBar.open(
+            error.error.message || 'Failed to Approve leave. Please try again.',
+            'Dismiss',
+            { duration: 2000 }
+          );
         }
-      );
+      )
     }
   }
   
