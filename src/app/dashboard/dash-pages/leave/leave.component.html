@@ -93,8 +93,22 @@
             </ng-container>
             <ng-container matColumnDef="Status">
               <th mat-header-cell *matHeaderCellDef>Status</th>
-              <td mat-cell *matCellDef="let element"> {{element.IsApproved}} </td>
-            </ng-container>
+              <td mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.IsApproved === 'Pending'; then pendingStatus else approvedOrRejectedStatus"></ng-container>
+                <ng-template #pendingStatus>
+                  <span [style.color]="'blue'">{{ 'Pending' }}</span>
+                </ng-template>
+                <ng-template #approvedOrRejectedStatus>
+                  <ng-container *ngIf="element.IsApproved === '1'; then approvedStatus else rejectedStatus"></ng-container>
+                  <ng-template #approvedStatus>
+                    <span [style.color]="'green'">{{ 'Accepted' }}</span>
+                  </ng-template>
+                  <ng-template #rejectedStatus>
+                    <span [style.color]="'red'">{{ 'Rejected' }}</span>
+                  </ng-template>
+                </ng-template>
+              </td>
+            </ng-container>            
             <ng-container matColumnDef="Actions">
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let element" >
@@ -149,8 +163,22 @@
             </ng-container>
             <ng-container matColumnDef="Status">
               <th mat-header-cell *matHeaderCellDef>Status</th>
-              <td mat-cell *matCellDef="let element"> {{element.IsApproved}} </td>
-            </ng-container>
+              <td mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.IsApproved === 'Pending'; then pendingStatus else approvedOrRejectedStatus"></ng-container>
+                <ng-template #pendingStatus>
+                  <span [style.color]="'yellow'">{{ 'Pending' }}</span>
+                </ng-template>
+                <ng-template #approvedOrRejectedStatus>
+                  <ng-container *ngIf="element.IsApproved === '1'; then approvedStatus else rejectedStatus"></ng-container>
+                  <ng-template #approvedStatus>
+                    <span [style.color]="'green'">{{ 'Accepted' }}</span>
+                  </ng-template>
+                  <ng-template #rejectedStatus>
+                    <span [style.color]="'red'">{{ 'Rejected' }}</span>
+                  </ng-template>
+                </ng-template>
+              </td>
+            </ng-container>            
             <ng-container matColumnDef="Actions">
               <th mat-header-cell *matHeaderCellDef></th>
               <td mat-cell *matCellDef="let element" >

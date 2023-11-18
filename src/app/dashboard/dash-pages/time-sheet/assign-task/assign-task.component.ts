@@ -16,6 +16,7 @@ export class AssignTaskComponent implements OnInit {
   employeeOptions: any = [];
   supervisorOptions: any = [];
   projectTitle: any = [];
+  projectid: any = [];
   Status= new FormControl('', [Validators.required]);
 
   Supervisor= new FormControl('', [Validators.required]);
@@ -76,6 +77,9 @@ export class AssignTaskComponent implements OnInit {
         (projects) =>{
           console.log("Project List", projects.getProjectName);
           this.projectTitle = projects.getProjectName;
+          const projectIds = projects.getProjectName.map((project: any) => project.ProjectId.toString());
+          this.projectid = projectIds.length > 0 ? projectIds[0] : ''; // Use the first project ID if available
+          
         },
         (error) =>{
           console.log("Data is not Fetching!!", error);
@@ -107,6 +111,7 @@ export class AssignTaskComponent implements OnInit {
       ) {
         const startDate = this.StartDate.value ? new Date(this.StartDate.value) : null;
         const endDate = this.EndDate.value ? new Date(this.EndDate.value) : null;
+        
     
         if (startDate && endDate) {
           const taskSheetData = {

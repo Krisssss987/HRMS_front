@@ -30,7 +30,7 @@ export class LeaveComponent  implements OnInit{
   ){}
 
   
-
+  
   pendingLeave() {
     this.CompanyEmail = sessionStorage.getItem('CompanyEmail');
     if (this.CompanyEmail) {
@@ -38,6 +38,7 @@ export class LeaveComponent  implements OnInit{
         (users) => {
           this.dataSource = users.getLeaveInfo;
           console.log(users);
+          console.log(this.dataSource)
 
         },
         (error) => {
@@ -53,6 +54,7 @@ export class LeaveComponent  implements OnInit{
       this.dashService.approvedLeave(this.CompanyEmail).subscribe(
         (users) => {
           this.dataSource2 = users.getLeaveInfo;
+          console.log(this.dataSource2)
         },
         (error) => {
           // Handle error

@@ -23,7 +23,6 @@ export class EditEmpComponent implements OnInit {
   supervisor = new FormControl('', [Validators.required]);
   employeeEmail = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('',);
-
   user: any;
 
 
@@ -37,8 +36,7 @@ export class EditEmpComponent implements OnInit {
     public dashService:DashService,
     public snackBar: MatSnackBar,
   ){
-    this.user = data.user;
-    console.log(this.user);
+    this.user= data.user;
   }
   ngOnInit(): void {
   }
@@ -50,81 +48,50 @@ export class EditEmpComponent implements OnInit {
     
   };
 
-  onSaveClick(): void {
-    if(this.firstName.valid && this.lastName.valid && this.DOB.valid
-      && this.contactNo.valid && this.Total.valid && this.roles.valid 
-      && this.supervisor.valid && this.employeeEmail.valid){
-      const addUser = {
+  EditEmployee(): void {
+    if (
+      this.firstName.valid &&
+      this.lastName.valid &&
+      this.DOB.valid &&
+      this.contactNo.valid &&
+      this.Total.valid &&
+      this.roles.valid &&
+      this.supervisor.valid &&
+      this.employeeEmail.valid
+    ) {
+      const updatedEmployee = {
+        UserId: this.user.UserId,
         companyEmail: this.employeeEmail.value,
         contact: this.contactNo.value,
         firstName: this.firstName.value,
         lastName: this.lastName.value,
         designation: this.roles.value,
-        password: this.employeeEmail.value,
         supervisor: this.supervisor.value,
         totalWorkingDays: this.Total.value,
-        dateOfBirth: this.DOB.value
-      }
-      this.dashService.addUser(addUser).subscribe(
-        () =>{
-        this.snackBar.open('User Added Successful!', 'Dismiss', {
-          duration: 2000
-        });
-        this.dialogRef.close();
-        },
-      (error) => {
-        this.snackBar.open(
-            error.error.message || 'Failed to add User. Please try again.',
-            'Dismiss',
-            { duration: 2000 }
-          );
-        this.dialogRef.close();
-      });
+        dateOfBirth: this.DOB.value,
+      };
+      const UserId=this.user.UserId
+      if(UserId){
+        this.dashService.updateEmployee(updatedEmployee,UserId).subscribe(
+          () => {
+            this.snackBar.open('Employee Updated Successfully!', 'Dismiss', {
+              duration: 2000
+            });
+            this.dialogRef.close(updatedEmployee);
+          },
+          (error) => {
+            this.snackBar.open(
+              error.error.message || 'Failed to update Employee. Please try again.',
+              'Dismiss',
+              { duration: 2000 }
+            );
+            this.dialogRef.close();
+          }
+        );
+      }      
     }
   }
-
-  // updateUser(UserId: number): void {
-  //   if (
-  //     this.firstName.valid &&
-  //     this.lastName.valid &&
-  //     this.DOB.valid &&
-  //     this.contactNo.valid &&
-  //     this.Total.valid &&
-  //     this.roles.valid &&
-  //     this.supervisor.valid &&
-  //     this.employeeEmail.valid
-  //   ) {
-  //     const updatedUser = {
-  //       UserId, // Add the UserId of the user you want to update
-  //       companyEmail: this.employeeEmail.value,
-  //       contact: this.contactNo.value,
-  //       firstName: this.firstName.value,
-  //       lastName: this.lastName.value,
-  //       designation: this.roles.value,
-  //       supervisor: this.supervisor.value,
-  //       totalWorkingDays: this.Total.value,
-  //       dateOfBirth: this.DOB.value,
-  //     };
   
-  //    // this.dashService.updateUser(updatedUser).subscribe(
-  //       // () => {
-  //       //   this.snackBar.open('User Updated Successfully!', 'Dismiss', {
-  //       //     duration: 2000
-  //       //   });
-  //       //   this.dialogRef.close();
-  //       //   this.userDetails(); // Refresh the user details after update
-  //       // },
-  //       // (error) => {
-  //       //   this.snackBar.open(
-  //       //     error.error.message || 'Failed to update User. Please try again.',
-  //       //     'Dismiss',
-  //       //     { duration: 2000 }
-  //       //   );
-  //       //   this.dialogRef.close();
-  //       // }
-  //     //);
-  //   }
-  // }
 
   onCancelClick(): void {
     this.dialogRef.close();

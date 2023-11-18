@@ -9,8 +9,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class DashService {
 
   constructor(private http: HttpClient, private router: Router) {}
-  // private readonly API_URL = 'http://ec2-3-110-121-113.ap-south-1.compute.amazonaws.com:3000';
-  private readonly API_URL = 'http://localhost:3000';
+  private readonly API_URL = 'http://ec2-13-233-104-82.ap-south-1.compute.amazonaws.com:3000';
+  // private readonly API_URL = 'http://localhost:3000';
   private leaveIdSource = new BehaviorSubject<string>('');
   leaveId$ = this.leaveIdSource.asObservable();
 
@@ -63,8 +63,8 @@ export class DashService {
   assignTask(assignTask: any): Observable<any> {
     return this.http.post(`${this.API_URL}/assignTask`, assignTask);
   }
-  updateTask(updateTask: any): Observable<any> {
-    return this.http.post(`${this.API_URL}/editTask`, updateTask);
+  updateTask(updateTask: any,taskId:string): Observable<any> {
+    return this.http.post(`${this.API_URL}/editTask/${taskId}`, updateTask);
   }
   projectDetails():Observable<any> {
     return this.http.get(`${this.API_URL}/getProjects`);
@@ -76,8 +76,21 @@ export class DashService {
   deleteEmployee(UserId: string): Observable<any> {
     return this.http.delete(`${this.API_URL}/deleteEmployee/${UserId}`);
   }
+  updateEmployee(updatedEmployee: any,UserId: string): Observable<any> {
+    // Make a PUT request to update employee data
+    // You should define the URL and HTTP headers as needed
+    return this.http.put<any>(`${this.API_URL}/editUser/${UserId}`, updatedEmployee);
+  }
 
   Divisions():Observable<any> {
     return this.http.get(`${this.API_URL}/getDesignation`);
+  }
+
+  updateleaveApproval(updateLeave:any,leaveId:string):Observable<any>{
+    return this.http.put(`${this.API_URL}/updateLeaveApproval/${leaveId}`, updateLeave);
+  }
+
+  attendanceDetails():Observable<any> {
+    return this.http.get(`${this.API_URL}/getAttendenceDetails`);
   }
 }

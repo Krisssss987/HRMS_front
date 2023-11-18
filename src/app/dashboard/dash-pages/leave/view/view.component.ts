@@ -31,6 +31,10 @@ export class ViewComponent implements OnInit{
   leaveId: string ='';
   Id: string ='';
 
+  leaveData = {
+    isApproved:'Declined'
+  };
+
   fetchLeaveId() {
     this.DashDataService.leaveId$.subscribe(
       (id) => {
@@ -68,4 +72,34 @@ export class ViewComponent implements OnInit{
       );
     } 
   }
+  approveLeave() {
+    this.leaveId = this.Id;
+    if(this.leaveId){
+      this.DashDataService.updateleaveApproval(this.leaveData,this.leaveId).subscribe(
+        () => {
+          this.snackBar.open('Leave Approved Successfully!', 'Dismiss', {
+            duration: 2000
+          });
+        },
+        (error) => {
+          this.snackBar.open(
+            error.error.message || 'Failed to Approve leave. Please try again.',
+            'Dismiss',
+            { duration: 2000 }
+          );
+        }
+      )
+    }
+  }
+  
+  getStatusColor(status: string): string {
+    if (status === '1') {
+      return 'green'; // Set the color for 'Accepted'
+    } else if (status === '0') {
+      return 'red'; // Set the color for 'Rejected'
+    } else {
+      return 'yellow'; // Default color
+    }
+  }
+  
 }
