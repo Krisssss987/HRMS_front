@@ -1,49 +1,5 @@
-.content{
-    padding-top: 20px;
-    padding-bottom: 5px;
-}
-h1{
-    font-weight: 600;
-    color: rgb(66, 66, 66);
-    flex-grow: inherit;
-}
+#content {
+  width: 650px;
+  height: 100px;
 
-.head{
-    font-size: 2rem;
-    font-weight: 550;
 }
-.card-content {
-    background-image: url('https://media.istockphoto.com/id/108353971/photo/trophy.jpg?s=1024x1024&w=is&k=20&c=hOPbGdQZi3rerVhUInEwFYZaLB6rQQq-yBMhXVMJ2ss='); /* Replace with your image path */
-    background-size: cover; /* Adjust the background size as needed */
-    background-position: center; /* Center the background image */
-    color: white; /* Set the text color for better visibility */
-    padding: 20px; /* Add padding to the content */
-    color: white; /* Set the text color for better visibility */
-    backdrop-filter: blur(10px) opacity(40%); /* Add blur to the background image */
-  }
-/* Add styles for the mat-card elements */
-.mat-card {
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 10px;
-  }
-  
-  /* Style the mat-card-title */
-  mat-card-title {
-    font-weight: bold;
-  }
-  
-  /* Style the download buttons */
-  button.mat-button {
-    background-color: #2196F3;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: 5px 10px;
-    font-weight: bold;
-  }
-  
-  button.mat-button:hover {
-    background-color: #1976D2;
-  }
-  
