@@ -31,6 +31,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MyleaveComponent } from './myleave/myleave.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    FormsModule, ReactiveFormsModule,
-    NgIf, JsonPipe,
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+    JsonPipe,
     MatNativeDateModule,
     MatSelectModule,
     MatCheckboxModule,
@@ -69,7 +72,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatTooltipModule,
     HttpClientModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    QRCodeModule
   ]
 })
 export class UserModule { }

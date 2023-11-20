@@ -26,6 +26,8 @@ import { PasswordMatchDirective } from './password-match.directive';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ResendVerificationComponent } from './login/login-components/resend-verification/resend-verification.component';
+import { IntimeComponent } from './intime/intime.component';
+import { OuttimeComponent } from './outtime/outtime.component';
 
 
 @NgModule({
@@ -40,6 +42,8 @@ import { ResendVerificationComponent } from './login/login-components/resend-ver
     PasswordMatchDirective,
     PasswordMatchDirective,
     ResendVerificationComponent,
+    IntimeComponent,
+    OuttimeComponent,
   ],
   imports: [
     CommonModule,

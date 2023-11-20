@@ -22,10 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {Task_name: 'EMS', priority: 'High', Deadline: '10-8-23'},
   {Task_name: 'EMS', priority: 'High', Deadline: '10-8-23'},
   {Task_name: 'EMS', priority: 'High', Deadline: '10-8-23'},
-  
-
 ];
-
 
 @Component({
   selector: 'app-dashboard',
@@ -33,6 +30,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements AfterViewInit {
+
+  qrCodeStr: string;
+  userId=sessionStorage.getItem('UserId')
+
+  constructor(){
+    this.qrCodeStr = 'http://ec2-13-233-104-82.ap-south-1.compute.amazonaws.com/login/intime?userId='+this.userId;
+  }
+
   disableSelect = new FormControl(false);
   displayedColumns: string[] = ['Task_name', 'priority', 'Deadline','Progrees' ,'actions'];
   dataSource = ELEMENT_DATA;

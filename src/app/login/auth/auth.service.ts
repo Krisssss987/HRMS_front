@@ -21,6 +21,14 @@ export class AuthService {
   register(registerData: any): Observable<any> {
     return this.http.post(`${this.API_URL}/register`, registerData);
   }
+
+  intime(intimedata:any): Observable<any> {
+    return this.http.post(`${this.API_URL}/inTime`,intimedata);
+  }
+
+  outtime(userId:string,outtimedata:any): Observable<any> {
+    return this.http.put(`${this.API_URL}/outTime/${userId}`,outtimedata);
+  }
   
   login(loginData: any): Observable<any> {
     return this.http.post(`${this.API_URL}/login`, loginData);
