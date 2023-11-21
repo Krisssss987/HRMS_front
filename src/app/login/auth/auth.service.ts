@@ -15,8 +15,8 @@ export class AuthService {
   decryptUsers!: any;
   
   constructor(private http: HttpClient, private router: Router) {}
-  private readonly API_URL = 'http://ec2-13-233-104-82.ap-south-1.compute.amazonaws.com:3000';
-  // private readonly API_URL = 'http://localhost:3000';
+  //private readonly API_URL = 'http://ec2-13-233-104-82.ap-south-1.compute.amazonaws.com:3000';
+  private readonly API_URL = 'http://localhost:3000';
 
   register(registerData: any): Observable<any> {
     return this.http.post(`${this.API_URL}/register`, registerData);
@@ -26,8 +26,8 @@ export class AuthService {
     return this.http.post(`${this.API_URL}/inTime`,intimedata);
   }
 
-  outtime(userId:string,outtimedata:any): Observable<any> {
-    return this.http.put(`${this.API_URL}/outTime/${userId}`,outtimedata);
+  outtime(outtimedata:any): Observable<any> {
+    return this.http.post(`${this.API_URL}/outTime`,outtimedata);
   }
   
   login(loginData: any): Observable<any> {

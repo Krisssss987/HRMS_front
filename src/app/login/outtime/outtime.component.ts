@@ -29,7 +29,7 @@ export class OuttimeComponent {
       const outTimeData={
         userId: this.userId,
       };
-      this.authService.outtime(this.userId,outTimeData).subscribe(
+      this.authService.outtime(outTimeData).subscribe(
         () => {
           this.snackBar.open('Out details sent successfully!', 'Dismiss', {
             duration: 2000

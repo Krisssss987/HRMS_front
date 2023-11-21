@@ -1,9 +1,11 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 HC_exporting(Highcharts);
 import {MatTableModule} from '@angular/material/table';
 import { FormControl } from '@angular/forms';
+import { UsersService } from '../users.service';
+import { Subscription, interval, take } from 'rxjs';
 
 export interface PeriodicElement {
   priority: string;
@@ -29,13 +31,50 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements AfterViewInit,OnInit {
 
-  qrCodeStr: string;
+  qrInTime: string;
+  qrOutTime: string;
   userId=sessionStorage.getItem('UserId')
+  status: number = 0;
+  intervalSubscription: Subscription | undefined;
 
-  constructor(){
-    this.qrCodeStr = 'http://ec2-13-233-104-82.ap-south-1.compute.amazonaws.com/login/intime?userId='+this.userId;
+  ngOnInit(): void {
+    this.getInterndata();
+    this.startInterval();
+  }
+
+  constructor(public userService:UsersService){
+    this.qrInTime = 'http://localhost:4200/login/intime?userId='+this.userId;
+    this.qrOutTime = 'http://localhost:4200/login/outTime?userId='+this.userId;
+  }
+
+  ngOnDestroy() {
+    this.stopInterval();
+  }
+
+  startInterval() {
+    this.intervalSubscription = interval(5000)
+      .pipe(take(Infinity))
+      .subscribe(() => {
+        this.getInterndata();
+      });
+  }
+
+  stopInterval() {
+    if (this.intervalSubscription) {
+      this.intervalSubscription.unsubscribe();
+    }
+  }
+
+  getInterndata(){
+    if(this.userId){
+      this.userService.getInternInfo(this.userId).subscribe(
+        (status)=>{
+          this.status=status.internInfo.attendance;
+        }
+      )
+    }
   }
 
   disableSelect = new FormControl(false);
