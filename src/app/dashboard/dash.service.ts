@@ -9,8 +9,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class DashService {
 
   constructor(private http: HttpClient, private router: Router) {}
-  private readonly API_URL = 'http://ec2-13-233-104-82.ap-south-1.compute.amazonaws.com:3000';
-  // private readonly API_URL = 'http://localhost:3000';
+  //private readonly API_URL = 'http://ec2-13-233-104-82.ap-south-1.compute.amazonaws.com:3000';
+  private readonly API_URL = 'http://localhost:3000';
   private leaveIdSource = new BehaviorSubject<string>('');
   leaveId$ = this.leaveIdSource.asObservable();
 

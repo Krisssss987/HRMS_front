@@ -6,6 +6,8 @@ import { ForgotComponent } from './forgot/forgot.component';
 import { ResetComponent } from './reset/reset.component';
 import { EmailGuard } from './auth/email.guard';
 import { ResendVerificationComponent } from './login/login-components/resend-verification/resend-verification.component';
+import { IntimeComponent } from './intime/intime.component';
+import { OuttimeComponent } from './outtime/outtime.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,12 @@ const routes: Routes = [
     }, {
         path: 'resend-verification',
         component: ResendVerificationComponent
+    },{
+        path: 'intime',
+        component: IntimeComponent
+    },{
+        path: 'outTime',
+        component: OuttimeComponent
     },
 {path:'',redirectTo:'login',pathMatch:'full'}]
 }

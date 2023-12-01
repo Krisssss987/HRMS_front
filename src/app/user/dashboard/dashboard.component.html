@@ -7,13 +7,12 @@
           <h2 class="mx-2">Scan QR Code</h2>
         </mat-card-header>
         <mat-divider></mat-divider>
-        
-        <mat-card-content>
-          <img src="https://pngimg.com/uploads/qr_code/qr_code_PNG25.png" alt="QR" style=" width: 400px;">
-          <h3>
-          
-          </h3>
-        </mat-card-content>
+        <mat-card-content *ngIf="status===0">
+          <qrcode [qrdata]="qrInTime" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+        </mat-card-content> 
+        <mat-card-content *ngIf="status!=0">
+          <qrcode [qrdata]="qrOutTime" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+        </mat-card-content> 
        
       </mat-card>
     </div>
